@@ -418,7 +418,7 @@
     </section>
 
     <section data-background-color="#fbfbfb">
-        <!-- <h6 style="color: #0B3D5B;">L'éléphant dans la pièce</h6> -->
+        <h6 style="color: #0B3D5B ; border-bottom: 3px solid #6B8E23;">Modélisation Physique ...</h6>
 
         <div style="margin-top: 10px;">
             <!-- Citation principale Jarvis et al. -->
@@ -444,8 +444,7 @@
 
             <!-- Le constat -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 35px;">
-                <div class="fragment fade-right" data-fragment-index="1"
-                    style="padding: 5px; border-radius: 12px;">
+                <div class="fragment fade-right" data-fragment-index="1" style="padding: 5px; border-radius: 12px;">
                     <!-- <div style="text-align: center; font-size: 2.0em; margin-bottom: 12px;">📊</div> -->
                     <h6 style="color: #0369a1; font-size: 0.5em; text-align: center; margin-bottom: 15px;">
                         Les progrès actuels
@@ -461,8 +460,7 @@
                     </p>
                 </div>
 
-                <div class="fragment fade-left" data-fragment-index="1"
-                    style="padding: 5px;border-radius: 12px;">
+                <div class="fragment fade-left" data-fragment-index="1" style="padding: 5px;border-radius: 12px;">
                     <!-- <div style="text-align: center; font-size: 2.0em; margin-bottom: 12px;">⚠️</div> -->
                     <h6 style="color: #991b1b; font-size: 0.5em; text-align: center; margin-bottom: 15px;">
                         Les modèles existants
@@ -597,6 +595,91 @@
     </aside>
 </section>
 
+
+<section data-background-color="#fbfbfb">
+    <h6 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23;">Objectif et Hypothèses de Recherche</h6>
+
+    <div class="objectives-box">
+        <!-- <h6 style="font-size: 0.6em;"> Objectif Principal</h6> -->
+
+        <p style="margin-top: 0px; font-size: 0.5em; color: #1e293b; line-height: 1.7;">
+            <!-- Développer un modèle couplé intégrant la physique fine de l'eau dans le sol (Richards) avec la
+            réponse culturale (AquaCrop) -->
+
+            Développer et valider un modèle de simulation numérique,
+            fondé sur un couplage bidirectionnel entre un solveur de l’équation de Richards et le modèle agronomique
+            AquaCrop, pour la prévision dynamique des rendements sous irrigation goutte-à-goutte en
+            contextes de données limitées.
+
+        </p>
+    </div>
+
+    <div class="hypotheses-container" style="margin-top: 10px;">
+        <div class="hypothesis-card fragment fade-up" data-fragment-index="1"
+            style="background: linear-gradient(135deg, #0B3D5B 0%, #1a5a7f 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 25px; position: relative;">
+            <div
+                style="position: absolute; top: -20px; left: 30px; background: #D97706; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.0em; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                H1
+            </div>
+            <div style="margin-left: 80px;">
+                <h3 style="color: white; margin: 0 0 15px 0; font-size: 0.6em;">
+                    Couplage Bidirectionnel Richards-AquaCrop
+                </h3>
+                <p style="margin: 0; font-size: 0.45em; line-height: 1.7;">
+                    Un couplage bidirectionnel entre un solveur <strong>Richards 2D</strong> (dynamique
+                    sol)
+                    et <strong>AquaCrop</strong> (croissance plante) permet de mieux simuler <strong>avec
+                        précision</strong>
+                    la distribution spatiale de l'humidité et la réponse culturale en irrigation
+                    localisée.
+                </p>
+            </div>
+        </div>
+
+        <div class="hypothesis-card fragment fade-up" data-fragment-index="2"
+            style="background: linear-gradient(135deg, #6B8E23 0%, #859a3e 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 25px; position: relative;">
+            <div
+                style="position: absolute; top: -20px; left: 30px; background: #0B3D5B; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.0em; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                H2
+            </div>
+            <div style="margin-left: 80px;">
+                <h3 style="color: white; margin: 0 0 15px 0; font-size: 0.6em;">
+                    Calibration Automatique Multi-Objectif
+                </h3>
+                <p style="margin: 0; font-size: 0.45em; line-height: 1.7;">
+                    L’utilisation de <strong>données globales accessibles</strong> (ERA5, SoilGrids) fournit
+                    une base suffisante pour <strong>paramétrer et calibrer</strong> un modèle couplé dans un contexte
+                    de données
+                    limitées, avec une <strong>précision acceptable</strong> pour l’aide à la décision agricole.
+                </p>
+            </div>
+        </div>
+
+        <div class="hypothesis-card fragment fade-up" data-fragment-index="3"
+            style="background: linear-gradient(135deg, #D97706 0%, #f59e0b 100%); color: white; padding: 30px; border-radius: 15px; position: relative;">
+            <div
+                style="position: absolute; top: -20px; left: 30px; background: #6B8E23; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.0em; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                H3
+            </div>
+            <div style="margin-left: 80px;">
+                <h3 style="color: white; margin: 0 0 15px 0; font-size: 0.6em;">
+                    Recommandations et Prévisions
+                </h3>
+                <p style="margin: 0; font-size: 0.45em; line-height: 1.7;">
+                    Une approche de simulation <strong>couplée et calibrée dynamiquement</strong> est capable de fournir
+                    des recommandations d’irrigation et des prévisions de rendement <strong>plus fiables</strong> que
+                    les approches <strong>empiriques ou séquentielles</strong> actuellement utilisées au Bénin.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Trois hypothèses structurent notre démarche : H1 sur le couplage physique,
+        H2 sur l'exploitation de données globales, H3 sur l'optimisation par RL.
+    </aside>
+</section>
+
 <!-- SLIDE A4: Plan de la présentation -->
 <section data-background-color="#fbfbfb">
     <h3 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23;">Plan de la présentation</h3>
@@ -640,7 +723,6 @@
         puis la conception et l'implémentation du système, avant de passer aux résultats et perspectives.
     </aside>
 </section>
-
 
 <!-- ============================================= -->
 <!-- SECTION : PROBLÉMATIQUE -->
@@ -732,3 +814,4 @@
     </aside>
 </section> -->
 
+<!-- C2a: Main hypotheses -->
