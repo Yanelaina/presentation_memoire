@@ -1,0 +1,734 @@
+<!-- ============================================= -->
+<!-- SECTION A: INTRODUCTION -->
+<!-- ============================================= -->
+
+<!-- SLIDE A1: Page de Garde (Version Présentation) -->
+<section class="titlepage-slide" data-background-color="#ffffff">
+    <div class="titlepage-background">
+
+        <!-- Header avec Logos -->
+        <div class="presentation-header">
+            <div class="logo-left">
+                <img src="assets/logos/unstimLogo-removebg.png" alt="Logo UNSTIM">
+            </div>
+            <div class="header-text">
+                <div class="institution-name unstim">Université Nationale des Sciences, Technologies,
+                    Ingénierie et Mathématiques (UNSTIM-Abomey)</div>
+                <div class="institution-separator"></div>
+                <div class="institution-name ensgmm">École Nationale Supérieure de Génie Mathématique et
+                    Modélisation (ENSGMM)</div>
+            </div>
+            <div class="logo-right">
+                <img src="assets/logos/logoGMM-removebg.png" alt="Logo ENSGMM">
+            </div>
+        </div>
+
+        <!-- Titre Principal -->
+        <div class="presentation-title-section">
+            <div class="presentation-subtitle">Soutenance de Mémoire d'Ingénieur de Conception</div>
+            <div class="presentation-title-box">
+                <div class="presentation-title">
+                    Modélisation de la dynamique hydrique pour l'irrigation goutte-à-goutte :
+                    déploiement d'une architecture de couplage bidirectionnel entre AquaCrop
+                    et l'équation de Richards 2D
+                </div>
+            </div>
+        </div>
+
+        <!-- Auteur -->
+        <div class="presentation-author">
+            <div class="author-name">Babatundé T. Yanel AÏNA SODJINOU</div>
+            <div class="author-program">Mathématiques Appliquées et Modélisation - Option MSN</div>
+        </div>
+
+        <!-- Encadrement et Date -->
+        <div class="presentation-bottom-section">
+            <div class="supervision-compact">
+                <div class="supervision-title">Encadrement</div>
+                <div class="supervisor-item">
+                    <span class="supervisor-role">Superviseur :</span>
+                    <span class="supervisor-name-compact">Dr Christian D. AKOWANOU</span>
+                </div>
+                <div class="supervisor-item">
+                    <span class="supervisor-role">Encadreur :</span>
+                    <span class="supervisor-name-compact">Dr Jamal ADETOLA</span>
+                </div>
+            </div>
+
+            <div class="date-compact">
+                <div class="date-location">UNSTIM Abomey</div>
+                <div class="date-full">30 Octobre 2025</div>
+            </div>
+        </div>
+
+    </div>
+
+    <aside class="notes">
+        Excellence Monsieur le Président du Jury, Honorables membres du Jury, Mesdames et Messieurs,
+        bonjour.
+        C'est un immense plaisir pour moi de vous présenter aujourd'hui les travaux que j'ai menés dans le
+        cadre de mon mémoire.
+    </aside>
+</section>
+
+<!-- SLIDE A2: Accroche - Le rêve -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23;">Imaginez un monde où...</h4>
+
+    <div class="vision-grid">
+        <div class="vision-item fragment fade-up" data-fragment-index="1">
+            <div class="vision-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#6B8E23" stroke-width="2">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+            </div>
+            <p class="vision-text">
+                Un <strong> petit producteur</strong> sait <span style="color: #D97706;">combien d'eau appliquer, où et
+                    quand</span>
+                pour maximiser son rendement
+            </p>
+        </div>
+
+        <div class="vision-item fragment fade-up" data-fragment-index="2">
+            <div class="vision-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#6B8E23" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
+            <p class="vision-text">
+                Une <strong>entreprise ou un cluster agricole</strong> peut <span style="color: #D97706;">prévoir les
+                    rendements avec fiabilité</span>
+                en intégrant les aléas climatiques
+            </p>
+        </div>
+
+        <div class="vision-item fragment fade-up" data-fragment-index="3">
+            <div class="vision-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#6B8E23" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </div>
+            <p class="vision-text">
+                Les <strong>chercheurs</strong> peuvent <span style="color: #D97706;">tester virtuellement des
+                    stratégies agricoles</span>
+                avant de les déployer en milieu réel sur le terrain.
+            </p>
+        </div>
+    </div>
+
+    <p class="fragment fade-in" data-fragment-index="4"
+        style="margin-top: 40px; font-size: 1.0em; color: #0B3D5B; font-weight: 600;">
+        Ce monde repose sur une technologie émergente : <span style="color: var(--brown);">le jumeau numérique
+            agricole</span>
+    </p>
+
+    <aside class="notes">
+        Permettez-moi de commencer en vous vendant un rêve, notre rêve. Imaginez un monde où :
+        <br> <br>
+        - un petit producteur, quelque part au Bénin, peut interroger une application sur son téléphone avant d’irriguer
+        pour
+        savoir **combien d’eau apporter, quand et où**, afin de maximiser son rendement tout en économisant l’eau et
+        l'énergie ;
+        <br> <br>
+        - une entreprise agricole ou un cluster peut **prévoir avec fiabilité les rendements** de ses exploitants, en
+        intégrant dans une boucle de simulation les aléas climatiques et les pratiques locales de ces derniers;
+        <br> <br>
+        - et où les organismes de conseil agricoles ou les instituts de recherche peuvent **tester virtuellement de
+        nouvelles
+        stratégies agricoles** avant de les déployer en milieur réel sur le terrain.
+
+        <br> <br>
+        Ce monde, Excellence Monsieur le Président du Jury, loin d’être utopique, repose sur une technologie émergente :
+        **le
+        jumeau numérique agricole**.
+    </aside>
+</section>
+
+<!-- SLIDE A3: Qu'est-ce qu'un jumeau numérique agricole ? -->
+<section>
+    <!-- A3a: Main slide -->
+    <section data-background-color="#fbfbfb">
+        <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23;">Qu’est-ce qu’un jumeau numérique agricole ?</h4>
+
+        <div style="display: flex; align-items: center; justify-content: space-around; margin-top: 30px;">
+            <div style="flex: 1; padding: 20px;">
+                <p style="font-size: 1.0em; line-height: 1.6; text-align: left;">
+                    Une <strong style="color: #D97706;">réplique virtuelle</strong> du système
+                    <span style="color: #6B8E23;">sol–plante–atmosphère</span> capable de :
+                </p>
+                <ul style="font-size: 0.9em; margin-top: 20px; line-height: 1.6; text-align: left;">
+                    <li class="fragment fade-right" data-fragment-index="1"> <strong>Simuler</strong> les processus
+                        physiques</li>
+                    <li class="fragment fade-right" data-fragment-index="2"> <strong>Prédire</strong> les rendements
+                    </li>
+                    <li class="fragment fade-right" data-fragment-index="3"> <strong>Optimiser</strong> les décisions
+                        agricoles</li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; padding: 20px;">
+                <div class="digital-twin-diagram">
+                    <div class="dt-component fragment fade-in" data-fragment-index="1"
+                        style="background: #D97706; color: white;">
+                        <strong>SOL</strong>
+                        <small>Infiltration, rétention</small>
+                    </div>
+                    <div class="dt-arrow fragment fade-in" data-fragment-index="2">↕️</div>
+                    <div class="dt-component fragment fade-in" data-fragment-index="2"
+                        style="background: #6B8E23; color: white;">
+                        <strong>PLANTE</strong>
+                        <small>Croissance, transpiration</small>
+                    </div>
+                    <div class="dt-arrow fragment fade-in" data-fragment-index="3">↕️</div>
+                    <div class="dt-component fragment fade-in" data-fragment-index="3"
+                        style="background: #0B3D5B; color: white;">
+                        <strong>ATMOSPHÈRE</strong>
+                        <small>Climat, évaporation</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <aside class="notes">
+            Un jumeau numérique, c’est une **réplique virtuelle du système sol–plante–atmosphère**, capable de
+            **simuler, prédire
+            et optimiser** les décisions agricoles en temps réel, à partir de données collectées sur le terrain ou
+            issues de sources
+            globales.
+
+            L’objectif ultime d’un tel outil est de rapprocher la simulation du réel, pour mieux comprendre et piloter
+            les
+            systèmes agricoles, particulièrement dans les zones vulnérables comme les nôtres.
+        </aside>
+    </section>
+
+    <!-- A3b: Architecture d'un jumeau numérique (Image Zhang et al. 2025) -->
+    <section data-background-color="#fbfbfb">
+        <h6 style="color: #0B3D5B; margin-bottom: 25px;">Architecture d'un jumeau numérique</h6>
+
+        <!-- Layout: Image 70% + Annotations 30% -->
+        <div style="display: flex; gap: 25px; align-items: flex-start; max-width: 1100px; margin: 0 auto;">
+
+            <!-- Colonne gauche: Image -->
+            <div style="flex: 0 0 70%; position: relative;">
+                <img src="assets/physical_virtual_entities.png"
+                    alt="Architecture du jumeau numérique agricole - Zhang et al. 2025"
+                    style="width: 100%; height: auto; border-radius: 12px; border: 3px solid #cbd5e1; box-shadow: 0 6px 25px rgba(0,0,0,0.15);">
+            </div>
+
+            <!-- Colonne droite: Annotations clés -->
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 20px; padding-top: 10px;">
+
+                <!-- Annotation 1: Entités Physiques -->
+                <div class="architecture-annotation fragment fade-left" data-fragment-index="1"
+                    style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 18px; border-radius: 12px; border-left: 5px solid #0B3D5B; box-shadow: 0 3px 12px rgba(11, 61, 91, 0.15);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        <div
+                            style="background: #0B3D5B; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75em; flex-shrink: 0;">
+                            1
+                        </div>
+                        <h5 style="margin: 0; color: #0B3D5B; font-size: 0.7em; font-weight: 700;">
+                            Entités Physiques
+                        </h5>
+                    </div>
+                    <!-- <ul style="margin: 0; padding-left: 20px; font-size: 0.5em; line-height: 1.7; color: #1e293b;">
+                                    <li>Capteurs IoT terrain</li>
+                                    <li>Drones & caméras</li>
+                                    <li>Mesures (pH, humidité)</li>
+                                    <li>Parcelle agricole réelle</li>
+                                </ul> -->
+                </div>
+
+                <!-- Annotation 2: Cloud & Traitement -->
+                <div class="architecture-annotation fragment fade-left" data-fragment-index="1"
+                    style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); padding: 18px; border-radius: 12px; border-left: 5px solid #0ea5e9; box-shadow: 0 3px 12px rgba(14, 165, 233, 0.15);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        <div
+                            style="background: #0ea5e9; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75em; flex-shrink: 0;">
+                            2
+                        </div>
+                        <h5 style="margin: 0; color: #0369a1; font-size: 0.7em; font-weight: 700;">
+                            Cloud Computing
+                        </h5>
+                    </div>
+                    <!-- <ul style="margin: 0; padding-left: 20px; font-size: 0.5em; line-height: 1.7; color: #1e293b;">
+                                    <li>Stockage de données</li>
+                                    <li>Traitement analytique</li>
+                                    <li>Modélisation 3D</li>
+                                    <li>Infrastructure scalable</li>
+                                </ul> -->
+                </div>
+
+                <!-- Annotation 3: Entités Virtuelles -->
+                <div class="architecture-annotation fragment fade-left" data-fragment-index="1"
+                    style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 18px; border-radius: 12px; border-left: 5px solid #10b981; box-shadow: 0 3px 12px rgba(16, 185, 129, 0.15);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        <div
+                            style="background: #10b981; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75em; flex-shrink: 0;">
+                            3
+                        </div>
+                        <h5 style="margin: 0; color: #047857; font-size: 0.7em; font-weight: 700;">
+                            Entités Virtuelles
+                        </h5>
+                    </div>
+                    <!-- <ul style="margin: 0; padding-left: 20px; font-size: 0.5em; line-height: 1.7; color: #1e293b;">
+                                    <li>Jumeau numérique 3D</li>
+                                    <li>Simulations prédictives</li>
+                                    <li>Aide à la décision</li>
+                                    <li>Optimisation stratégies</li>
+                                </ul> -->
+                </div>
+
+                <!-- Flèche bidirectionnelle -->
+                <div class="fragment fade-in" data-fragment-index="1"
+                    style="background: #fef3c7; padding: 12px; border-radius: 8px; text-align: center; border: 2px dashed #f59e0b;">
+                    <p style="margin: 0; font-size: 0.55em; color: #92400e; font-weight: 600; line-height: 1.5;">
+                        <span style="font-size: 1.3em;">⇄</span><br>
+                        Boucle bidirectionnelle<br>
+                        <strong>Réel ↔ Virtuel</strong>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Légende académique (en bas, pleine largeur) -->
+        <div
+            style="margin-top: 25px; padding: 12px 20px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 10px; border-left: 4px solid #0B3D5B; max-width: 1100px; margin-left: auto; margin-right: auto;">
+            <p style="margin: 0; font-size: 0.5em; color: #475569; text-align: left; line-height: 1.6;">
+                <strong style="color: #0B3D5B;">Figure :</strong>
+                Architecture d'un jumeau numérique agricole illustrant l'interaction bidirectionnelle entre
+                <strong>entités physiques</strong> (capteurs IoT, drones, mesures terrain) et
+                <strong>entités virtuelles</strong> (stockage cloud, traitement de données, simulation 3D, aide à la
+                décision).
+            </p>
+            <p style="margin: 6px 0 0 0; font-size: 0.48em; color: #0B3D5B; font-style: italic; text-align: right;">
+                Source : Zhang et al. (2025)
+            </p>
+        </div>
+
+        <aside class="notes">
+            Cette figure de Zhang et al. illustre parfaitement l'architecture complète d'un jumeau numérique agricole.
+            À gauche, on voit les entités physiques : la vraie parcelle avec ses capteurs IoT, les drones de
+            surveillance,
+            les caméras, et tous les capteurs mesurant le pH, l'humidité du sol, la température.
+            <br><br>
+            Au centre, le système de stockage et traitement des données dans le cloud : collecte, analyse, modélisation.
+            <br><br>
+            À droite, les entités virtuelles : la représentation 3D de la parcelle, les simulations,
+            le système d'aide à la décision qui permet d'optimiser les interventions.
+            <br><br>
+            C'est cette boucle vertueuse entre le réel et le virtuel qui caractérise le jumeau numérique.
+        </aside>
+    </section>
+
+    <!-- A3c: Les deux volets du jumeau numérique -->
+    <section data-background-color="#fbfbfb">
+        <h6 style="color: #0B3D5B; margin-bottom: 25px;">Les deux volets du jumeau numérique</h6>
+
+        <p
+            style="font-size: 0.65em; color: #475569; text-align: center; margin-bottom: 25px; max-width: 850px; margin-left: auto; margin-right: auto;">
+            La représentation virtuelle du système sol-plante-atmosphère s'appuie sur
+            <strong style="color: #0B3D5B;">deux approches complémentaires</strong> :
+        </p>
+
+        <!-- Détail des deux volets -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+            <div class="twin-volet"
+                style="border: 3px solid #0B3D5B; padding: 20px; border-radius: 15px; background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%); box-shadow: 0 5px 20px rgba(11, 61, 91, 0.1);">
+                <div style="text-align: center; font-size: 1em; margin-bottom: 5px;">🔬</div>
+                <h4
+                    style="color: #0B3D5B; margin-bottom: 20px; font-size: 0.8em; text-align: center; border-bottom: 2px solid #0B3D5B; padding-bottom: 10px;">
+                    Volet Physique
+                </h4>
+                <ul style="text-align: left; font-size: 0.5em; line-height: 1.9; margin: 20px 0; padding-left: 25px;">
+                    <li><strong>Modèles mécanistes</strong> (équations différentielles)</li>
+                    <li><strong>Équations de transport</strong> (eau, chaleur, solutés)</li>
+                    <li><strong>Processus biophysiques</strong> (croissance, photosynthèse)</li>
+                    <li><strong>Lois physiques fondamentales</strong></li>
+                </ul>
+                <div
+                    style="margin-top: 20px; padding: 15px; background: rgba(11, 61, 91, 0.1); border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; font-size: 0.65em; color: #0B3D5B; font-weight: 600;">
+                        <span style="font-size: 1.0em;">→</span> Notre focus principal
+                    </p>
+                    <p style="margin: 8px 0 0 0; font-size: 0.55em; color: #64748b; font-style: italic;">
+                        Entités physiques ↔ Simulation
+                    </p>
+                </div>
+            </div>
+
+            <div class="twin-volet"
+                style="border: 3px solid #6B8E23; padding: 20px; border-radius: 15px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); box-shadow: 0 5px 20px rgba(107, 142, 35, 0.1); opacity: 0.85;">
+                <div style="text-align: center; font-size: 1em; margin-bottom: 5px;">🤖</div>
+                <h4
+                    style="color: #6B8E23; margin-bottom: 20px; font-size: 0.8em; text-align: center; border-bottom: 2px solid #6B8E23; padding-bottom: 10px;">
+                    Volet Analytique
+                </h4>
+                <ul style="text-align: left; font-size: 0.5em; line-height: 1.9; margin: 20px 0; padding-left: 25px;">
+                    <li><strong>Assimilation de données</strong> (capteurs, IoT)</li>
+                    <li><strong>Intelligence artificielle</strong> (réseaux neuronaux)</li>
+                    <li><strong>Télédétection</strong> (satellites, drones)</li>
+                    <li><strong>Machine Learning</strong> (prédiction, classification)</li>
+                    <!-- <li><strong>Analyse de données</strong> (Big Data, Cloud Computing)</li> -->
+                </ul>
+                <div
+                    style="margin-top: 20px; padding: 15px; background: rgba(107, 142, 35, 0.1); border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; font-size: 0.65em; color: #6B8E23; font-weight: 600;">
+                        Complémentaire à notre approche
+                    </p>
+                    <p style="margin: 8px 0 0 0; font-size: 0.55em; color: #64748b; font-style: italic;">
+                        Traitement données ↔ Décision
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Note de référence -->
+        <div
+            style="margin-top: 15px; padding: 15px 25px; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0;">
+            <p style="margin: 0; font-size: 0.6em; color: #64748b; text-align: center;">
+                <strong style="color: #0B3D5B;">Références :</strong>
+                Purcell & Neubauer (2023) — <em>Digital Twins in Agriculture: A State-of-the-Art Review</em> ; <br>
+                Zhang et al. (2025) — <em>Digital Twin Technology for Precision Agriculture</em>
+            </p>
+        </div>
+
+        <aside class="notes">
+            Les travaux récents, notamment Zhang et al. 2025 et Purcell & Neubauer 2023, distinguent clairement
+            deux dimensions dans les jumeaux numériques agricoles.
+            <br><br>
+            Le volet analytique, très en vogue actuellement, s'appuie sur l'IA, le Machine Learning,
+            la télédétection par satellite et drone, l'assimilation de données provenant de capteurs IoT.
+            C'est très puissant pour la prédiction et la classification.
+            <br><br>
+            Le volet physique, sur lequel nous nous concentrons dans ce travail, repose sur les modèles mécanistes,
+            les équations de transport (eau, chaleur, solutés), les processus biophysiques fondamentaux.
+            C'est ce cœur de simulation physique, basé sur les lois de la physique, qui permet de comprendre
+            et reproduire fidèlement les mécanismes sous-jacents.
+            <br><br>
+            Notre travail vise à développer ce cœur de simulation physique, en couplant l'équation de Richards 2D
+            avec AquaCrop, pour créer une base solide sur laquelle pourront s'appuyer ensuite les méthodes analytiques.
+        </aside>
+    </section>
+
+    <section data-background-color="#fbfbfb">
+        <!-- <h6 style="color: #0B3D5B;">L'éléphant dans la pièce</h6> -->
+
+        <div style="margin-top: 10px;">
+            <!-- Citation principale Jarvis et al. -->
+            <div class="fragment fade-in" data-fragment-index="1"
+                style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 30px 35px; border-radius: 15px; border-left: 6px solid #D97706; box-shadow: 0 6px 25px rgba(217, 119, 6, 0.2); margin-bottom: 40px;">
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <div style="font-size: 2em; color: #e0861e;">🐘</div>
+                    <div style="flex: 1;">
+                        <h6 style="margin: 0; color: #92400e; font-size: 0.85em; font-weight: 700; line-height: 1.4;">
+                            "The Elephant in the Room"
+                        </h6>
+                        <p style="margin: 8px 0 0 0; font-size: 0.65em; color: #78350f; font-style: italic;">
+                            Jarvis et al. (2022) — Agricultural Systems
+                        </p>
+                    </div>
+                </div>
+                <p
+                    style="margin: 0; font-size: 0.45em; color: #1f2937; line-height: 1.7; text-align: left; font-style: italic;">
+                    « La modélisation physique du continuum sol–plante–atmosphère demeure
+                    <strong style="color: #92400e;">le grand oublié</strong> des développements numériques récents. »
+                </p>
+            </div>
+
+            <!-- Le constat -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 35px;">
+                <div class="fragment fade-right" data-fragment-index="1"
+                    style="padding: 5px; border-radius: 12px;">
+                    <!-- <div style="text-align: center; font-size: 2.0em; margin-bottom: 12px;">📊</div> -->
+                    <h6 style="color: #0369a1; font-size: 0.5em; text-align: center; margin-bottom: 15px;">
+                        Les progrès actuels
+                    </h6>
+                    <ul style="list-style: none; padding: 0; font-size: 0.55em; line-height: 1.5; color: #1e293b;">
+                        <li>✓ Capteurs IoT & drones</li>
+                        <li>✓ Machine Learning performant</li>
+                        <li>✓ Corrélations statistiques</li>
+                    </ul>
+                    <p
+                        style="margin-top: 15px; font-size: 0.4em; color: #475569; font-style: italic; text-align: center;">
+                        <strong>Mais :</strong> délèguent la physique aux modèles existants
+                    </p>
+                </div>
+
+                <div class="fragment fade-left" data-fragment-index="1"
+                    style="padding: 5px;border-radius: 12px;">
+                    <!-- <div style="text-align: center; font-size: 2.0em; margin-bottom: 12px;">⚠️</div> -->
+                    <h6 style="color: #991b1b; font-size: 0.5em; text-align: center; margin-bottom: 15px;">
+                        Les modèles existants
+                    </h6>
+                    <ul style="list-style: none; padding: 0; font-size: 0.55em; line-height: 1.5; color: #1e293b;">
+                        <li>× Formulations empiriques simplifiées</li>
+                        <li>× Représentation approximative du sol</li>
+                        <li>× Limites en irrigation localisée</li>
+                    </ul>
+                    <p
+                        style="margin-top: 15px; font-size: 0.4em; color: #475569; font-style: italic; text-align: center;">
+                        <strong>Résultat :</strong> écart entre simulation et réalité
+                    </p>
+                </div>
+            </div>
+
+            <!-- Le tournant -->
+            <div class="fragment fade-up" data-fragment-index="2"
+                style="margin-top: 35px; padding: 25px 30px; background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-radius: 12px; border-left: 5px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <!-- <div style="font-size: 1.5em;">💡</div> -->
+                    <div style="flex: 1;">
+                        <!-- <h6 style="margin: 0 0 10px 0; color: #047857; font-size: 0.5em; font-weight: 700;">
+                                        Le tournant 
+                                    </h6> -->
+                        <p style="margin: 0; font-size: 0.4em; color: #1f2937; line-height: 1.7;">
+                            Les capacités actuelles de calcul et les progrès en méthodes numériques permettent désormais
+                            de <strong style="color: #047857;">représenter fidèlement la physique</strong>
+                            de l'infiltration et du transport hydrique.
+                        </p>
+                        <p style="margin: 12px 0 0 0; font-size: 0.45em; color: #065f46; font-weight: 600;">
+                            → L'argument de la complexité algorithmique ne tient plus !
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notre choix -->
+            <div class="fragment fade-up" data-fragment-index="2"
+                style="margin-top: 10px; padding: 20px 28px; background: #f8fafc;">
+                <p style="margin: 0; font-size: 0.4em; color: #1e293b; text-align: center; line-height: 1.7;">
+                    <strong style="color: #0B3D5B;">Notre choix :</strong>
+                    Dans un contexte où les données capteurs sont rares,
+                    <strong style="color: #D97706;">recentrer le développement sur le fondement physique</strong>
+                    de la dynamique hydrique.
+                </p>
+            </div>
+
+        </div>
+
+        <aside class="notes">
+            Excellence Monsieur le Président du Jury, Honorables membres du Jury,
+
+            Les récentes revues, notamment celles de Zhang et al. (2025) et de Purcell et Neubauer (2023),
+            montrent que la plupart des avancées autour des jumeaux numériques agricoles se concentrent aujourd'hui
+            sur le volet analytique : l'acquisition, l'assimilation et le traitement massif des données issues de
+            capteurs IoT, de drones ou de la télédétection, en vue de nourrir des modèles de machine learning
+            ou de deep learning capables d'effectuer des prédictions ciblées.
+            <br><br>
+            Ces approches sont puissantes, mais elles reposent souvent sur des corrélations statistiques et
+            délèguent la compréhension physique des processus aux modèles existants.
+            <br><br>
+            Or, ces modèles existants, souvent décrits par des modèles empiriques simplifiés, peinent à reproduire
+            fidèlement le comportement réel de l'eau dans le sol.
+            <br><br>
+            C'est ce que soulignent Jarvis et al. (2022) dans leur article au titre évocateur, "The Elephant in the
+            Room".
+            Ils rappellent que la modélisation physique du continuum sol–plante–atmosphère demeure, encore aujourd'hui,
+            le grand oublié des développements numériques récents.
+            <br><br>
+            Leur analyse montre que si les limites de calcul rendaient autrefois ces modèles difficiles à mettre en
+            œuvre,
+            les capacités actuelles de calcul et les progrès en méthodes numériques permettent désormais de les
+            exploiter
+            pleinement.
+            <br><br>
+            En d'autres termes, l'argument de la complexité algorithmique ne tient plus : il est aujourd'hui possible
+            de représenter la réalité physique de l'infiltration, du transport et des échanges hydriques avec une grande
+            précision.
+            <br><br>
+            C'est précisément ce constat qui a guidé notre choix : dans un contexte béninois où les données de capteurs
+            sont rares et les infrastructures limitées, nous avons choisi de recentrer notre développement sur le
+            fondement physique de la dynamique hydrique.
+        </aside>
+    </section>
+</section>
+
+<!-- ============================================= -->
+<!-- SECTION C: PROBLÉMATIQUE -->
+<!-- ============================================= -->
+
+<!-- SLIDE C1: Question de recherche centrale -->
+<section data-background-color="#0B3D5B" data-background-gradient="linear-gradient(135deg, #0B3D5B 0%, #6B8E23 100%)">
+    <h6 style="color: white; text-align: center; font-size: 1.5em; margin-bottom: 60px;">
+        ❓Problématique centrale
+    </h6>
+
+    <div
+        style="background: white; padding: 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 900px; margin: 0 auto;">
+        <p style="font-size: 0.8em; color: #0B3D5B; font-weight: 700; line-height: 1.6; text-align: center; margin: 0;">
+            Comment concevoir un <span style="color: #6B8E23;">jumeau numérique</span> basé sur un couplage
+            bidirectionnel
+            robuste entre un modèle hydrologique (équation de Richards) et un modèle de culture
+            (AquaCrop) et capable de simuler
+            la dynamique <span style="color: #D97706;">sol-plante-irrigation</span> en contexte de
+            <span style="color: #0B3D5B;">données limitées</span>, tout en assurant une
+            <span style="color: #6B8E23;">précision physique</span> et une
+            <span style="color: #D97706;">adaptabilité opérationnelle</span> ?
+        </p>
+    </div>
+
+    <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 50px; text-align: center;">
+        <div style="display: inline-flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+            <div class="key-challenge"
+                style="background: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: 50px; color: white; font-size: 0.5em;">
+                Pourquoi l'irrigation goutte-à-goutte ?
+            </div>
+            <div class="key-challenge"
+                style="background: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: 50px; color: white; font-size: 0.5em;">
+                Pourquoi AquaCrop, le modèle de Richards ?
+            </div>
+            <div class="key-challenge"
+                style="background: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: 50px; color: white; font-size: 0.5em;">
+                Quelle est la portée des données globales d'ERA5-Land et Soilgrids ?
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Notre question centrale combine trois enjeux : le couplage physique rigoureux,
+        l'adaptation aux contextes data-poor, et la modélisation de l'irrigation localisée.
+    </aside>
+</section>
+
+<!-- SLIDE A4: Plan de la présentation -->
+<section data-background-color="#fbfbfb">
+    <h3 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23;">Plan de la présentation</h3>
+
+    <div class="presentation-plan">
+        <div class="plan-item">
+            <div class="plan-number" style="background: #0B3D5B;">1</div>
+            <div class="plan-content">
+                <h6>Choix Scientifiques</h6>
+                <p>Enjeux de l'irrigation, AquaCrop, Richards </p>
+            </div>
+        </div>
+
+        <div class="plan-item">
+            <div class="plan-number" style="background: #6B8E23;">2</div>
+            <div class="plan-content">
+                <h6>Méthodologie & Architecture</h6>
+                <p>Développement du système couplé Richards-AquaCrop</p>
+            </div>
+        </div>
+
+        <div class="plan-item">
+            <div class="plan-number" style="background: #D97706;">3</div>
+            <div class="plan-content">
+                <h6>Résultats & Discussion</h6>
+                <p>Validation des composants, analyse des performances</p>
+            </div>
+        </div>
+
+        <div class="plan-item">
+            <div class="plan-number" style="background: #333333;">4</div>
+            <div class="plan-content">
+                <h6>Conclusions & Perspectives</h6>
+                <p>Bilan des hypothèses, contributions, voies futures</p>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Nous présenterons d'abord les choix scientifiques qui ont guidé notre démarche,
+        puis la conception et l'implémentation du système, avant de passer aux résultats et perspectives.
+    </aside>
+</section>
+
+
+<!-- ============================================= -->
+<!-- SECTION : PROBLÉMATIQUE -->
+<!-- ============================================= -->
+
+<!-- SLIDE: Question de recherche centrale -->
+<!-- <section data-background-color="#0B3D5B" data-background-gradient="linear-gradient(135deg, #0B3D5B 0%, #6B8E23 100%)">
+    <h6 style="color: white; text-align: center; font-size: 1.5em; margin-bottom: 60px;">
+        ❓Problématique centrale
+    </h6>
+
+    <div
+        style="background: white; padding: 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 900px; margin: 0 auto;">
+        <p style="font-size: 0.8em; color: #0B3D5B; font-weight: 700; line-height: 1.6; text-align: center; margin: 0;">
+            Comment concevoir un <span style="color: #6B8E23;">jumeau numérique</span> basé sur un couplage
+            bidirectionnel
+            robuste entre un modèle hydrologique (équation de Richards) et un modèle de culture
+            (AquaCrop) et capable de simuler
+            la dynamique <span style="color: #D97706;">sol-plante-irrigation</span> en contexte de
+            <span style="color: #0B3D5B;">données limitées</span>, tout en assurant une
+            <span style="color: #6B8E23;">précision physique</span> et une
+            <span style="color: #D97706;">adaptabilité opérationnelle</span> ?
+        </p>
+    </div>
+
+    <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 50px; text-align: center;">
+        <div style="display: inline-flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+            <div class="key-challenge"
+                style="background: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: 50px; color: white; font-size: 0.5em;">
+                Pourquoi l'irrigation goutte-à-goutte ?
+            </div>
+            <div class="key-challenge"
+                style="background: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: 50px; color: white; font-size: 0.5em;">
+                Pourquoi AquaCrop, le modèle de Richards ?
+            </div>
+            <div class="key-challenge"
+                style="background: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: 50px; color: white; font-size: 0.5em;">
+                Quelle est la portée des données globales d'ERA5-Land et Soilgrids ?
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Notre question centrale combine trois enjeux : le couplage physique rigoureux,
+        l'adaptation aux contextes data-poor, et la modélisation de l'irrigation localisée.
+    </aside>
+</section> -->
+
+<!-- <section data-background-color="#fbfbfb">
+    <h3 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23;">Plan de la présentation</h3>
+
+    <div class="presentation-plan">
+        <div class="plan-item">
+            <div class="plan-number" style="background: #0B3D5B;">1</div>
+            <div class="plan-content">
+                <h6>Choix Scientifiques</h6>
+                <p>Enjeux de l'irrigation, AquaCrop, Richards </p>
+            </div>
+        </div>
+
+        <div class="plan-item">
+            <div class="plan-number" style="background: #6B8E23;">2</div>
+            <div class="plan-content">
+                <h6>Méthodologie & Architecture</h6>
+                <p>Développement du système couplé Richards-AquaCrop</p>
+            </div>
+        </div>
+
+        <div class="plan-item">
+            <div class="plan-number" style="background: #D97706;">3</div>
+            <div class="plan-content">
+                <h6>Résultats & Discussion</h6>
+                <p>Validation des composants, analyse des performances</p>
+            </div>
+        </div>
+
+        <div class="plan-item">
+            <div class="plan-number" style="background: #333333;">4</div>
+            <div class="plan-content">
+                <h6>Conclusions & Perspectives</h6>
+                <p>Bilan des hypothèses, contributions, voies futures</p>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Nous présenterons d'abord les choix scientifiques qui ont guidé notre démarche,
+        puis la conception et l'implémentation du système, avant de passer aux résultats et perspectives.
+    </aside>
+</section> -->
+

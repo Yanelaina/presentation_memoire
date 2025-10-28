@@ -1,0 +1,576 @@
+<!-- ====================================================================
+     SECTION CONCLUSION & PERSPECTIVES
+     6 slides: Transition → Synthèse → Contributions → Court terme → Moyen/Long terme → Remerciements
+     ==================================================================== -->
+
+<!-- SLIDE C0: Page de Transition "CONCLUSION & PERSPECTIVES" -->
+<section data-background-gradient="linear-gradient(135deg, #5B21B6 0%, #7C3AED 50%, #8B5CF6 100%)">
+    <div style="text-align: center; padding: 100px 0;">
+        <div style="font-size: 5em; margin-top: 40px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">🎯</div>
+
+        <h1 style="font-size: 3.0em; color: #FFFFFF; margin-bottom: 0px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+            CONCLUSION & PERSPECTIVES
+        </h1>
+        <p style="font-size: 1.4em; color: #E9D5FF; font-style: italic; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+            Bilan et projection
+        </p>
+    </div>
+
+    <aside class="notes">
+        Nous arrivons à la conclusion de cette présentation. Je vais faire le bilan de ce parcours de recherche, présenter les contributions concrètes du travail, et projeter les perspectives à court, moyen et long terme.
+    </aside>
+</section>
+
+<!-- SLIDE C1: Synthèse du Parcours de Recherche -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #7C3AED; padding-bottom: 10px; margin-bottom: 25px;">
+        Synthèse du parcours de recherche
+    </h4>
+
+    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        De l'ambition initiale aux fondations solides pour un jumeau numérique agricole
+    </p>
+
+    <!-- Timeline horizontale -->
+    <div class="fragment fade-in" data-fragment-index="1" style="margin-top: 30px; margin-bottom: 35px;">
+        <svg viewBox="0 0 1000 160" style="width: 100%; max-width: 950px; margin: 0 auto; display: block;">
+            <!-- Ligne temporelle -->
+            <line x1="50" y1="80" x2="950" y2="80" stroke="#7C3AED" stroke-width="4" stroke-dasharray="5,5"/>
+            
+            <!-- Point 1: Objectif initial -->
+            <circle cx="150" cy="80" r="12" fill="#10b981"/>
+            <text x="150" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#065f46">Objectif initial</text>
+            <text x="150" y="120" text-anchor="middle" font-size="12" fill="#064e3b">Jumeau numérique</text>
+            <text x="150" y="138" text-anchor="middle" font-size="12" fill="#064e3b">irrigation efficiente</text>
+            
+            <!-- Point 2: Défi découvert -->
+            <circle cx="350" cy="80" r="12" fill="#f59e0b"/>
+            <text x="350" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400e">Défi majeur</text>
+            <text x="350" y="120" text-anchor="middle" font-size="12" fill="#78350f">Biais SoilGrids</text>
+            <text x="350" y="138" text-anchor="middle" font-size="12" fill="#78350f">sols tropicaux</text>
+            
+            <!-- Point 3: Architecture -->
+            <circle cx="550" cy="80" r="12" fill="#3b82f6"/>
+            <text x="550" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">Architecture</text>
+            <text x="550" y="120" text-anchor="middle" font-size="12" fill="#1e40af">Couplage Richards</text>
+            <text x="550" y="138" text-anchor="middle" font-size="12" fill="#1e40af">-AquaCrop + pipeline</text>
+            
+            <!-- Point 4: Défis techniques -->
+            <circle cx="750" cy="80" r="12" fill="#8b5cf6"/>
+            <text x="750" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">Défis techniques</text>
+            <text x="750" y="120" text-anchor="middle" font-size="12" fill="#6b21a8">Stabilisation 2D</text>
+            <text x="750" y="138" text-anchor="middle" font-size="12" fill="#6b21a8">non-linéarité</text>
+        </svg>
+    </div>
+
+    <!-- Bilan des hypothèses -->
+    <div class="fragment fade-up" data-fragment-index="2" 
+         style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 0.5em; margin-top: 25px;">
+        
+        <!-- H1 -->
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+                    padding: 18px; border-radius: 12px; border-left: 5px solid #f59e0b;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <span style="font-size: 2em; margin-right: 10px;">🟡</span>
+                <h6 style="color: #92400e; margin: 0; font-size: 1.1em;">Hypothèse H1</h6>
+            </div>
+            <p style="margin: 0; line-height: 1.6; color: #78350f;">
+                <strong>Couplage bidirectionnel</strong>
+                <br>Architecture validée, interface prête pour intégration
+            </p>
+        </div>
+
+        <!-- H2 -->
+        <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); 
+                    padding: 18px; border-radius: 12px; border-left: 5px solid #dc2626;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <span style="font-size: 2em; margin-right: 10px;">🔴</span>
+                <h6 style="color: #991b1b; margin: 0; font-size: 1.1em;">Hypothèse H2</h6>
+            </div>
+            <p style="margin: 0; line-height: 1.6; color: #7f1d1d;">
+                <strong>Données globales suffisent</strong>
+                <br>Invalidée — correction locale nécessaire
+            </p>
+        </div>
+
+        <!-- H3 -->
+        <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                    padding: 18px; border-radius: 12px; border-left: 5px solid #3b82f6;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <span style="font-size: 2em; margin-right: 10px;">🔵</span>
+                <h6 style="color: #1e3a8a; margin: 0; font-size: 1.1em;">Hypothèse H3</h6>
+            </div>
+            <p style="margin: 0; line-height: 1.6; color: #1e40af;">
+                <strong>Recommandations fiables</strong>
+                <br>En attente — protocole de validation prêt
+            </p>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Notre parcours a commencé avec l'ambition de créer un jumeau numérique pour l'irrigation. Nous avons découvert le défi majeur des biais dans SoilGrids, développé une architecture complète de couplage, et rencontré des défis techniques sur la stabilisation numérique. Le bilan des trois hypothèses montre que H1 est partiellement validée avec une infrastructure prête, H2 est invalidée mais nous a orientés vers des corrections locales, et H3 attend la finalisation des deux premières.
+    </aside>
+</section>
+
+<!-- SLIDE C2: Contributions Principales -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #7C3AED; padding-bottom: 10px; margin-bottom: 25px;">
+        Contributions et fondations posées
+    </h4>
+
+    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        Des bases solides pour le développement d'un jumeau numérique opérationnel
+    </p>
+
+    <!-- 3 blocs de contributions -->
+    <div class="fragment fade-in" data-fragment-index="1" 
+         style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin-top: 35px; font-size: 0.5em;">
+        
+        <!-- Contribution 1 -->
+        <div style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
+                    padding: 22px; border-radius: 12px; border-left: 5px solid #6366f1; min-height: 320px;">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <span style="font-size: 3em;">📐</span>
+            </div>
+            <h6 style="color: #312e81; margin: 0 0 15px 0; font-size: 1.1em; text-align: center;">
+                Formulation mathématique rigoureuse
+            </h6>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #1e1b4b;">
+                <li>Équation de Richards 2D axisymétrique</li>
+                <li>Espaces fonctionnels H¹ᵣ(Ω) avec poids</li>
+                <li>Traitement des singularités à l'axe</li>
+                <li>Formulation variationnelle validée</li>
+                <li>Schéma temporel implicite robuste</li>
+            </ul>
+        </div>
+
+        <!-- Contribution 2 -->
+        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                    padding: 22px; border-radius: 12px; border-left: 5px solid #10b981; min-height: 320px;">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <span style="font-size: 3em;">🔗</span>
+            </div>
+            <h6 style="color: #065f46; margin: 0 0 15px 0; font-size: 1.1em; text-align: center;">
+                Architecture de couplage bidirectionnel
+            </h6>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
+                <li>Transformations spatiales (2D ↔ 1D)</li>
+                <li>Transformations temporelles (sub-daily ↔ daily)</li>
+                <li>Interface validée par tests unitaires</li>
+                <li>Gestion des pas de temps disjoints</li>
+                <li>Conservation de masse garantie</li>
+            </ul>
+        </div>
+
+        <!-- Contribution 3 -->
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+                    padding: 22px; border-radius: 12px; border-left: 5px solid #f59e0b; min-height: 320px;">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <span style="font-size: 3em;">🌍</span>
+            </div>
+            <h6 style="color: #92400e; margin: 0 0 15px 0; font-size: 1.1em; text-align: center;">
+                Pipeline d'extraction automatisée
+            </h6>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #78350f;">
+                <li>Intégration ERA5-Land (météo)</li>
+                <li>Intégration SoilGrids (pédologie)</li>
+                <li>Fonctions de pédotransfert (Rosetta)</li>
+                <li>Format compatible AquaCrop/Richards</li>
+                <li>Validation croisée opérationnelle</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Message de conclusion -->
+    <div class="fragment fade-up" data-fragment-index="2" 
+         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
+                font-size: 0.48em; margin-top: 25px; max-width: 950px; margin-left: auto; margin-right: auto; text-align: center;">
+        <strong style="color: #1e3a8a;">💡 Fondations solides:</strong> 
+        Ces contributions constituent une base théorique et technique robuste pour le développement d'un jumeau numérique opérationnel.
+    </div>
+
+    <aside class="notes">
+        Malgré les défis rencontrés, ce travail a posé des fondations solides. Trois contributions majeures: une formulation mathématique rigoureuse de Richards en 2D axisymétrique avec traitement des singularités, une architecture de couplage complète avec toutes les transformations nécessaires et validée par tests, et un pipeline d'extraction automatisée qui fonctionne et qui a permis de révéler les biais de SoilGrids. Ces contributions sont opérationnelles et prêtes à être utilisées.
+    </aside>
+</section>
+
+<!-- SLIDE C3: Perspectives à Court Terme -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #f59e0b; padding-bottom: 10px; margin-bottom: 25px;">
+        Perspectives à court terme
+    </h4>
+
+    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        Actions immédiates pour consolider et valider le système
+    </p>
+
+    <!-- 4 actions en grille 2x2 -->
+    <div class="fragment fade-in" data-fragment-index="1" 
+         style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 35px; font-size: 0.52em;">
+        
+        <!-- Action 1 -->
+        <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); 
+                    padding: 20px; border-radius: 12px; border-left: 5px solid #dc2626;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 2em; margin-right: 12px;">🔧</span>
+                <h6 style="color: #991b1b; margin: 0; font-size: 1.15em;">Stabilisation numérique du solveur 2D</h6>
+            </div>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #7f1d1d;">
+                <li>Régularisation logarithmique de K(ψ)</li>
+                <li>Continuation pseudo-transitoire</li>
+                <li>Formulation mixte conservant la masse</li>
+                <li>Tests de convergence sur cas académiques</li>
+            </ul>
+        </div>
+
+        <!-- Action 2 -->
+        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                    padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 2em; margin-right: 12px;">✅</span>
+                <h6 style="color: #065f46; margin: 0; font-size: 1.15em;">Validation complète du couplage</h6>
+            </div>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
+                <li>Exécution protocole Niveau 1 (unitaire)</li>
+                <li>Cas synthétiques contrôlés</li>
+                <li>Métriques: RMSE, NSE, conservation masse</li>
+                <li>Validation croisée des transformations</li>
+            </ul>
+        </div>
+
+        <!-- Action 3 -->
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+                    padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 2em; margin-right: 12px;">📊</span>
+                <h6 style="color: #92400e; margin: 0; font-size: 1.15em;">Extension validation SoilGrids</h6>
+            </div>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #78350f;">
+                <li>Comparaison avec AfSIS et ISRIC</li>
+                <li>Quantification biais par zone agro-écologique</li>
+                <li>Analyse spatiale des incertitudes</li>
+                <li>Cartographie des zones à risque</li>
+            </ul>
+        </div>
+
+        <!-- Action 4 -->
+        <!-- <div style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
+                    padding: 20px; border-radius: 12px; border-left: 5px solid #6366f1;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 2em; margin-right: 12px;">📝</span>
+                <h6 style="color: #312e81; margin: 0; font-size: 1.15em;">Documentation et publication</h6>
+            </div>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #1e1b4b;">
+                <li>Article méthodologique sur l'architecture</li>
+                <li>Dépôt code open-source (GitHub)</li>
+                <li>Documentation technique complète</li>
+                <li>Tutoriels d'utilisation</li>
+            </ul>
+        </div> -->
+    </div>
+
+    <aside class="notes">
+        À court terme, quatre priorités: stabiliser le solveur 2D avec les stratégies identifiées, valider complètement le couplage sur des cas synthétiques, étendre la validation de SoilGrids à d'autres bases de données pour mieux comprendre les biais, et documenter/publier le travail pour le rendre accessible à la communauté scientifique.
+    </aside>
+</section>
+
+
+<!-- SLIDE C4: Perspectives à Moyen & Long Terme -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #10b981; padding-bottom: 10px; margin-bottom: 25px;">
+        Perspectives à moyen et long terme
+    </h4>
+
+    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        Vision stratégique pour un jumeau numérique opérationnel et intelligent
+    </p>
+
+    <!-- Structure 2 colonnes -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; font-size: 0.52em;">
+        
+        <!-- MOYEN TERME (6-18 mois) -->
+        <div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <span style="font-size: 3em;">🌱</span>
+                <h5 style="color: #065f46; margin: 8px 0 0 0; font-size: 1.3em;">Moyen terme</h5>
+            </div>
+
+            <!-- Bloc 1: Correction données -->
+            <div class="fragment fade-in" data-fragment-index="1" 
+                 style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                        padding: 18px; border-radius: 12px; border-left: 5px solid #10b981; margin-bottom: 20px;">
+                <h6 style="color: #065f46; margin: 0 0 12px 0; font-size: 1.1em;">
+                    📍 Correction des données pédologiques
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.7; color: #064e3b;">
+                    <li>Modèles statistiques de correction biais</li>
+                    <li>Inversion de paramètres hydrauliques</li>
+                    <li>Calibration locale par mesures terrain</li>
+                    <li>Création base corrigée pour l'Afrique de l'Ouest</li>
+                </ul>
+            </div>
+
+            <!-- Bloc 2: Validation terrain -->
+            <div class="fragment fade-in" data-fragment-index="1" 
+                 style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                        padding: 18px; border-radius: 12px; border-left: 5px solid #10b981;">
+                <h6 style="color: #065f46; margin: 0 0 12px 0; font-size: 1.1em;">
+                🛰️ Assimilation de données satellitaires
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.7; color: #1e40af;">
+                    <li>NDVI, LAI, température de surface (Sentinel-2)</li>
+                    <li>Auto-calibration dynamique du modèle</li>
+                    <li>Correction temps réel des prédictions</li>
+                    <li>Détection précoce du stress hydrique</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LONG TERME (> 18 mois) -->
+        <div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <span style="font-size: 3em;">🚀</span>
+                <h5 style="color: #1e40af; margin: 8px 0 0 0; font-size: 1.3em;">Long terme</h5>
+            </div>
+
+            <!-- Bloc 3: Assimilation satellitaire -->
+            <div class="fragment fade-in" data-fragment-index="2" 
+                 style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                        padding: 18px; border-radius: 12px; border-left: 5px solid #3b82f6; margin-bottom: 20px;">
+                <h6 style="color: #1e3a8a; margin: 0 0 12px 0; font-size: 1.1em;">
+                    🤖 Optimisation par intelligence artificielle
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.7; color: #1e40af;">
+                    <li>Module d'optimisation de l'irrigation</li>
+                    <li>Apprentissage par renforcement (Deep RL)</li>
+                    <li>Recommandations personnalisées multi-objectifs</li>
+                    <li>Adaptation aux contraintes économiques</li>
+                </ul>
+            </div>
+
+            <!-- Bloc 4: Optimisation IA -->
+            <div class="fragment fade-in" data-fragment-index="2" 
+                 style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                        padding: 18px; border-radius: 12px; border-left: 5px solid #3b82f6; margin-bottom: 20px;">
+                <h6 style="color: #1e3a8a; margin: 0 0 12px 0; font-size: 1.1em;">
+                    🔬 Système de dimensionnement de l'irrigation goutte-à-goutte
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.7; color: #1e40af;">
+                    <li>Algorithme d'optimisation multi-objectif</li>
+                    <li>Minimisation consommation eau et coûts</li>
+                    <li>Maximisation de l'efficience hydrique</li>
+                    <li>Prise en compte de la topographie</li>
+                </ul>
+            </div>
+
+            <!-- Bloc 5: Déploiement -->
+            <!-- <div class="fragment fade-in" data-fragment-index="5" 
+                 style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                        padding: 18px; border-radius: 12px; border-left: 5px solid #3b82f6;">
+                <h6 style="color: #1e3a8a; margin: 0 0 12px 0; font-size: 1.1em;">
+                    🌍 Déploiement opérationnel
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.7; color: #1e40af;">
+                    <li>Interface web/mobile pour agriculteurs</li>
+                    <li>Intégration capteurs IoT (sondes sol)</li>
+                    <li>Passage à l'échelle régionale (Afrique de l'Ouest)</li>
+                    <li>Modèle économique viable et durable</li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+
+    <aside class="notes">
+        À moyen terme, nous devons corriger les données pédologiques avec des modèles statistiques et des inversions de paramètres, puis valider le système sur le terrain au Bénin avec des campagnes de mesures. À long terme, la vision est d'intégrer des données satellitaires pour l'auto-calibration, d'ajouter un module d'optimisation par IA, et de déployer un outil opérationnel avec interface agriculteur et intégration IoT, extensible à toute l'Afrique de l'Ouest.
+    </aside>
+</section>
+
+<!-- SLIDE C5: Remerciements & Questions - Animation SVG Élégante -->
+<section data-background-color="#f8f9fa">
+    <div style="width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        
+        <!-- Arrière-plan avec gradient subtil animé -->
+        <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <!-- Gradient animé subtil -->
+                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#e8eef5; stop-opacity:1">
+                        <animate attributeName="stop-color" values="#e8eef5; #f0e8f5; #e8f5f0; #e8eef5" dur="12s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="50%" style="stop-color:#f5f0e8; stop-opacity:1">
+                        <animate attributeName="stop-color" values="#f5f0e8; #e8f5f0; #f0e8f5; #f5f0e8" dur="12s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" style="stop-color:#e8f5f0; stop-opacity:1">
+                        <animate attributeName="stop-color" values="#e8f5f0; #e8eef5; #f5f0e8; #e8f5f0" dur="12s" repeatCount="indefinite"/>
+                    </stop>
+                </linearGradient>
+                
+                <!-- Filtres pour effets subtils -->
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                
+                <!-- Motifs décoratifs subtils -->
+                <pattern id="dots" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                    <circle cx="40" cy="40" r="2" fill="#a8b5c7" opacity="0.1">
+                        <animate attributeName="opacity" values="0.05; 0.15; 0.05" dur="4s" repeatCount="indefinite"/>
+                    </circle>
+                </pattern>
+            </defs>
+            
+            <!-- Rectangle de fond avec gradient -->
+            <rect width="1920" height="1080" fill="url(#bgGradient)"/>
+            
+            <!-- Motif de points subtil -->
+            <rect width="1920" height="1080" fill="url(#dots)"/>
+            
+            <!-- Cercles décoratifs flottants -->
+            <circle cx="200" cy="150" r="80" fill="#6b8e9f" opacity="0.03">
+                <animate attributeName="cy" values="150; 120; 150" dur="8s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.02; 0.05; 0.02" dur="8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="1700" cy="800" r="120" fill="#8e6b9f" opacity="0.03">
+                <animate attributeName="cy" values="800; 830; 800" dur="10s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.02; 0.05; 0.02" dur="10s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="300" cy="900" r="60" fill="#6b9f8e" opacity="0.03">
+                <animate attributeName="cx" values="300; 320; 300" dur="7s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.02; 0.05; 0.02" dur="7s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+        
+        <!-- Animation principale "Merci" -->
+        <svg class="merci-animation" viewBox="0 0 800 400" style="width: 80%; max-width: 900px; position: relative; z-index: 1;">
+            <defs>
+                <!-- Gradient pour le texte Merci -->
+                <linearGradient id="merciGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#2c5f7c; stop-opacity:1">
+                        <animate attributeName="stop-color" values="#2c5f7c; #5f2c7c; #2c7c5f; #2c5f7c" dur="10s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="50%" style="stop-color:#5f2c7c; stop-opacity:1">
+                        <animate attributeName="stop-color" values="#5f2c7c; #2c7c5f; #2c5f7c; #5f2c7c" dur="10s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" style="stop-color:#2c7c5f; stop-opacity:1">
+                        <animate attributeName="stop-color" values="#2c7c5f; #2c5f7c; #5f2c7c; #2c7c5f" dur="10s" repeatCount="indefinite"/>
+                    </stop>
+                </linearGradient>
+                
+                <!-- Filtre pour ombre portée douce -->
+                <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+                    <feOffset dx="0" dy="4" result="offsetblur"/>
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.3"/>
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Éléments décoratifs autour du mot -->
+            <g class="decorative-elements" opacity="0.15">
+                <!-- Lignes courbes élégantes -->
+                <path d="M 100 200 Q 200 180, 300 200" stroke="#6b8e9f" stroke-width="2" fill="none" stroke-linecap="round">
+                    <animate attributeName="d" values="M 100 200 Q 200 180, 300 200; M 100 200 Q 200 220, 300 200; M 100 200 Q 200 180, 300 200" dur="6s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 500 200 Q 600 220, 700 200" stroke="#8e6b9f" stroke-width="2" fill="none" stroke-linecap="round">
+                    <animate attributeName="d" values="M 500 200 Q 600 220, 700 200; M 500 200 Q 600 180, 700 200; M 500 200 Q 600 220, 700 200" dur="6s" repeatCount="indefinite"/>
+                </path>
+                
+                <!-- Petits cercles décoratifs -->
+                <circle cx="150" cy="180" r="4" fill="#6b9f8e">
+                    <animate attributeName="r" values="3; 5; 3" dur="4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3; 0.6; 0.3" dur="4s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="650" cy="220" r="4" fill="#9f6b8e">
+                    <animate attributeName="r" values="3; 5; 3" dur="5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3; 0.6; 0.3" dur="5s" repeatCount="indefinite"/>
+                </circle>
+            </g>
+            
+            <!-- Texte principal "Merci" avec animations -->
+            <text x="400" y="220" font-family="'Georgia', 'Garamond', serif" font-size="140" font-weight="300" text-anchor="middle" fill="url(#merciGradient)" filter="url(#softShadow)" letter-spacing="8">
+                Merci
+                <!-- Animation de respiration (scale pulse) -->
+                <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1 1; 1.03 1.03; 1 1" dur="4s" repeatCount="indefinite" additive="sum"/>
+                
+                <!-- Animation de fade subtile -->
+                <animate attributeName="opacity" values="0.85; 1; 0.85" dur="4s" repeatCount="indefinite"/>
+            </text>
+            
+            <!-- Accent décoratif sous Merci -->
+            <line x1="320" y1="250" x2="480" y2="250" stroke="url(#merciGradient)" stroke-width="2" stroke-linecap="round" opacity="0.4">
+                <animate attributeName="x1" values="320; 300; 320" dur="5s" repeatCount="indefinite"/>
+                <animate attributeName="x2" values="480; 500; 480" dur="5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.3; 0.5; 0.3" dur="5s" repeatCount="indefinite"/>
+            </line>
+        </svg>
+        
+        <!-- Texte discret "Des questions ?" en bas -->
+        <div style="position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 2;">
+            <p class="question-text" style="font-family: 'Georgia', 'Garamond', serif; font-size: 1.4em; color: #5a6c7d; font-weight: 300; letter-spacing: 2px; margin: 0; opacity: 0.7;">
+                Des questions ?
+            </p>
+        </div>
+        
+        <!-- Petits accents décoratifs en bas -->
+        <svg style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 200px; height: 20px; z-index: 1;" viewBox="0 0 200 20">
+            <circle cx="80" cy="10" r="3" fill="#6b8e9f" opacity="0.3">
+                <animate attributeName="opacity" values="0.2; 0.5; 0.2" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="100" cy="10" r="3" fill="#8e6b9f" opacity="0.3">
+                <animate attributeName="opacity" values="0.2; 0.5; 0.2" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="120" cy="10" r="3" fill="#6b9f8e" opacity="0.3">
+                <animate attributeName="opacity" values="0.2; 0.5; 0.2" dur="3s" begin="1s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+    </div>
+
+    <aside class="notes">
+        Merci pour votre attention. Je suis maintenant à votre disposition pour répondre à vos questions.
+    </aside>
+</section>
+
+<!-- Styles CSS pour les animations -->
+<style>
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Animation du gradient de fond (optionnel) */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+</style>

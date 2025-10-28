@@ -1,0 +1,444 @@
+<!-- ====================================================================
+     SECTION RÉSULTATS
+     5-8 slides condensées: Transition → Validation Données → Validation Numérique
+     ==================================================================== -->
+
+<!-- SLIDE R0: Page de Transition "RÉSULTATS" -->
+<section data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 50%, #3d7a9c 100%)">
+    <div style="text-align: center; padding: 100px 0;">
+        <div style="font-size: 5em; margin-top: 40px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">📊</div>
+
+        <h1 style="font-size: 3.5em; color: #FFFFFF; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+            RÉSULTATS
+        </h1>
+        <p style="font-size: 1.4em; color: #E2E8F0; font-style: italic; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+            Validation et évaluation du système
+        </p>
+    </div>
+
+    <aside class="notes">
+        Nous allons maintenant présenter les résultats de validation. Cette section couvre deux aspects principaux : d'abord la validation des données pédologiques avec SoilGrids, puis la validation numérique des implémentations.
+    </aside>
+</section>
+
+<!-- SLIDE R1: Base de Données Terrain LSSEE-INRAB -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 25px;">
+        Base de données terrain (LSSEE-INRAB)
+    </h4>
+
+    <p style="font-size: 0.6em; text-align: center; margin: 10px auto 15px; max-width: 900px; color: #333;">
+        350 échantillons de sol avec une contrainte majeure de géoréférencement
+    </p>
+
+    <div class="fragment fade-in" data-fragment-index="1"
+        style="display: grid; grid-template-columns: 65% 45%; align-items: center; gap: 20px;">
+
+        <!-- Image à gauche -->
+        <div style="text-align: center;">
+            <img src="assets/geography.png" alt="Répartition géographique des données terrain"
+                style="max-height: 550px; width: 100%; object-fit: contain; border-radius: 8px;">
+        </div>
+
+        <!-- Blocs à droite -->
+        <div class="fragment fade-up" data-fragment-index="2"
+            style="display: flex; flex-direction: column; gap: 20px; font-size: 0.5em;">
+
+            <!-- Bloc 1 -->
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+                  padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
+                <h6 style="color: #92400e; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                    📍 Couverture géographique
+                </h6>
+                <ul style="margin: 0; padding-left: 10px; line-height: 1.8;">
+                    <li><strong>144 échantillons géoréférencés</strong> (41.1%)</li>
+                    <li>59% sans localisation précise</li>
+                    <li>Concentration sur 4 communes principales</li>
+                    <li>Rayon d'association: 10 km (chef-lieu)</li>
+                </ul>
+            </div>
+
+            <!-- Bloc 2 -->
+            <div style="background: linear-gradient(135deg, #e8d1d3 0%, #deb8b8 100%);
+                  padding: 20px; border-radius: 12px; border-left: 5px solid #5e070a;">
+                <h6 style="color: #b71132; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                    🌾 Profil textural dominant
+                </h6>
+                <ul style="margin: 0; padding-left: 10px; line-height: 1.8;">
+                    <li><strong>Loam sableux</strong> (74.9% des échantillons)</li>
+                    <li>Teneur en sable: <strong>76.9%</strong></li>
+                    <li>Faible fertilité (C org: 0.68%)</li>
+                    <li>→ Justifie un modèle hydrique fin</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Notre validation s'appuie sur 350 échantillons fournis par l'INRAB.
+        Point critique: seulement 41% sont géoréférencés, ce qui limite la validation spatiale.
+        Les sols sont très sableux avec un drainage rapide, justifiant pleinement notre approche de modélisation fine.
+    </aside>
+</section>
+
+<!-- SLIDE R2: Validation SoilGrids - Résultats Quantitatifs -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 5px;">
+        Validation SoilGrids v2.0 – Résultats quantitatifs
+    </h4>
+
+    <p style="font-size: 0.48em; text-align: center; margin: 0px auto; max-width: 900px; color: #333;">
+        Comparaison avec mesures terrain pour les fractions granulométriques (couche 0-30 cm)
+    </p>
+
+    <!-- Graphiques de dispersion -->
+    <div class="fragment fade-in" data-fragment-index="1" style="text-align: center; margin-bottom: 10px;">
+        <img src="assets/comparaison_texturales.png" 
+             alt="Comparaison SoilGrids vs Terrain" 
+             style="max-height: 320px; width: auto; object-fit: contain;">
+        <p style="font-size: 0.42em; color: #666; margin-top: 0px; font-style: italic;">
+            La ligne pointillée représente l'accord parfait (y=x). Biais systématique évident.
+        </p>
+    </div>
+
+    <!-- Tableau des métriques -->
+    <div class="fragment fade-up" data-fragment-index="2" style="font-size: 0.46em; margin-top: 15px;">
+        <table style="width: 100%; border-collapse: collapse; margin: 0 auto; max-width: 950px;">
+            <thead style="background: linear-gradient(135deg, #0B3D5B 0%, #1e5a7b 100%); color: white;">
+                <tr>
+                    <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Propriété</th>
+                    <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">RMSE</th>
+                    <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">RMSE rel.</th>
+                    <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Biais (%)</th>
+                    <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">R²</th>
+                    <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">r (Pearson)</th>
+                    <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Qualité</th>
+                </tr>
+            </thead>
+            <tbody style="background: white;">
+                <tr style="background: #fee2e2;">
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Argile (%)</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">9.84</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">138.3%</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #b91c1c;">+9.59</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">-196.12</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0.533</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #b91c1c;">❌ Médiocre</td>
+                </tr>
+                <tr style="background: #d1fae5;">
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Sable (%)</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">15.95</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">20.0%</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #059669;">-15.68</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">-24.62</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0.688</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #059669;">✅ Bon</td>
+                </tr>
+                <tr style="background: #fef3c7;">
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Limon (%)</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">6.29</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">47.8%</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #d97706;">+6.10</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">-5.11</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0.819</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #d97706;">⚠️ Acceptable</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="fragment fade-up" data-fragment-index="2" 
+         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
+                font-size: 0.42em; margin-top: 10px; max-width: 950px; margin-left: auto; margin-right: auto;">
+        <strong style="color: #1e3a8a;">🔍 Biais systématique:</strong> 
+        SoilGrids surestime l'argile (+135%) et sous-estime le sable (-20%), ce qui révèle une sous-représentation des sols tropicaux sableux dans la base d'apprentissage globale.
+    </div>
+
+    <aside class="notes">
+        Les résultats montrent un biais systématique majeur. SoilGrids surestime massivement l'argile (plus du double de la réalité) et sous-estime le sable. Cela confirme que la base d'apprentissage globale ne représente pas bien les sols ferrallitiques et ferrugineux tropicaux d'Afrique de l'Ouest.
+    </aside>
+</section>
+
+
+<!-- ====================================================================
+     PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
+     ==================================================================== -->
+
+<!-- SLIDE R5: Validation Solveur Richards 1D (Philip 1957) -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 20px;">
+        Validation 1D – Solution semi-analytique de Philip (1957)
+    </h4>
+
+    <p style="font-size: 0.48em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        Comparaison avec une solution de référence pour l'infiltration verticale en sol homogène
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 25px; align-items: start; margin-top: 20px;">
+        
+        <!-- Théorie à gauche -->
+        <div class="fragment fade-in" data-fragment-index="1" style="font-size: 0.5em;">
+            <div style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
+                        padding: 20px; border-radius: 12px; border-left: 5px solid #6366f1; margin-bottom: 20px;">
+                <h6 style="color: #312e81; margin-top: 0; margin-bottom: 12px; font-size: 1.1em;">
+                    📐 Formulation théorique
+                </h6>
+                <p style="margin: 0 0 10px 0; line-height: 1.8; color: #1e1b4b;">
+                    Infiltration cumulative:
+                </p>
+                <div style="background: white; padding: 12px; border-radius: 8px; text-align: center; font-size: 1.2em; color: #312e81;">
+                    \( F(t) = S\,t^{1/2} + A\,t \)
+                </div>
+                <ul style="margin: 12px 0 0 0; padding-left: 20px; line-height: 1.8; color: #1e1b4b;">
+                    <li><strong>S</strong>: sorptivité (capillarité)</li>
+                    <li><strong>A ≈ K<sub>s</sub></strong>: terme gravitaire</li>
+                </ul>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                        padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
+                <h6 style="color: #065f46; margin-top: 0; margin-bottom: 12px; font-size: 1.1em;">
+                    ✅ Métriques de validation
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
+                    <li><strong>RMSE:</strong> 0.0128 m³/m³</li>
+                    <li><strong>MAE:</strong> 0.0104 m³/m³</li>
+                    <li><strong>Écart relatif:</strong> < 2%</li>
+                    <li><strong>Front mouillage:</strong> ∝ t<sup>1/2</sup></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Graphiques à droite -->
+        <div class="fragment fade-in" data-fragment-index="1" style="text-align: center;">
+            <img src="assets/validation_philip.png" 
+                 alt="Validation solveur Richards 1D avec solution de Philip" 
+                 style="max-height: 520px; width: 100%; object-fit: contain; border-radius: 8px; border: 2px solid #ddd;">
+            <p style="font-size: 0.4em; color: #666; margin-top: 8px; font-style: italic;">
+                (A) Profils d'humidité • (B) Infiltration cumulative • (C) Distribution erreur • (D) Front de mouillage
+            </p>
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="fragment fade-up" data-fragment-index="2" 
+         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
+                font-size: 0.48em; margin-top: 10px; max-width: 950px; margin-left: auto; margin-right: auto;">
+        <strong style="color: #1e3a8a;">🎯 Cohérence validée:</strong> 
+        Le solveur 1D reproduit fidèlement la transition capillaire → gravitaire et la propagation du front d'humectation, validant l'implémentation sur le plan physique et numérique.
+    </div>
+
+    <aside class="notes">
+        La validation 1D est excellente. Nous comparons avec la solution semi-analytique de Philip qui décrit l'infiltration avec deux composantes: capillaire au début (proportionnel à racine carrée du temps) et gravitaire ensuite (linéaire). Les profils d'humidité, l'infiltration cumulative, et la position du front sont tous reproduits avec une précision remarquable. Cela valide notre implémentation des éléments finis, du schéma temporel et de l'algorithme de Newton-Raphson.
+    </aside>
+</section>
+
+<!-- SLIDE R6: Défis 2D et Stratégies de Stabilisation -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 25px;">
+        Extension 2D axisymétrique – Défis numériques
+    </h4>
+
+    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        Difficultés de convergence et stratégies d'amélioration envisagées
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; font-size: 0.5em;">
+        
+        <!-- Colonne gauche: Symptômes et Causes -->
+        <div>
+            <!-- Symptômes -->
+            <div class="fragment fade-in" data-fragment-index="1" 
+                 style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); 
+                        padding: 20px; border-radius: 12px; border-left: 5px solid #dc2626; margin-bottom: 25px;">
+                <h6 style="color: #991b1b; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                    ⚠️ Symptômes observés
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #7f1d1d;">
+                    <li>Résidus Newton > seuil (10<sup>-6</sup>)</li>
+                    <li>Oscillations non physiques au front</li>
+                    <li>Divergence progressive de la solution</li>
+                    <li>Instabilités récurrentes malgré schéma implicite</li>
+                </ul>
+            </div>
+
+            <!-- Causes identifiées -->
+            <div class="fragment fade-in" data-fragment-index="2" 
+                 style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+                        padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
+                <h6 style="color: #92400e; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                    🔍 Causes identifiées
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #78350f;">
+                    <li><strong>Forte non-linéarité</strong> de K(ψ) et C(ψ)</li>
+                    <li><strong>Sensibilité</strong> aux conditions initiales</li>
+                    <li><strong>Pas de temps initial</strong> trop grand</li>
+                    <li><strong>Besoin de préconditionnement</strong> du Jacobien</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Colonne droite: Stratégies -->
+        <div>
+            <!-- Stratégies envisagées -->
+            <div class="fragment fade-up" data-fragment-index="3" 
+                 style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
+                        padding: 20px; border-radius: 12px; border-left: 5px solid #6366f1; margin-bottom: 25px;">
+                <h6 style="color: #312e81; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                    🛠️ Stratégies de stabilisation
+                </h6>
+                <ol style="margin: 0; padding-left: 22px; line-height: 1.8; color: #1e1b4b;">
+                    <li><strong>Continuation pseudo-transitoire</strong> pour amortir la non-linéarité</li>
+                    <li><strong>Adaptation dynamique</strong> du pas de temps Δt</li>
+                    <li><strong>Régularisation de K(ψ)</strong> via coupure logarithmique</li>
+                    <li><strong>Préconditionnement</strong> du système linéaire</li>
+                </ol>
+            </div>
+
+            <!-- État actuel -->
+            <div class="fragment fade-up" data-fragment-index="4" 
+                 style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                        padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
+                <h6 style="color: #065f46; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                    ✅ État actuel du développement
+                </h6>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
+                    <li>Structure du code: <strong>✅ Fonctionnelle</strong></li>
+                    <li>Cohérence algorithmique: <strong>✅ Validée</strong></li>
+                    <li>Tests unitaires interfaces: <strong>✅ Passés</strong></li>
+                    <li>Convergence complète: <strong>⏳ En cours</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="fragment fade-up" data-fragment-index="5" 
+         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
+                font-size: 0.48em; margin-top: 25px; max-width: 950px; margin-left: auto; margin-right: auto; text-align: center;">
+        <strong style="color: #1e3a8a;">🎯 Framework robuste:</strong> 
+        L'architecture logicielle et algorithmique est validée. Les ajustements numériques constituent des pistes solides pour finaliser la convergence 2D.
+    </div>
+
+    <aside class="notes">
+        L'extension au 2D axisymétrique, nécessaire pour modéliser le goutte-à-goutte, pose des défis numériques. Les symptômes sont clairs: non-convergence de Newton, oscillations au front. Les causes sont identifiées: forte non-linéarité des fonctions hydrauliques, sensibilité aux conditions initiales. Nous avons testé plusieurs stratégies de stabilisation. Point important: la structure du code est solide, les interfaces fonctionnent, c'est uniquement un problème numérique qui nécessite du tuning supplémentaire.
+    </aside>
+</section>
+
+<!-- SLIDE R7: État de Validation des Composants -->
+<section data-background-color="#fbfbfb">
+    <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 25px;">
+        Validation numérique des implémentations
+    </h4>
+
+    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
+        État de validation des différents composants du système
+    </p>
+
+    <!-- Tableau d'état avec code couleur -->
+    <div class="fragment fade-in" data-fragment-index="1" style="font-size: 0.52em; margin-top: 30px;">
+        <table style="width: 100%; border-collapse: collapse; margin: 0 auto; max-width: 900px;">
+            <thead style="background: linear-gradient(135deg, #0B3D5B 0%, #1e5a7b 100%); color: white;">
+                <tr>
+                    <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">Composant</th>
+                    <th style="padding: 15px; text-align: center; border: 1px solid #ddd;">État</th>
+                    <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">Validation</th>
+                </tr>
+            </thead>
+            <tbody style="background: white;">
+                <tr style="background: #d1fae5;">
+                    <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">Pipeline extraction données
+                    </td>
+                    <td style="padding: 15px; text-align: center; border: 1px solid #ddd;">
+                        <span
+                            style="background: #10b981; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold;">✅
+                            Opérationnel</span>
+                    </td>
+                    <td style="padding: 15px; border: 1px solid #ddd;">Validation croisée SoilGrids</td>
+                </tr>
+                <tr style="background: #d1fae5;">
+                    <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">Interface AquaCrop-OSPy</td>
+                    <td style="padding: 15px; text-align: center; border: 1px solid #ddd;">
+                        <span
+                            style="background: #10b981; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold;">✅
+                            Opérationnel</span>
+                    </td>
+                    <td style="padding: 15px; border: 1px solid #ddd;">Tests unitaires FAO Paper 66</td>
+                </tr>
+                <tr style="background: #d1fae5;">
+                    <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">Interface de couplage</td>
+                    <td style="padding: 15px; text-align: center; border: 1px solid #ddd;">
+                        <span
+                            style="background: #10b981; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold;">✅
+                            Opérationnel</span>
+                    </td>
+                    <td style="padding: 15px; border: 1px solid #ddd;">Synchronisation temporelle validée</td>
+                </tr>
+                <tr style="background: #d1fae5;">
+                    <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">Solveur Richards 1D</td>
+                    <td style="padding: 15px; text-align: center; border: 1px solid #ddd;">
+                        <span
+                            style="background: #10b981; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold;">✅
+                            Validé</span>
+                    </td>
+                    <td style="padding: 15px; border: 1px solid #ddd;">Solution de Philip (1957)</td>
+                </tr>
+                <tr style="background: #fef3c7;">
+                    <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">Solveur Richards 2D
+                        axisymétrique</td>
+                    <td style="padding: 15px; text-align: center; border: 1px solid #ddd;">
+                        <span
+                            style="background: #f59e0b; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold;">⚠️
+                            Partiel</span>
+                    </td>
+                    <td style="padding: 15px; border: 1px solid #ddd;">Difficultés de convergence</td>
+                </tr>
+                <tr style="background: #fee2e2;">
+                    <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">Système couplé complet</td>
+                    <td style="padding: 15px; text-align: center; border: 1px solid #ddd;">
+                        <span
+                            style="background: #dc2626; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold;">⏳
+                            Non testé</span>
+                    </td>
+                    <td style="padding: 15px; border: 1px solid #ddd;">En attente convergence 2D</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Synthèse -->
+    <div class="fragment fade-up" data-fragment-index="2"
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 35px; font-size: 0.5em;">
+
+        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                    padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
+            <h6 style="color: #065f46; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                ✅ Composants validés
+            </h6>
+            <p style="margin: 0; line-height: 1.8; color: #064e3b;">
+                <strong>Infrastructure complète opérationnelle:</strong> extraction de données, interfaces logicielles,
+                et validation 1D du solveur Richards avec erreur < 2%. </p>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+                    padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
+            <h6 style="color: #92400e; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+                ⚠️ Point de blocage
+            </h6>
+            <p style="margin: 0; line-height: 1.8; color: #78350f;">
+                <strong>Extension 2D axisymétrique:</strong> difficultés de convergence du solveur non linéaire
+                nécessitant des ajustements numériques supplémentaires.
+            </p>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Bilan de la validation numérique: les briques fondamentales sont validées. Le pipeline d'extraction fonctionne,
+        AquaCrop est opérationnel, l'interface de couplage est prête, et le solveur Richards 1D est validé avec moins de
+        2% d'erreur. Le point bloquant est l'extension au cas 2D axisymétrique, nécessaire pour modéliser l'irrigation
+        goutte-à-goutte.
+    </aside>
+</section>
