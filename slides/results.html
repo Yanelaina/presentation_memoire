@@ -1,7 +1,7 @@
 <!-- ====================================================================
-     SECTION RÉSULTATS
-     5-8 slides condensées: Transition → Validation Données → Validation Numérique
-     ==================================================================== -->
+SECTION RÉSULTATS
+5-8 slides condensées: Transition → Validation Données → Validation Numérique
+==================================================================== -->
 
 <!-- SLIDE R0: Page de Transition "RÉSULTATS" -->
 <section data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 50%, #3d7a9c 100%)">
@@ -11,13 +11,15 @@
         <h1 style="font-size: 3.5em; color: #FFFFFF; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
             RÉSULTATS
         </h1>
-        <p style="font-size: 1.4em; color: #E2E8F0; font-style: italic; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+        <p
+            style="font-size: 1.4em; color: #E2E8F0; font-style: italic; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
             Validation et évaluation du système
         </p>
     </div>
 
     <aside class="notes">
-        Nous allons maintenant présenter les résultats de validation. Cette section couvre deux aspects principaux : d'abord la validation des données pédologiques avec SoilGrids, puis la validation numérique des implémentations.
+        Nous allons maintenant présenter les résultats de validation. Nous couvrons deux aspects principaux : d'abord la
+        validation des données pédologiques avec SoilGrids, puis la validation numérique des implémentations.
     </aside>
 </section>
 
@@ -45,8 +47,8 @@
             style="display: flex; flex-direction: column; gap: 20px; font-size: 0.5em;">
 
             <!-- Bloc 1 -->
-            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-                  padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
+            <div style="background: #fffbeb;
+             padding: 20px; border-radius: 12px; border: 2px solid #f59e0b;">
                 <h6 style="color: #92400e; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                     📍 Couverture géographique
                 </h6>
@@ -59,9 +61,9 @@
             </div>
 
             <!-- Bloc 2 -->
-            <div style="background: linear-gradient(135deg, #e8d1d3 0%, #deb8b8 100%);
-                  padding: 20px; border-radius: 12px; border-left: 5px solid #5e070a;">
-                <h6 style="color: #b71132; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div style="background: #ffe4e6;
+             padding: 20px; border-radius: 12px; border: 2px solid #f43f5e;">
+                <h6 style="color: #be123c; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                     🌾 Profil textural dominant
                 </h6>
                 <ul style="margin: 0; padding-left: 10px; line-height: 1.8;">
@@ -93,9 +95,8 @@
 
     <!-- Graphiques de dispersion -->
     <div class="fragment fade-in" data-fragment-index="1" style="text-align: center; margin-bottom: 10px;">
-        <img src="assets/comparaison_texturales.png" 
-             alt="Comparaison SoilGrids vs Terrain" 
-             style="max-height: 320px; width: auto; object-fit: contain;">
+        <img src="assets/comparaison_texturales.png" alt="Comparaison SoilGrids vs Terrain"
+            style="max-height: 320px; width: auto; object-fit: contain;">
         <p style="font-size: 0.42em; color: #666; margin-top: 0px; font-style: italic;">
             La ligne pointillée représente l'accord parfait (y=x). Biais systématique évident.
         </p>
@@ -120,50 +121,68 @@
                     <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Argile (%)</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">9.84</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">138.3%</td>
-                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #b91c1c;">+9.59</td>
+                    <td
+                        style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #b91c1c;">
+                        +9.59</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">-196.12</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0.533</td>
-                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #b91c1c;">❌ Médiocre</td>
+                    <td
+                        style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #b91c1c;">
+                        ❌ Médiocre</td>
                 </tr>
                 <tr style="background: #d1fae5;">
                     <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Sable (%)</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">15.95</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">20.0%</td>
-                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #059669;">-15.68</td>
+                    <td
+                        style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #059669;">
+                        -15.68</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">-24.62</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0.688</td>
-                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #059669;">✅ Bon</td>
+                    <td
+                        style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #059669;">
+                        ✅ Bon</td>
                 </tr>
                 <tr style="background: #fef3c7;">
                     <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Limon (%)</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">6.29</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">47.8%</td>
-                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #d97706;">+6.10</td>
+                    <td
+                        style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #d97706;">
+                        +6.10</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">-5.11</td>
                     <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0.819</td>
-                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #d97706;">⚠️ Acceptable</td>
+                    <td
+                        style="padding: 10px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #d97706;">
+                        ⚠️ Acceptable</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="fragment fade-up" data-fragment-index="2" 
-         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
-                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
-                font-size: 0.42em; margin-top: 10px; max-width: 950px; margin-left: auto; margin-right: auto;">
-        <strong style="color: #1e3a8a;">🔍 Biais systématique:</strong> 
-        SoilGrids surestime l'argile (+135%) et sous-estime le sable (-20%), ce qui révèle une sous-représentation des sols tropicaux sableux dans la base d'apprentissage globale.
+    <div class="fragment fade-up" data-fragment-index="2" style="background: #eff6ff; 
+           padding: 15px 20px; border-radius: 10px; border: 2px solid #60a5fa; 
+           font-size: 0.42em; margin-top: 10px; max-width: 950px; margin-left: auto; margin-right: auto;">
+        <strong style="color: #1e3a8a;">🔍 Biais systématique:</strong>
+        SoilGrids surestime l'argile (+135%) et sous-estime le sable (-20%), ce qui révèle une sous-représentation des
+        sols tropicaux sableux dans la base d'apprentissage globale.
     </div>
 
     <aside class="notes">
-        Les résultats montrent un biais systématique majeur. SoilGrids surestime massivement l'argile (plus du double de la réalité) et sous-estime le sable. Cela confirme que la base d'apprentissage globale ne représente pas bien les sols ferrallitiques et ferrugineux tropicaux d'Afrique de l'Ouest.
+        Les résultats montrent un biais systématique majeur. SoilGrids surestime massivement l'argile (plus du double de
+        la réalité) et sous-estime le sable. Cela confirme que la base d'apprentissage globale ne représente pas bien
+        les sols ferrallitiques et ferrugineux tropicaux d'Afrique de l'Ouest.
+        <br> <br>
+        Toutefois l'observation fine au niveau de la comparaison des données sols vs SoilGrids nous permet de visualiser
+        un certain pattern dans les erreurs, ce qui suggère que des une correction locale si la base est plus grande,
+        pourrait permettre de d'avoir des données recalibrées plus fiables.
     </aside>
 </section>
 
 
 <!-- ====================================================================
-     PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
-     ==================================================================== -->
+PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
+==================================================================== -->
 
 <!-- SLIDE R5: Validation Solveur Richards 1D (Philip 1957) -->
 <section data-background-color="#fbfbfb">
@@ -176,18 +195,19 @@
     </p>
 
     <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 25px; align-items: start; margin-top: 20px;">
-        
+
         <!-- Théorie à gauche -->
         <div class="fragment fade-in" data-fragment-index="1" style="font-size: 0.5em;">
-            <div style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
-                        padding: 20px; border-radius: 12px; border-left: 5px solid #6366f1; margin-bottom: 20px;">
-                <h6 style="color: #312e81; margin-top: 0; margin-bottom: 12px; font-size: 1.1em;">
+            <div style="background: #eef2ff; 
+                   padding: 20px; border-radius: 12px; border: 2px solid #818cf8; margin-bottom: 20px;">
+                <h6 style="color: #3730a3; margin-top: 0; margin-bottom: 12px; font-size: 1.1em;">
                     📐 Formulation théorique
                 </h6>
                 <p style="margin: 0 0 10px 0; line-height: 1.8; color: #1e1b4b;">
                     Infiltration cumulative:
                 </p>
-                <div style="background: white; padding: 12px; border-radius: 8px; text-align: center; font-size: 1.2em; color: #312e81;">
+                <div
+                    style="background: white; padding: 12px; border-radius: 8px; text-align: center; font-size: 1.2em; color: #312e81;">
                     \( F(t) = S\,t^{1/2} + A\,t \)
                 </div>
                 <ul style="margin: 12px 0 0 0; padding-left: 20px; line-height: 1.8; color: #1e1b4b;">
@@ -196,15 +216,16 @@
                 </ul>
             </div>
 
-            <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
-                        padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
-                <h6 style="color: #065f46; margin-top: 0; margin-bottom: 12px; font-size: 1.1em;">
+            <div style="background: #f0fdf4; 
+                   padding: 20px; border-radius: 12px; border: 2px solid #4ade80;">
+                <h6 style="color: #15803d; margin-top: 0; margin-bottom: 12px; font-size: 1.1em;">
                     ✅ Métriques de validation
                 </h6>
                 <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
                     <li><strong>RMSE:</strong> 0.0128 m³/m³</li>
                     <li><strong>MAE:</strong> 0.0104 m³/m³</li>
-                    <li><strong>Écart relatif:</strong> < 2%</li>
+                    <li><strong>Écart relatif:</strong>
+                        < 2%</li>
                     <li><strong>Front mouillage:</strong> ∝ t<sup>1/2</sup></li>
                 </ul>
             </div>
@@ -212,9 +233,8 @@
 
         <!-- Graphiques à droite -->
         <div class="fragment fade-in" data-fragment-index="1" style="text-align: center;">
-            <img src="assets/validation_philip.png" 
-                 alt="Validation solveur Richards 1D avec solution de Philip" 
-                 style="max-height: 520px; width: 100%; object-fit: contain; border-radius: 8px; border: 2px solid #ddd;">
+            <img src="assets/validation_philip.png" alt="Validation solveur Richards 1D avec solution de Philip"
+                style="max-height: 520px; width: 100%; object-fit: contain; border-radius: 8px; border: 2px solid #ddd;">
             <p style="font-size: 0.4em; color: #666; margin-top: 8px; font-style: italic;">
                 (A) Profils d'humidité • (B) Infiltration cumulative • (C) Distribution erreur • (D) Front de mouillage
             </p>
@@ -222,16 +242,20 @@
     </div>
 
     <!-- Conclusion -->
-    <div class="fragment fade-up" data-fragment-index="2" 
-         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
-                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
-                font-size: 0.48em; margin-top: 10px; max-width: 950px; margin-left: auto; margin-right: auto;">
-        <strong style="color: #1e3a8a;">🎯 Cohérence validée:</strong> 
-        Le solveur 1D reproduit fidèlement la transition capillaire → gravitaire et la propagation du front d'humectation, validant l'implémentation sur le plan physique et numérique.
+    <div class="fragment fade-up" data-fragment-index="2" style="background: #eff6ff; 
+           padding: 15px 20px; border-radius: 10px; border: 2px solid #60a5fa; 
+           font-size: 0.48em; margin-top: 10px; max-width: 950px; margin-left: auto; margin-right: auto;">
+        <strong style="color: #1e3a8a;">🎯 Cohérence validée:</strong>
+        Le solveur 1D reproduit fidèlement la transition capillaire → gravitaire et la propagation du front
+        d'humectation, validant l'implémentation sur le plan physique et numérique.
     </div>
 
     <aside class="notes">
-        La validation 1D est excellente. Nous comparons avec la solution semi-analytique de Philip qui décrit l'infiltration avec deux composantes: capillaire au début (proportionnel à racine carrée du temps) et gravitaire ensuite (linéaire). Les profils d'humidité, l'infiltration cumulative, et la position du front sont tous reproduits avec une précision remarquable. Cela valide notre implémentation des éléments finis, du schéma temporel et de l'algorithme de Newton-Raphson.
+        La validation 1D est excellente. Nous comparons avec la solution semi-analytique de Philip qui décrit
+        l'infiltration avec deux composantes: capillaire au début (proportionnel à racine carrée du temps) et gravitaire
+        ensuite (linéaire). Les profils d'humidité, l'infiltration cumulative, et la position du front sont tous
+        reproduits avec une précision remarquable. Cela valide notre implémentation des éléments finis, du schéma
+        temporel et de l'algorithme de Newton-Raphson.
     </aside>
 </section>
 
@@ -246,14 +270,13 @@
     </p>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; font-size: 0.5em;">
-        
+
         <!-- Colonne gauche: Symptômes et Causes -->
         <div>
             <!-- Symptômes -->
-            <div class="fragment fade-in" data-fragment-index="1" 
-                 style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); 
-                        padding: 20px; border-radius: 12px; border-left: 5px solid #dc2626; margin-bottom: 25px;">
-                <h6 style="color: #991b1b; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div class="fragment fade-in" data-fragment-index="1" style="background: #fff1f2; 
+                   padding: 20px; border-radius: 12px; border: 2px solid #fb7185; margin-bottom: 25px;">
+                <h6 style="color: #be123c; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                     ⚠️ Symptômes observés
                 </h6>
                 <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #7f1d1d;">
@@ -265,10 +288,9 @@
             </div>
 
             <!-- Causes identifiées -->
-            <div class="fragment fade-in" data-fragment-index="2" 
-                 style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
-                        padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
-                <h6 style="color: #92400e; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div class="fragment fade-in" data-fragment-index="2" style="background: #fffbeb; 
+                   padding: 20px; border-radius: 12px; border: 2px solid #facc15;">
+                <h6 style="color: #b45309; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                     🔍 Causes identifiées
                 </h6>
                 <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #78350f;">
@@ -283,10 +305,9 @@
         <!-- Colonne droite: Stratégies -->
         <div>
             <!-- Stratégies envisagées -->
-            <div class="fragment fade-up" data-fragment-index="3" 
-                 style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
-                        padding: 20px; border-radius: 12px; border-left: 5px solid #6366f1; margin-bottom: 25px;">
-                <h6 style="color: #312e81; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div class="fragment fade-up" data-fragment-index="3" style="background: #eef2ff; 
+                   padding: 20px; border-radius: 12px; border: 2px solid #818cf8; margin-bottom: 25px;">
+                <h6 style="color: #3730a3; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                     🛠️ Stratégies de stabilisation
                 </h6>
                 <ol style="margin: 0; padding-left: 22px; line-height: 1.8; color: #1e1b4b;">
@@ -298,10 +319,9 @@
             </div>
 
             <!-- État actuel -->
-            <div class="fragment fade-up" data-fragment-index="4" 
-                 style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
-                        padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
-                <h6 style="color: #065f46; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div class="fragment fade-up" data-fragment-index="4" style="background: #f0fdf4; 
+                   padding: 20px; border-radius: 12px; border: 2px solid #4ade80;">
+                <h6 style="color: #15803d; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                     ✅ État actuel du développement
                 </h6>
                 <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
@@ -315,16 +335,21 @@
     </div>
 
     <!-- Conclusion -->
-    <div class="fragment fade-up" data-fragment-index="5" 
-         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
-                padding: 15px 20px; border-radius: 10px; border-left: 5px solid #3b82f6; 
-                font-size: 0.48em; margin-top: 25px; max-width: 950px; margin-left: auto; margin-right: auto; text-align: center;">
-        <strong style="color: #1e3a8a;">🎯 Framework robuste:</strong> 
-        L'architecture logicielle et algorithmique est validée. Les ajustements numériques constituent des pistes solides pour finaliser la convergence 2D.
+    <div class="fragment fade-up" data-fragment-index="5"
+        style="background: #eff6ff; 
+           padding: 15px 20px; border-radius: 10px; border: 2px solid #60a5fa; 
+           font-size: 0.48em; margin-top: 25px; max-width: 950px; margin-left: auto; margin-right: auto; text-align: center;">
+        <strong style="color: #1e3a8a;">🎯 Framework robuste:</strong>
+        L'architecture logicielle et algorithmique est validée. Les ajustements numériques constituent des pistes
+        solides pour finaliser la convergence 2D.
     </div>
 
     <aside class="notes">
-        L'extension au 2D axisymétrique, nécessaire pour modéliser le goutte-à-goutte, pose des défis numériques. Les symptômes sont clairs: non-convergence de Newton, oscillations au front. Les causes sont identifiées: forte non-linéarité des fonctions hydrauliques, sensibilité aux conditions initiales. Nous avons testé plusieurs stratégies de stabilisation. Point important: la structure du code est solide, les interfaces fonctionnent, c'est uniquement un problème numérique qui nécessite du tuning supplémentaire.
+        L'extension au 2D axisymétrique, nécessaire pour modéliser le goutte-à-goutte, pose des défis numériques. Les
+        symptômes sont clairs: non-convergence de Newton, oscillations au front. Les causes sont identifiées: forte
+        non-linéarité des fonctions hydrauliques, sensibilité aux conditions initiales. Nous avons testé plusieurs
+        stratégies de stabilisation. Point important: la structure du code est solide, les interfaces fonctionnent,
+        c'est uniquement un problème numérique qui nécessite du tuning supplémentaire.
     </aside>
 </section>
 
@@ -413,9 +438,9 @@
     <div class="fragment fade-up" data-fragment-index="2"
         style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 35px; font-size: 0.5em;">
 
-        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
-                    padding: 20px; border-radius: 12px; border-left: 5px solid #10b981;">
-            <h6 style="color: #065f46; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+        <div style="background: #f0fdf4; 
+               padding: 20px; border-radius: 12px; border: 2px solid #4ade80;">
+            <h6 style="color: #15803d; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                 ✅ Composants validés
             </h6>
             <p style="margin: 0; line-height: 1.8; color: #064e3b;">
@@ -423,9 +448,9 @@
                 et validation 1D du solveur Richards avec erreur < 2%. </p>
         </div>
 
-        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
-                    padding: 20px; border-radius: 12px; border-left: 5px solid #f59e0b;">
-            <h6 style="color: #92400e; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+        <div style="background: #fffbeb; 
+               padding: 20px; border-radius: 12px; border: 2px solid #facc15;">
+            <h6 style="color: #b45309; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
                 ⚠️ Point de blocage
             </h6>
             <p style="margin: 0; line-height: 1.8; color: #78350f;">

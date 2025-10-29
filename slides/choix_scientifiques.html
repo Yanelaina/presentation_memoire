@@ -1,61 +1,247 @@
-
 <!-- ============================================= -->
 <!-- SECTION B: CHOIX SCIENTIFIQUES -->
 <!-- ============================================= -->
 
-<!-- SLIDE B1: Pourquoi le goutte-à-goutte ? -->
+
+<!-- SLIDE B0: Page de Transition "CHOIX SCIENTIFIQUES" -->
+<section data-background-gradient="linear-gradient(135deg, #0B3D5B 0%, #1e5a7b 50%, #3d7a9c 100%)">
+    <div style="text-align: center; padding: 100px 0;">
+        <div style="font-size: 4em; margin-top: 40px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">🔬</div>
+
+        <h1 style="font-size: 3.0em; color: #FFFFFF; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+            CHOIX DE MODÉLISATION
+        </h1>
+        <p
+            style="font-size: 1.4em; color: #E2E8F0; font-style: italic; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+            Justification des approches physiques et numériques
+        </p>
+    </div>
+
+    <aside class="notes">
+        Passons maintenant aux choix de modélisation. Cette section justifie nos décisions scientifiques : pourquoi
+        l'irrigation goutte-à-goutte, pourquoi l'équation de Richards, pourquoi AquaCrop, et pourquoi un couplage
+        bidirectionnel.
+    </aside>
+</section>
+
+
+<!-- SLIDE B1: Pourquoi le goutte-à-goutte ? (VERSION RESTRUCTURÉE) -->
+
 <section>
     <section data-background-color="#fbfbfb">
-        <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px;">
+        <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 25px;">
             Pourquoi l'irrigation goutte-à-goutte ?
         </h4>
 
-        <!-- Badge d'efficacité -->
-        <div class="efficiency-badge fragment fade-in" data-fragment-index="0">
-            <div class="number">90%</div>
-            <div style="font-size: 0.6em;">d'efficacité</div>
-        </div>
+        <style>
+            /* Conteneur principal en grille */
+            .b1-main-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 35px;
+                max-width: 1200px;
+                margin: 0 auto;
+                align-items: start;
+            }
 
-        <!-- Bénéfices clés -->
-        <div class="drip-irrigation-benefits">
-            <div class="benefit-card fragment fade-right" data-fragment-index="1">
-                <div class="benefit-icon">💧</div>
-                <div class="benefit-content">
-                    <h5>Efficience hydrique maximale</h5>
-                    <p>
-                        Contrairement aux méthodes par aspersion ou inondation, le goutte-à-goutte
-                        <strong style="color: #10b981;">atteint plus de 90 % d'efficacité</strong>
-                        en apportant l'eau directement à la zone racinaire, minimisant l'évaporation et le
-                        ruissellement.
-                    </p>
-                    <p style="margin: 2px 0 0 0; font-size: 0.48em; color: #0B3D5B; font-style: italic; text-align: right;">
-                        Source : Karimov et al., (2025)
-                    </p>
+            /* Colonne gauche : image */
+            .b1-image-column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+
+            /* Badge 90% repositionné */
+            .b1-efficiency-badge {
+                position: absolute;
+                top: -15px;
+                right: 20px;
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+                z-index: 10;
+                animation: pulse-badge 2s ease-in-out infinite;
+            }
+
+            .b1-efficiency-badge .number {
+                font-size: 1.4em;
+                font-weight: 800;
+                line-height: 1;
+                margin-bottom: 5px;
+            }
+
+            .b1-efficiency-badge .label {
+                font-size: 0.55em;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            /* Image principale */
+            .b1-image-wrapper {
+                width: 100%;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+                border: 3px solid #e2e8f0;
+            }
+
+            .b1-image-wrapper img {
+                width: 100%;
+                height: 450px;
+                display: block;
+                object-fit: cover;
+            }
+
+            /* Source citation */
+            .b1-source {
+                margin-top: 12px;
+                font-size: 0.45em;
+                color: #64748b;
+                font-style: italic;
+                text-align: center;
+            }
+
+            /* Colonne droite : bénéfices */
+            .b1-benefits-column {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* Carte de bénéfice compacte */
+            .b1-benefit-card {
+                background: white;
+                padding: 18px 22px;
+                border-radius: 12px;
+                border-left: 5px solid #3b82f6;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .b1-benefit-card:hover {
+                transform: translateX(5px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            }
+
+            .b1-benefit-card:nth-child(1) {
+                border-left-color: #10b981;
+            }
+
+            .b1-benefit-card:nth-child(2) {
+                border-left-color: #3b82f6;
+            }
+
+            .b1-benefit-card:nth-child(3) {
+                border-left-color: #d97706;
+            }
+
+            .b1-benefit-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 8px;
+            }
+
+            .b1-benefit-icon {
+                font-size: 1.8em;
+                line-height: 1;
+            }
+
+            .b1-benefit-title {
+                font-size: 0.65em;
+                font-weight: 700;
+                color: #0B3D5B;
+                margin: 0;
+                line-height: 1.2;
+            }
+
+            /* Source Karimov inline */
+            .b1-karimov-ref {
+                font-size: 0.42em;
+                color: #10b981;
+                font-weight: 600;
+                font-style: italic;
+                margin-top: 5px;
+                display: block;
+            }
+
+            .b1-benefit-description {
+                font-size: 0.5em;
+                color: #475569;
+                font-weight: 600;
+                margin-top: 6px;
+                line-height: 1.4;
+                font-style: italic;
+                display: block;
+
+            }
+        </style>
+
+        <div class="b1-main-container">
+            <!-- Colonne gauche : Image avec badge -->
+            <div class="b1-image-column fragment fade-in" data-fragment-index="1">
+                <!-- Badge 90% -->
+                <div class="b1-efficiency-badge">
+                    <div class="number">90%</div>
+                    <div class="label">Efficacité</div>
+                </div>
+
+                <!-- Image principale -->
+                <div class="b1-image-wrapper">
+                    <img src="assets/goutte-a-goutte.jpg" alt="Irrigation goutte-à-goutte">
+                </div>
+
+                <!-- Source -->
+                <div class="b1-source">
+                    Source : www.aquaportail.com
                 </div>
             </div>
 
-            <div class="benefit-card fragment fade-right" data-fragment-index="2">
-                <div class="benefit-icon">🎯</div>
-                <div class="benefit-content">
-                    <h5>Application localisée et précise</h5>
-                    <p>
-                        L'eau est délivrée <strong style="color: #3b82f6;">point par point, autour de chaque
+            <!-- Colonne droite : Bénéfices clés (titres uniquement) -->
+            <div class="b1-benefits-column">
+                <div class="b1-benefit-card fragment fade-right" data-fragment-index="1">
+                    <div class="b1-benefit-header">
+                        <div class="b1-benefit-icon">💧</div>
+                        <h5 class="b1-benefit-title">Efficience Hydrique Maximale</h5>
+                    </div>
+                    <span class="b1-benefit-description"> <strong style="color: #10b981;">→ Plus de 90% d'efficacité
+                            (Karimov et al., 2025)</strong>, contrairement aux méthodes par aspersion ou
+                        inondation.</span>
+                </div>
+
+                <div class="b1-benefit-card fragment fade-right" data-fragment-index="1">
+                    <div class="b1-benefit-header">
+                        <div class="b1-benefit-icon">🎯</div>
+                        <h5 class="b1-benefit-title">Application Localisée et Précise</h5>
+                    </div>
+                    <span class="b1-benefit-description">
+                        <strong style="color: #3b82f6;">point par point, autour du
                             goutteur</strong>,
-                        créant des zones d'humidité spécifiques (bulbes d'humectation) adaptées aux besoins de la
+                        créant des zones d'humidité adaptées aux besoins de la
                         plante.
-                    </p>
+                    </span>
                 </div>
-            </div>
 
-            <div class="benefit-card fragment fade-right" data-fragment-index="3">
-                <div class="benefit-icon">🔬</div>
-                <div class="benefit-content">
-                    <h5>Exigence de modélisation fine</h5>
-                    <p>
-                        Cette efficacité impose une <strong style="color: #d97706;">représentation détaillée de la
-                            dynamique hydrique</strong>,
-                        car l'infiltration n'est plus uniforme mais localisée autour de chaque émetteur.
-                    </p>
+                <div class="b1-benefit-card fragment fade-right" data-fragment-index="1">
+                    <div class="b1-benefit-header">
+                        <div class="b1-benefit-icon">🔬</div>
+                        <h5 class="b1-benefit-title">Exigence de Modélisation Fine</h5>
+                    </div>
+                    <span class="b1-benefit-description">
+                        car l'infiltration <strong style="color: #d97706;">n'est plus uniforme</strong> mais localisée
+                        autour de chaque
+                        émetteur.</span>
                 </div>
             </div>
         </div>
@@ -66,7 +252,9 @@
             <br><br>
             Contrairement aux méthodes par aspersion ou inondation, où une grande partie de l'eau se perd par
             évaporation ou ruissellement, le goutte-à-goutte permet d'atteindre, selon KARIMOV et al., 2025,
-            des efficacités de plus de 90 %, en apportant l'eau directement à la zone racinaire.
+            plus de 90 % d'efficacité, en apportant l'eau de manière localisée et précise, point par point autour de
+            chaque
+            goutteur comme illustré ci-après.
             <br><br>
             Mais cette efficacité a un prix : elle impose une représentation fine de la dynamique de l'eau dans le sol,
             car l'infiltration ne se fait plus de manière uniforme, mais autour de chaque goutteur.
@@ -112,17 +300,16 @@
             Plus concrètement, comme vous pouvez l'observer à la figure, l'irrigation au goutte-à-goutte
             crée une zone humide spécifique autour de chaque goutteur que nous appelons le bulbe d'humectation.
             <br><br>
-            La compréhension et la simulation du bulbe d'humectation sont donc essentielles pour prédire
+            La compréhension et la simulation de l'évolution de la teneur en eau autour du bulbe d'humectation comme
+            illustré par les iso-contours ci-contre sont donc essentielles pour prédire
             correctement la disponibilité en eau pour la plante.
-            <br><br>
-            C'est cette approche, qui s'oppose aux réservoirs homogènes décrits par les modèles de type "bucket",
-            qui nous a conduits à utiliser un modèle physique robuste de l'infiltration : l'équation de Richards.
+
         </aside>
     </section>
 
     <!-- SLIDE B2v: Les limites du modèle "Bucket" (Verticale) -->
     <section data-background-color="#fbfbfb">
-        <h6 style="color: #0B3D5B; border-bottom: 2px solid #ef4444; padding-bottom: 8px;">
+        <h6 style="color: #0B3D5B; border-bottom: 2px solid #ef4444; padding-bottom: 8px; margin-bottom: 25px;">
             Les limites du modèle « bucket »
         </h6>
 
@@ -135,8 +322,7 @@
         <!-- Points de limitation -->
         <div
             style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 950px; margin-left: auto; margin-right: auto;">
-            <div 
-                style="background: #fef2f2; padding: 8px; border-radius: 10px; border-top: 4px solid #ef4444;">
+            <div style="background: #fef2f2; padding: 8px; border-radius: 10px; border-top: 4px solid #ef4444;">
                 <!-- <div style="text-align: center; font-size: 1em; margin-bottom: 10px;">❌</div> -->
                 <h6 style="margin: 0 0 8px 0; color: #991b1b; font-size: 0.6em; text-align: center;">
                     Stockage homogène
@@ -146,8 +332,7 @@
                 </p>
             </div>
 
-            <div 
-                style="background: #fef2f2; padding: 8px; border-radius: 10px; border-top: 4px solid #ef4444;">
+            <div style="background: #fef2f2; padding: 8px; border-radius: 10px; border-top: 4px solid #ef4444;">
                 <!-- <div style="text-align: center; font-size: 1em; margin-bottom: 10px;">⚠️</div> -->
                 <h6 style="margin: 0 0 8px 0; color: #991b1b; font-size: 0.6em; text-align: center;">
                     Infiltration uniforme
@@ -157,8 +342,7 @@
                 </p>
             </div>
 
-            <div 
-                style="background: #fef2f2; padding: 8px; border-radius: 10px; border-top: 4px solid #ef4444;">
+            <div style="background: #fef2f2; padding: 8px; border-radius: 10px; border-top: 4px solid #ef4444;">
                 <!-- <div style="text-align: center; font-size: 1em; margin-bottom: 10px;">📊</div> -->
                 <h6 style="margin: 0 0 8px 0; color: #991b1b; font-size: 0.5em; text-align: center;">
                     Extraction racinaire uniforme
@@ -178,6 +362,9 @@
         </div>
 
         <aside class="notes">
+            C'est cette approche, qui s'oppose aux réservoirs homogènes décrits par les modèles de type "bucket",
+            qui nous a conduits à utiliser un modèle physique robuste de l'infiltration : l'équation de Richards.
+            <br><br>
             Cette animation montre clairement la différence fondamentale entre les deux approches.
             <br><br>
             À gauche, le modèle bucket traite le sol comme un réservoir homogène où l'eau se répartit uniformément
@@ -186,10 +373,7 @@
             <br><br>
             À droite, le bulbe d'humectation montre que l'eau crée un gradient radial d'humidité, avec des zones
             très humides près du goutteur et des zones sèches plus éloignées.
-            <br><br>
-            C'est cette réalité physique que nous devons capturer pour simuler correctement l'irrigation
-            goutte-à-goutte,
-            et c'est pourquoi nous utilisons l'équation de Richards.
+
         </aside>
     </section>
 </section>
@@ -204,34 +388,37 @@
 
         <!-- Figure principale agrandie -->
         <div class="fragment fade-in" data-fragment-index="1" style="text-align: center; margin-bottom: 0px;">
-            <img src="assets/richards.png" 
-                alt="Volume élémentaire représentatif - Équation de Richards" 
+            <img src="assets/richards.png" alt="Volume élémentaire représentatif - Équation de Richards"
                 style="width: 70%; max-width: 1150px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.12);">
-            <p style="font-size: 0.35em; color: #64748b; margin-top: 0px; font-style: italic; line-height: 1.6; max-width: 900px;">
-                <strong>Figure :</strong> Dérivation de l'équation de Richards à partir du volume élémentaire représentatif (VER) — 
+            <p
+                style="font-size: 0.35em; color: #64748b; margin-top: 0px; font-style: italic; line-height: 1.6; max-width: 900px;">
+                <strong>Figure :</strong> Dérivation de l'équation de Richards à partir du volume élémentaire
+                représentatif (VER) —
                 Conservation de masse + Loi de Darcy généralisée
             </p>
         </div>
 
         <!-- Équation de Richards finale -->
-        <div class="fragment fade-up" data-fragment-index="2" 
-            style="padding: 15px 25px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+        <div class="fragment fade-up" data-fragment-index="2" style="padding: 15px 25px; background: #fffbeb; 
                     border: 3px solid #f59e0b; border-radius: 12px; max-width: 600px; margin: 0 auto;">
             <h6 style="color: #92400e; font-size: 0.55em; margin: 0 0 20px 0; font-weight: 700; text-align: center;">
                 ⚡ Équation de Richards (forme head-based 2D axisymétrique)
             </h6>
             <div style="font-size: 0.5em; color: #1e293b; text-align: center;">
                 \[
-                \frac{\partial \theta}{\partial t} = \frac{1}{r}\frac{\partial}{\partial r}\left(r K(\theta)\frac{\partial h}{\partial r}\right) + \frac{\partial}{\partial z}\left[K(\theta)\left(\frac{\partial h}{\partial z} + 1\right)\right] + S
+                \frac{\partial \theta}{\partial t} = \frac{1}{r}\frac{\partial}{\partial r}\left(r
+                K(\theta)\frac{\partial h}{\partial r}\right) + \frac{\partial}{\partial
+                z}\left[K(\theta)\left(\frac{\partial h}{\partial z} + 1\right)\right] + S
                 \]
             </div>
             <p style="font-size: 0.45em; color: #78350f; margin: 10px 0 0 0; text-align: center; line-height: 1.5;">
-                <strong>EDP non-linéaire</strong> — Relations constitutives : \(\theta(h)\), \(K(\theta)\) (van Genuchten-Mualem)
+                <strong>EDP non-linéaire</strong> — Relations constitutives : \(\theta(h)\), \(K(\theta)\) (van
+                Genuchten-Mualem)
             </p>
         </div>
 
         <!-- Note de synthèse
-        <div class="fragment fade-in" data-fragment-index="3" 
+        <div class="fragment fade-in" data-fragment-index="3
             style="margin-top: 30px; padding: 15px 30px; background: #f8fafc; border-radius: 8px; 
                     border-top: 2px solid #cbd5e1; max-width: 1000px; margin-left: auto; margin-right: auto;">
             <p style="margin: 0; font-size: 0.62em; color: #475569; text-align: center; line-height: 1.7;">
@@ -242,26 +429,20 @@
         </div> -->
 
         <aside class="notes">
-            Alors pourquoi l'équation de Richards ? Regardons ce cube de sol élémentaire.
+            L'équation de Richards dérive donc de deux principes physiques fondamentaux appliqués. Le premier, la loi de
+            Darcy établit que le volume d’eau par unité de surface par unité de temps (le flux volumétrique) est
+            proportionnel au gradient du potentiel hydraulique total H via la relation
             <br><br>
-            Nous appliquons deux principes physiques fondamentaux : 
+            Le second principe est la conservation de la masse, qui stipule que la variation temporelle de la teneur en
+            eau volumique θ dans un volume élémentaire est égale à la divergence négative du flux plus un terme source S
+            représentant les prélèvements racinaires ou les apports d'eau.
             <br><br>
-            D'abord, la loi de Darcy généralisée, qui nous dit que le flux d'eau q dépend de la conductivité 
-            hydraulique K(θ) et du gradient de charge hydraulique H.
+            En combinant ces deux principes, on obtient l'équation de Richards sous sa forme mixte :
             <br><br>
-            Ensuite, la conservation de la masse : la variation temporelle de l'humidité θ égale moins la 
-            divergence du flux plus un terme source S.
-            <br><br>
-            En combinant ces deux principes, on obtient l'équation de Richards sous forme mixte 2D axisymétrique, 
-            adaptée à notre géométrie de goutteur. Vous voyez ici les termes radiaux et verticaux qui capturent 
+            Sous sa forme 2D axisymétriquese en coordonnées cylindriques (r, z), l'équation de Richards devient :
+            Vous pouvez ainsi remarquer les termes radiaux et verticaux qui capturent
             la diffusion de l'eau dans toutes les directions.
             <br><br>
-            La grande complexité vient de la non-linéarité : les relations de van Genuchten-Mualem donnent θ(h) 
-            et K(θ), avec des équations fortement non-linéaires. Par exemple, K peut varier sur plusieurs ordres 
-            de grandeur entre sol sec et saturé.
-            <br><br>
-            Cette EDP non-linéaire capture les gradients spatiaux du bulbe d'humectation que le modèle bucket 
-            ne peut pas représenter. C'est notre fondation physique.
         </aside>
     </section>
 
@@ -271,17 +452,19 @@
             La non-linéarité de Richards — Relations constitutives
         </h6>
 
-        <p style="font-size: 0.6em; color: #475569; text-align: center; margin-bottom: 25px; max-width: 950px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-            La complexité de l'équation de Richards réside dans les <strong style="color: #ef4444;">relations constitutives fortement non-linéaires</strong> 
+        <p
+            style="font-size: 0.6em; color: #475569; text-align: center; margin-bottom: 25px; max-width: 950px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            La complexité de l'équation de Richards réside dans les <strong style="color: #ef4444;">relations
+                constitutives fortement non-linéaires</strong>
             qui relient teneur en eau \(\theta\), potentiel de pression \(h\), et conductivité hydraulique \(K\).
         </p>
 
         <!-- Modèle van Genuchten-Mualem -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; max-width: 1100px; margin: 0 auto 25px auto;">
-            
+        <div
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; max-width: 1100px; margin: 0 auto 25px auto;">
+
             <!-- Colonne gauche : Courbe de rétention -->
-            <div class="fragment fade-right" data-fragment-index="1" 
-                style="padding: 20px 25px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+            <div class="fragment fade-right" data-fragment-index="1" style="padding: 20px 25px; background: #eff6ff; 
                         border: 3px solid #3b82f6; border-radius: 10px;">
                 <h6 style="color: #1e3a8a; font-size: 0.7em; margin: 0 0 15px 0; font-weight: 700; text-align: center;">
                     1️⃣ Courbe de rétention (SWRC)
@@ -293,13 +476,13 @@
                 </div>
                 <p style="font-size: 0.45em; color: #1e3a8a; margin: 12px 0 0 0; text-align: center; line-height: 1.5;">
                     où \(m = 1 - 1/n\)<br>
-                    <strong>Effet :</strong> Relation sigmoïdale \(\theta(h)\) — l'eau retenue dépend exponentiellement de la succion
+                    <strong>Effet :</strong> Relation sigmoïdale \(\theta(h)\) — l'eau retenue dépend exponentiellement
+                    de la succion
                 </p>
             </div>
 
             <!-- Colonne droite : Conductivité hydraulique -->
-            <div class="fragment fade-left" data-fragment-index="1" 
-                style="padding: 20px 25px; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+            <div class="fragment fade-left" data-fragment-index="1" style="padding: 20px 25px; background: #f0fdf4; 
                         border: 3px solid #10b981; border-radius: 10px;">
                 <h6 style="color: #065f46; font-size: 0.7em; margin: 0 0 15px 0; font-weight: 700; text-align: center;">
                     2️⃣ Conductivité hydraulique (HCF)
@@ -311,19 +494,20 @@
                 </div>
                 <p style="font-size: 0.45em; color: #065f46; margin: 12px 0 0 0; text-align: center; line-height: 1.5;">
                     où \(S_e = \frac{\theta - \theta_r}{\theta_s - \theta_r}\), \(\ell = 0.5\)<br>
-                    <strong>Effet :</strong> \(K\) peut varier de <strong>6-10 ordres de grandeur</strong> entre sec et saturé !
+                    <strong>Effet :</strong> \(K\) peut varier de <strong>6-10 ordres de grandeur</strong> entre sec et
+                    saturé !
                 </p>
             </div>
         </div>
 
         <!-- Paramètres du modèle -->
-        <div class="fragment fade-up" data-fragment-index="1" 
-            style="padding: 18px 25px; background: #fef3c7; border-left: 5px solid #f59e0b; border-radius: 8px; 
+        <div class="fragment fade-up" data-fragment-index="1" style="padding: 18px 25px; background: #fef3c7; border-left: 5px solid #f59e0b; border-radius: 8px; 
                     max-width: 1100px; margin: 0 auto 20px auto;">
             <h6 style="color: #92400e; font-size: 0.65em; margin: 0 0 10px 0; font-weight: 700;">
                 📊 Paramètres du modèle van Genuchten-Mualem
             </h6>
-            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; font-size: 0.45em; color: #78350f;">
+            <div
+                style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; font-size: 0.45em; color: #78350f;">
                 <div style="text-align: center;">
                     <strong>\(\theta_r\)</strong><br>
                     Teneur en eau<br>résiduelle
@@ -348,22 +532,22 @@
         </div>
 
         <!-- Implications numériques -->
-        <div class="fragment fade-in" data-fragment-index="2" 
-            style="padding: 15px 25px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); 
+        <div class="fragment fade-in" data-fragment-index="2" style="padding: 15px 25px; background: #fff1f2; 
                     border: 2px solid #ef4444; border-radius: 8px; max-width: 1100px; margin: 0 auto;">
             <p style="margin: 0; font-size: 0.48em; color: #7f1d1d; text-align: center; line-height: 1.6;">
                 <strong style="font-size: 1.15em;">⚠️ Conséquence numérique :</strong><br>
-                Cette non-linéarité extrême rend l'équation de Richards <strong>difficile à résoudre numériquement</strong> —
+                Cette non-linéarité extrême rend l'équation de Richards <strong>difficile à résoudre
+                    numériquement</strong> —
                 nécessite des schémas implicites, des pas de temps adaptatifs, et une régularisation soigneuse
                 pour éviter les oscillations et garantir la convergence
             </p>
         </div>
 
         <aside class="notes">
-            Maintenant, parlons de la non-linéarité qui rend l'équation de Richards si complexe à résoudre.
-            <br><br>
-            Cette non-linéarité provient entièrement des relations constitutives, c'est-à-dire les fonctions
-            qui relient la teneur en eau, le potentiel de pression, et la conductivité hydraulique.
+            La complexité de l'équation de Richards réside dans les <strong style="color: #ef4444;">relations
+                constitutives
+                fortement non-linéaires</strong>
+            qui relient teneur en eau \(\theta\), potentiel de pression \(h\), et conductivité hydraulique \(K\).
             <br><br>
             Le modèle de van Genuchten-Mualem, qui est la référence internationale, définit deux relations clés :
             <br><br>
@@ -390,7 +574,7 @@
 <!-- Slide B4: Pourquoi AquaCrop (horizontal) -->
 <section data-background-color="#fbfbfb">
     <h4 style="color: #0B3D5B; border-bottom: 2px solid #6B8E23; padding-bottom: 5px;">
-        AquaCrop 
+        AquaCrop
     </h4>
 
     <p style="font-size: 0.8em; color: #475569; max-width: 850px; margin: 20px auto 30px;">
@@ -541,8 +725,8 @@
 
         <div class="advantage-item">
             <div class="icon">💧</div>
-            <h6>Couplage hydrique natif</h6>
-            <p>Interface θ(z,t) directe avec Richards via stress Ks,x</p>
+            <h6>Focus sur l'eau</h6>
+            <p>Pensé pour avoir un moteur de simulation basé sur l'eau</p>
         </div>
 
         <div class="advantage-item">
@@ -556,7 +740,13 @@
         <p><strong>Script (1 min):</strong></p>
         <p>Pourquoi AquaCrop pour la composante culture ?</p>
 
-        <p>Regardons l'architecture : AquaCrop prend des entrées simples – climat (ETo), paramètres
+        <p> Puisque AquaCrop à un moteur de simulation basée sur la productivité de l'eau. </p>
+        <p>Il prend en compte les besoins en eau des cultures et optimise l'utilisation de l'eau à chaque étape.</p>
+
+        <p>De plus, il nécessite peu de données d'entrée, ce qui nous permet de l'utiliser facilement dans divers
+            contextes.</p>
+
+        <!-- <p>Regardons l'architecture : AquaCrop prend des entrées simples – climat (ETo), paramètres
             de culture et de sol, profil d'humidité θ(z,t) fourni par Richards, et gestion culturale.
             Il simule alors les processus clés : croissance de la canopée, transpiration avec stress
             hydrique Ks,x, production de biomasse et allocation.</p>
@@ -567,7 +757,7 @@
             20 paramètres robustes au lieu de plus de 100 pour des modèles mécanistes complets.
             Ensuite, son couplage hydrique natif : il interface directement avec le profil θ(z,t)
             via le coefficient de stress Ks,x. Enfin, il a été validé par la FAO sur plus de 1000
-            sites avec multiples cultures et climats. C'est un standard international.</p>
+            sites avec multiples cultures et climats. C'est un standard international.</p> -->
     </aside>
 </section>
 
@@ -669,16 +859,31 @@
                     (ex: Kanda, 2021 : HYDRUS-2D → AquaCrop)
                     <br>
                     <span style="color: #065f46; font-size: 0.9em; display: block; margin-top: 8px;">
-                        → Le couplage bidirectionnel permet un <strong>dialogue permanent</strong> entre les deux modèles
+                        → Le couplage bidirectionnel permet un <strong>dialogue permanent</strong> entre les deux
+                        modèles
                     </span>
                 </p>
             </div>
         </div>
 
         <aside class="notes">
-            Enfin, pour relier ces deux modèles, nous avons adopté une approche de couplage bidirectionnel.
+            Enfin, pourquoi le couplage bidirectionnel ?
+
+            Parce que, dans la réalité, le sol influence la plante ET la plante influence rétroactivement le sol.
             <br><br>
-            En effet, de nombreuses approches dans la littérature ont tenté de coupler les modèles de croissance
+            En effet, si l'on cherche à modéliser de manière fine la dynamique sol-plante, il faut tenir compte du fait
+            que l'eau une fois infiltré dans le sol n'est pas toujours prélevée de manière uniforme par la plante.
+            <br><br>
+            La plante, à travers ses racines, exerce une demande en eau dictée par sa physiologie et les conditions
+            atmosphériques :
+            <br><br>
+            Cette rétroaction modifie la distribution de l'humidité dans le sol, ce qui doit à priori rétroagir sur
+            l'infiltration.
+            <br><br>
+            L'idée du couplage bidirectionnel est donc de permettre un échange continu entre les deux modèles à chaque
+            pas de temps afin de capturer cette interaction dynamique.
+            <br><br>
+            <!-- En effet, de nombreuses approches dans la littérature ont tenté de coupler les modèles de croissance
             végétale et des solveurs basés sur l'équation de Richards ! C'est le cas par exemple de Kanda en 2021
             qui a couplé le solveur HYDRUS 2D avec le modèle AquaCrop. Cependant la communication entre ces deux
             modèles est souvent unidirectionnelle : le modèle du sol fournit l'humidité, et le modèle de culture
@@ -689,13 +894,13 @@
             Un couplage bidirectionnel permet donc à AquaCrop d'ajuster la demande en eau selon la croissance
             réelle de la plante, tandis que Richards met à jour en retour l'état hydrique du sol selon cette demande.
             <br><br>
-            C'est ce dialogue permanent entre les deux modèles qui rend la simulation plus cohérente physiquement.
+            C'est ce dialogue permanent entre les deux modèles qui rend la simulation plus cohérente physiquement. -->
         </aside>
     </section>
 
 
     <!-- B5v: Avantages du couplage bidirectionnel (verticale) -->
-    <section data-background-color="#fbfbfb">
+    <!-- <section data-background-color="#fbfbfb">
         <h6 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 30px;">
             Avantages du couplage bidirectionnel
         </h6>
@@ -727,10 +932,10 @@
                     en conditions réelles
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- Schéma de convergence -->
-        <div class="fragment fade-in" data-fragment-index="1" style="margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); 
+    <!-- Schéma de convergence -->
+    <!-- <div class="fragment fade-in" data-fragment-index="1" style="margin-top: 40px; padding: 25px; background: #f0fdf4; 
                                 border-radius: 12px; border-left: 5px solid #10b981;">
             <div style="display: flex; align-items: center; gap: 20px;">
                 <div style="font-size: 3em;">✓</div>
@@ -756,7 +961,7 @@
             <br><br>
             Au final, nous obtenons des simulations plus stables, précises et représentatives des processus réels.
         </aside>
-    </section>
+    </section> -->
 
 </section>
 
@@ -795,12 +1000,13 @@
         </div>
     </div> -->
 
-    <!-- Schéma de convergence -->
-    <!-- <div class="fragment fade-in" data-fragment-index="4" style="margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); 
+<!-- Schéma de convergence -->
+<!-- <div class="fragment fade-in" data-fragment-index="4" style="margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); 
                                 border-radius: 12px; border-left: 5px solid #10b981;">
         <div style="display: flex; align-items: center; gap: 20px;">
             <div style="font-size: 3em;">✓</div>
             <div style="flex: 1;">
+                <p style="margin: 0; font-size: 0.75em; color: #065f46;
                 <p style="margin: 0; font-size: 0.75em; color: #065f46; font-weight: 600; line-height: 1.6;">
                     <strong>Résultat :</strong> Simulations plus <strong>stables</strong>,
                     <strong>précises</strong> et <strong>représentatives</strong>
@@ -810,7 +1016,7 @@
         </div>
     </div> -->
 
-    <!-- <aside class="notes">
+<!-- <aside class="notes">
         Ce couplage bidirectionnel présente trois avantages majeurs.
         <br><br>
         Premièrement, la cohérence physique : les échanges sol-plante sont mutuellement ajustés à chaque pas de

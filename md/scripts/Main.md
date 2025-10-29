@@ -7,10 +7,16 @@
 
 > **Excellence Monsieur le Président du Jury,  
 > Honorables membres du Jury,  
-> Mesdames et Messieurs, bonjour.**
+> Chers Parents, Amis et Invités, bienvenus à cette soutenance qui marque la fin de notre formation en Génie Mathématiques et Modélisation, option  Modélisation et Simulation Numérique.
+> Nous ne saurions commencer à exposé ce travail sans présenter nos vifs et sincères remerciements à son excellence Monsieur le président du jury et vous Honorables membres du jury, pour avoir accepter de consacrer votre temps, pour évaluer la qualité de ce travail.
+
+> Excellence Monsieur le Président du Jury, Honorables membres du jury, le travail que nous avons l'honneur de soumettre à votre appréciation est intitulé : 
+> Modélisation ....
+> Il a été supervisé par le Dr Christian Akowanou et encadré par le Dr Jamal Adetola
+> **
 > 
-> ~~C’est un immense plaisir pour moi de vous présenter aujourd’hui les travaux que j’ai menés dans le cadre de mon mémoire intitulé :~~  
-> ~~**« Développement d’un modèle couplé Richards–AquaCrop pour l’optimisation de l’irrigation au Bénin. »**~~
+### 🟡 **2. Jumeau numérique**
+> 
 > 
 > Permettez-moi de commencer cette présentation en vous vendant un rêve, notre rêve. 
 > Alors, imaginez !
@@ -23,15 +29,16 @@
 > - et où les organismes de conseil agricoles ou les instituts de recherche peuvent **tester virtuellement de nouvelles stratégies agricoles** avant de les déployer en milieur réel sur le terrain.
 >     
 > 
-> Ce monde, Excellence Monsieur le Président du Jury, loin d’être utopique, repose sur une technologie émergente : **le jumeau numérique agricole**.
+> Ce monde, Excellence Monsieur le Président du Jury, loin d’être un rêve impossible repose sur une technologie émergente : **un jumeau numérique agricole**.
 > 
 > Un jumeau numérique, c’est une **réplique virtuelle du système sol–plante–atmosphère**, capable de **simuler, prédire et optimiser** les décisions agricoles en temps réel, à partir de données collectées sur le terrain ou issues de sources globales.
 > 
-> L’objectif ultime d’un tel outil est de rapprocher la simulation du réel, pour mieux comprendre et piloter les systèmes agricoles, particulièrement dans les zones vulnérables comme les nôtres.
+> L’objectif ultime d’un tel outil est de rapprocher la simulation du réel, pour mieux comprendre et piloter les systèmes agricoles, particulièrement dans les zones vulnérables comme les nôtres. 
+> L'architecture illustrée à la figure suivante, issue des travaux de Zhang et al 2025, illustre l'interaction bidirectionnelle entre les entités physiques et les entités virtuelles. Plus concrètement, les entités physiques représentent ici un champ réel entouré de capteurs IoT, de drones et de sondes pour les mesures terrains. Ces données sont ensuite stockées, analysées et traités dans du cloud afin d'être utilisées pour produire une représentation virtuelle du champ et de ses processus !
+> Les échanges bidirectionnels se font donc pour améliorer et évaluer  la représentation virtuelle du système.
 
 ---
 
-### 🟡 **2. Contexte scientifique (≈ 2 min)**
 
 > Ces dernières années, les travaux scientifiques ont montré un fort engouement autour des jumeaux numériques agricoles.
 > 

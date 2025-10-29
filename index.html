@@ -1,127 +1,127 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modèle Couplé Richards-AquaCrop - Soutenance de Thèse</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modèle Couplé Richards-AquaCrop - Soutenance de Thèse</title>
 
-    <!-- Reveal.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+        <!-- Reveal.js CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
 
-    <!-- Code highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/dracula.css">
+        <!-- Code highlighting -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/dracula.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/custom.css">
 
-    <!-- Chart.js for interactive graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+        <!-- Chart.js for interactive graphs -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    <!-- D3.js for advanced visualizations -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-</head>
+        <!-- D3.js for advanced visualizations -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
 
-<body>
-    <div class="reveal">
-        <div class="slides">
-            <!-- Les slides seront chargées dynamiquement depuis le dossier slides/ -->
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- Les slides seront chargées dynamiquement depuis le dossier slides/ -->
+            </div>
         </div>
-    </div>
 
-    <!-- Reveal.js Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+        <!-- Reveal.js Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
 
-    <!-- Custom Scripts -->
-    <script src="js/animations.js"></script>
-    <script src="js/charts.js"></script>
+        <!-- Custom Scripts -->
+        <script src="js/animations.js"></script>
+        <script src="js/charts.js"></script>
 
 
-    <!-- Chargement des slides -->
-    <script>
-        // Liste des fichiers de slides dans l'ordre de présentation
-        const slideFiles = [
-            'slides/intro.html',
-            'slides/choix_scientifiques.html',
-            'slides/methodologie.html',
-            'slides/results.html',
-            'slides/conclusion.html'
-        ];
+        <!-- Chargement des slides -->
+        <script>
+            // Liste des fichiers de slides dans l'ordre de présentation
+            const slideFiles = [
+                'slides/intro.html',
+                'slides/choix_scientifiques.html',
+                'slides/methodologie.html',
+                'slides/results.html',
+                'slides/conclusion.html'
+            ];
 
-        // Fonction pour charger un fichier HTML
-        async function loadSlide(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            // Fonction pour charger un fichier HTML
+            async function loadSlide(url) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return await response.text();
+                } catch (error) {
+                    console.error(`Erreur lors du chargement de ${url}:`, error);
+                    return `<section><h2 style="color: red;">Erreur de chargement</h2><p>Impossible de charger: ${url}</p></section>`;
                 }
-                return await response.text();
-            } catch (error) {
-                console.error(`Erreur lors du chargement de ${url}:`, error);
-                return `<section><h2 style="color: red;">Erreur de chargement</h2><p>Impossible de charger: ${url}</p></section>`;
             }
-        }
 
-        // Charger toutes les slides et initialiser Reveal.js
-        async function loadAllSlides() {
-            const slidesContainer = document.querySelector('.reveal .slides');
-            
-            // Charger tous les fichiers en parallèle
-            const slideContents = await Promise.all(
-                slideFiles.map(file => loadSlide(file))
-            );
-            
-            // Insérer le contenu dans le conteneur
-            slidesContainer.innerHTML = slideContents.join('\n');
-            
-            // Initialiser Reveal.js après le chargement
-            Reveal.initialize({
-                hash: true,
-                controls: true,
-                progress: true,
-                center: true,
-                transition: 'slide',
-                transitionSpeed: 'default',
-                backgroundTransition: 'fade',
-                slideNumber: true,
+            // Charger toutes les slides et initialiser Reveal.js
+            async function loadAllSlides() {
+                const slidesContainer = document.querySelector('.reveal .slides');
 
-                // Math plugin for equations
-                math: {
-                    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-                    config: 'TeX-AMS_HTML-full'
-                },
+                // Charger tous les fichiers en parallèle
+                const slideContents = await Promise.all(
+                    slideFiles.map(file => loadSlide(file))
+                );
 
-                plugins: [
-                    RevealMarkdown,
-                    RevealHighlight,
-                    RevealNotes,
-                    RevealMath.MathJax3,
-                    RevealZoom
-                ]
-            });
+                // Insérer le contenu dans le conteneur
+                slidesContainer.innerHTML = slideContents.join('\n');
 
-            // Initialiser les animations et graphiques après que Reveal soit prêt
-            Reveal.on('ready', event => {
-                if (typeof initializeCharts === 'function') {
-                    initializeCharts();
-                }
-                if (typeof setupAnimations === 'function') {
-                    setupAnimations();
-                }
-            });
-        }
+                // Initialiser Reveal.js après le chargement
+                Reveal.initialize({
+                    hash: true,
+                    controls: true,
+                    progress: true,
+                    center: true,
+                    transition: 'slide',
+                    transitionSpeed: 'default',
+                    backgroundTransition: 'fade',
+                    slideNumber: true,
 
-        // Lancer le chargement au chargement de la page
-        window.addEventListener('DOMContentLoaded', loadAllSlides);
-    </script>
-</body>
+                    // Math plugin for equations
+                    math: {
+                        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+                        config: 'TeX-AMS_HTML-full'
+                    },
+
+                    plugins: [
+                        RevealMarkdown,
+                        RevealHighlight,
+                        RevealNotes,
+                        RevealMath.MathJax3,
+                        RevealZoom
+                    ]
+                });
+
+                // Initialiser les animations et graphiques après que Reveal soit prêt
+                Reveal.on('ready', event => {
+                    if (typeof initializeCharts === 'function') {
+                        initializeCharts();
+                    }
+                    if (typeof setupAnimations === 'function') {
+                        setupAnimations();
+                    }
+                });
+            }
+
+            // Lancer le chargement au chargement de la page
+            window.addEventListener('DOMContentLoaded', loadAllSlides);
+        </script>
+    </body>
 
 </html>
