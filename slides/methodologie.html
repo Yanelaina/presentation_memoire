@@ -669,7 +669,10 @@ SECTION MÉTHODOLOGIE
     </div>
 
     <aside class="notes">
-        Pipeline automatisé : ERA5-Land pour climat, SoilGrids pour sol, fonctions pédotransfert (van Genuchten,
-        Rosetta) pour paramètres hydrauliques. Reproductible mondialement.
+        Pour alimenter notre modèle, on a développé un pipeline d'extraction automatisé. On part des données brutes
+        ERA5-Land pour le climat et SoilGrids pour les propriétés du sol. L'étape cruciale est le prétraitement où on
+        applique les fonctions de pédotransfert, notamment van Genuchten et Rosetta, pour transformer les données de
+        texture en paramètres hydrauliques utilisables par Richards. On génère aussi tous les paramètres nécessaires
+        pour AquaCrop. Le tout est complètement automatisé et reproductible pour n'importe quelle zone du globe.
     </aside>
 </section>
