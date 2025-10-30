@@ -147,6 +147,8 @@
     </p>
 
     <aside class="notes">
+        Excellence Monsieur le Président du Jury,
+        Honorables membres du Jury,
 
         Permettez-moi de commencer cette présentation en vous vendant un rêve, notre rêve.
         Alors, imaginez !
@@ -353,14 +355,14 @@
             <br> <br>
             Le cœur du système, c'est cette **boucle d'échange bidirectionnelle**. Le réel nourrit le virtuel avec des
             données, et
-            le virtuel informe le réel avec des prédictions et des recommandations. C'est ce dialogue permanent qui rend
-            le jumeau
-            numérique puissant.
+            le virtuel informe le réel avec des prédictions et des recommandations.
+            <!-- C'est ce dialogue permanent qui rend le jumeau
+            numérique puissant. -->
 
             <br> <br>
-            Une question toute naturelle apparaît dès lors ! Comment le virtuel reconstruit ou simule le réel à base des
-            données
-            collectées du réel ?
+            Une question toute naturelle apparaît dès lors ! Comment arrive t-on à simuler ou reproduire virtuellement
+            les processus d'une parcelle ou d'un champ ?
+
 
         </aside>
     </section>
@@ -439,10 +441,7 @@
         </div>
 
         <aside class="notes">
-            Les travaux récents, notamment les revues de Purcell & Neubauer 2023 et Zhang et al. 2025 nous éclaire et
-            nous informent
-            que les simulations effectuées par le virtuel pour reconstituer le réel (donc, un vrai champ par exemple),
-            s'appuient
+            Selon les revues de Purcell & Neubauer 2023 et Zhang et al. 2025, cette représentation virtuelle s'appuie
             sur deux volets complémentaires.
             <br><br>
             D'une part, le volet analytique, qui utilise l'intelligence artificielle, l'assimilation de données et le
@@ -453,15 +452,11 @@
             équations
             différentielles – pour modéliser les processus de croissance ou le transport de l'eau.
             <br><br>
-            Or, la majorité des avancées se concentrent aujourd’hui sur le premier volet, i.e, l'acquisition, l’analyse
-            et la
-            prédiction à partir de données , souvent au détriment du second.
+            Or, la majorité des avancées se concentrent aujourd’hui sur le volet analytique, au détriment du volet
+            physique.
             <br><br>
-            Pourtant, c’est la **base physique** qui détermine la fiabilité d’un jumeau numérique. Sans une bonne
-            compréhension du
-            **mouvement de l’eau dans le sol** ou des **échanges hydriques entre la plante et son environnement**, les
-            prédictions
-            restent fragiles.
+            Pourtant, c’est la **base physique** qui détermine la fiabilité d’un jumeau numérique.
+
         </aside>
     </section>
 
@@ -560,23 +555,18 @@
         </div>
 
         <aside class="notes">
-            C'est d'ailleurs ce que clament Jarvis et al, dans leur excellent article "The Elephant in The Room" publié
-            en 2022, où
-            ils soulignent que la modélisation physique du continuum sol–plante–atmosphère demeure **le grand
-            oublié** des
+            C'est d'ailleurs ce que clament Jarvis et al lorsqu'ils affirment que la modélisation physique du continuum
+            sol–plante–atmosphère demeure **le grand oublié** des
             développements numériques récents. Ils notent que les progrès actuels tels que décrits, délèguent la
             physique aux
             modèles existants, qui pour le coup, sont majoritairement empiriques et simplifient la dynamique hydrique.
             <br> <br>
-            Selon eux, l'argument de la complexité algorithmique lié à une représentation plus fidèle de la physique de
-            l'infiltration de l'eau et de son transport dans le sol, qui a conduit précédemment au développement de ces
+            Selon eux, l'argument de la complexité algorithmique qui a conduit précédemment au développement de ces
             modèles
-            empiriques ne tient plus face aux progrès actuels en méthode numérique et aux capacités actuelles de calcul.
+            empiriques ne tient plus face aux progrès actuels en méthode numérique.
             <br> <br>
-            Ce constat, amplifié par le contexte qui est le nôtre au Bénin, où l’accès aux réseaux de capteurs, aux
-            drones ou aux
-            observations de terrain est restreint nous a conduits donc à recentrer notre développement sur le fondement
-            physique de
+            Ce constat, amplifié par le contexte qui est le nôtre au Bénin, où nous ne disposons pas de ces données nous
+            a conduits donc à recentrer notre développement sur le fondement physique de
             la dynamique hydrique.
         </aside>
     </section>
@@ -632,6 +622,8 @@
     </div>
 
     <aside class="notes">
+        Ainsi, notre problématique centrale s'énonce :
+        <br><br>
         De nombreuses questions découlent de cette problématique centrale.
         <br><br>
         Pourquoi l'irrigation goutte-à-goutte ?
@@ -673,8 +665,9 @@
     <aside class="notes">
         Notre objectif principal est de développer et valider un modèle de simulation numérique basé sur un couplage
         bidirectionnel entre Richards et AquaCrop, pour prédire dynamiquement les rendements sous irrigation
-        goutte-à-goutte, même avec des données limitées. Voyons maintenant les trois hypothèses qui structurent
-        cette démarche.
+        goutte-à-goutte, même avec des données limitées.
+        <br><br>
+        Il s'articule autour de trois hypothèses complémentaires.
     </aside>
 </section>
 
@@ -703,8 +696,7 @@
     </div>
 
     <aside class="notes">
-        Notre première hypothèse concerne le couplage bidirectionnel entre un solveur Richards 2D pour la dynamique
-        du sol et AquaCrop pour la croissance de la plante. Nous postulons que ce couplage permet de simuler avec
+        Notre première hypothèse est qu'un couplage bidirectionnel Richards-AquaCrop permet de simuler avec
         précision la distribution spatiale de l'humidité et la réponse culturale en irrigation localisée.
     </aside>
 </section>
@@ -735,9 +727,8 @@
     </div>
 
     <aside class="notes">
-        La deuxième hypothèse porte sur l'exploitation de données globales. Nous pensons que les données ERA5 et
-        SoilGrids, bien qu'imparfaites, peuvent fournir une base suffisante pour paramétrer et calibrer notre
-        modèle couplé dans un contexte de données limitées, avec une précision acceptable pour l'aide à la
+        La deuxième hypothèse est que l'utilisation de données globales fournit une base suffisante pour paramétrer et
+        calibrer un modèle couplé dans un contexte de données limitées, avec une précision acceptable pour l'aide à la
         décision agricole.
     </aside>
 </section>
@@ -768,10 +759,9 @@
     </div>
 
     <aside class="notes">
-        Enfin, notre troisième hypothèse concerne la supériorité opérationnelle de notre approche. Nous postulons
-        qu'une simulation couplée et calibrée dynamiquement peut fournir des recommandations d'irrigation et des
-        prévisions de rendement plus fiables que les approches empiriques ou séquentielles actuellement utilisées
-        au Bénin.
+        Enfin, la troisième hypothèse est qu'une approche de simulation couplée et calibrée dynamiquement fournit des
+        recommandations d'irrigation et des prévisions de rendement plus fiables que les approches empiriques ou
+        séquentielles.
     </aside>
 </section>
 

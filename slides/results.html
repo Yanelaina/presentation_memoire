@@ -77,7 +77,9 @@ SECTION RÉSULTATS
     </div>
 
     <aside class="notes">
-        Notre validation s'appuie sur 350 échantillons fournis par l'INRAB.
+        La première étape de notre validation à consister à croiser les données de SoilGrids avec les échantillons de
+        terrain réels afin d'évaluer la précision de SoilGrids.
+        Pour cela, notre validation s'appuie sur 350 échantillons fournis par l'INRAB.
         Point critique: seulement 41% sont géoréférencés, ce qui limite la validation spatiale.
         Les sols sont très sableux avec un drainage rapide, justifiant pleinement notre approche de modélisation fine.
     </aside>
@@ -259,27 +261,27 @@ PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
     </aside>
 </section>
 
-<!-- SLIDE R6: Défis 2D et Stratégies de Stabilisation -->
+<!-- SLIDE R6: Défis 2D axisymétrique -->
 <section data-background-color="#fbfbfb">
     <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 25px;">
         Extension 2D axisymétrique – Défis numériques
     </h4>
 
-    <p style="font-size: 0.5em; text-align: center; margin: 10px auto; max-width: 900px; color: #333;">
-        Difficultés de convergence et stratégies d'amélioration envisagées
+    <p style="font-size: 0.55em; text-align: center; margin: 10px auto 25px; max-width: 900px; color: #333;">
+        Difficultés de convergence rencontrées avec le solveur non linéaire
     </p>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; font-size: 0.5em;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-top: 30px; font-size: 0.58em;">
 
         <!-- Colonne gauche: Symptômes et Causes -->
         <div>
             <!-- Symptômes -->
-            <div class="fragment fade-in" data-fragment-index="1" style="background: #fff1f2; 
-                   padding: 20px; border-radius: 12px; border: 2px solid #fb7185; margin-bottom: 25px;">
-                <h6 style="color: #be123c; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div style=" 
+                   padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+                <h6 style="color: #be123c; margin-top: 0; margin-bottom: 15px; font-size: 1.15em;">
                     ⚠️ Symptômes observés
                 </h6>
-                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #7f1d1d;">
+                <ul style="margin: 0; padding-left: 20px; line-height: 2.0; color: #7f1d1d;">
                     <li>Résidus Newton > seuil (10<sup>-6</sup>)</li>
                     <li>Oscillations non physiques au front</li>
                     <li>Divergence progressive de la solution</li>
@@ -288,12 +290,12 @@ PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
             </div>
 
             <!-- Causes identifiées -->
-            <div class="fragment fade-in" data-fragment-index="2" style="background: #fffbeb; 
-                   padding: 20px; border-radius: 12px; border: 2px solid #facc15;">
-                <h6 style="color: #b45309; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div style=" 
+                   padding: 25px; border-radius: 12px;">
+                <h6 style="color: #b45309; margin-top: 0; margin-bottom: 15px; font-size: 1.15em;">
                     🔍 Causes identifiées
                 </h6>
-                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #78350f;">
+                <ul style="margin: 0; padding-left: 20px; line-height: 2.0; color: #78350f;">
                     <li><strong>Forte non-linéarité</strong> de K(ψ) et C(ψ)</li>
                     <li><strong>Sensibilité</strong> aux conditions initiales</li>
                     <li><strong>Pas de temps initial</strong> trop grand</li>
@@ -302,47 +304,55 @@ PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
             </div>
         </div>
 
-        <!-- Colonne droite: Stratégies -->
+        <!-- Colonne droite: État actuel -->
         <div>
-            <!-- Stratégies envisagées -->
-            <div class="fragment fade-up" data-fragment-index="3" style="background: #eef2ff; 
-                   padding: 20px; border-radius: 12px; border: 2px solid #818cf8; margin-bottom: 25px;">
-                <h6 style="color: #3730a3; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
-                    🛠️ Stratégies de stabilisation
-                </h6>
-                <ol style="margin: 0; padding-left: 22px; line-height: 1.8; color: #1e1b4b;">
-                    <li><strong>Continuation pseudo-transitoire</strong> pour amortir la non-linéarité</li>
-                    <li><strong>Adaptation dynamique</strong> du pas de temps Δt</li>
-                    <li><strong>Régularisation de K(ψ)</strong> via coupure logarithmique</li>
-                    <li><strong>Préconditionnement</strong> du système linéaire</li>
-                </ol>
-            </div>
-
-            <!-- État actuel -->
-            <div class="fragment fade-up" data-fragment-index="4" style="background: #f0fdf4; 
-                   padding: 20px; border-radius: 12px; border: 2px solid #4ade80;">
-                <h6 style="color: #15803d; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+            <div style=" 
+                   padding: 25px; border-radius: 12px; border: 2px solid #4ade80; height: 65%; margin-top: 60px;">
+                <h6 style="color: #15803d; margin-top: 0; margin-bottom: 20px; font-size: 1.15em; text-align: center;">
                     ✅ État actuel du développement
                 </h6>
-                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #064e3b;">
-                    <li>Structure du code: <strong>✅ Fonctionnelle</strong></li>
-                    <li>Cohérence algorithmique: <strong>✅ Validée</strong></li>
-                    <li>Tests unitaires interfaces: <strong>✅ Passés</strong></li>
-                    <li>Convergence complète: <strong>⏳ En cours</strong></li>
-                </ul>
+
+                <div style="display: grid; gap: 18px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #064e3b;">Structure du code</span>
+                            <strong style="color: #15803d;">✅ Fonctionnelle</strong>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #064e3b;">Cohérence algorithmique</span>
+                            <strong style="color: #15803d;">✅ Validée</strong>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #064e3b;">Tests unitaires interfaces</span>
+                            <strong style="color: #15803d;">✅ Passés</strong>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #064e3b;">Convergence complète</span>
+                            <strong style="color: #d97706;">⏳ En cours</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Conclusion -->
-    <div class="fragment fade-up" data-fragment-index="5"
-        style="background: #eff6ff; 
-           padding: 15px 20px; border-radius: 10px; border: 2px solid #60a5fa; 
-           font-size: 0.48em; margin-top: 25px; max-width: 950px; margin-left: auto; margin-right: auto; text-align: center;">
-        <strong style="color: #1e3a8a;">🎯 Framework robuste:</strong>
-        L'architecture logicielle et algorithmique est validée. Les ajustements numériques constituent des pistes
-        solides pour finaliser la convergence 2D.
-    </div>
+    <!-- <div class="fragment fade-up" data-fragment-index="4" 
+    style="background: #eff6ff; 
+           padding: 18px 25px; border-radius: 10px; border: 2px solid #60a5fa; 
+           font-size: 0.55em; margin-top: 30px; max-width: 950px; margin-left: auto; margin-right: auto; text-align: center;">
+   <strong style="color: #1e3a8a;">🎯 Infrastructure validée:</strong> 
+   L'architecture logicielle et algorithmique est robuste. Seuls des ajustements numériques fins sont nécessaires pour finaliser la convergence 2D.
+</div> -->
 
     <aside class="notes">
         L'extension au 2D axisymétrique, nécessaire pour modéliser le goutte-à-goutte, pose des défis numériques. Les
@@ -364,7 +374,7 @@ PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
     </p>
 
     <!-- Tableau d'état avec code couleur -->
-    <div class="fragment fade-in" data-fragment-index="1" style="font-size: 0.52em; margin-top: 30px;">
+    <div style="font-size: 0.52em; margin-top: 30px;">
         <table style="width: 100%; border-collapse: collapse; margin: 0 auto; max-width: 900px;">
             <thead style="background: linear-gradient(135deg, #0B3D5B 0%, #1e5a7b 100%); color: white;">
                 <tr>
@@ -435,30 +445,30 @@ PARTIE 2: VALIDATION NUMÉRIQUE DES IMPLÉMENTATIONS
     </div>
 
     <!-- Synthèse -->
-    <div class="fragment fade-up" data-fragment-index="2"
-        style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 35px; font-size: 0.5em;">
+    <!-- <div class="fragment fade-up" data-fragment-index="2"
+   style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 35px; font-size: 0.5em;">
 
-        <div style="background: #f0fdf4; 
-               padding: 20px; border-radius: 12px; border: 2px solid #4ade80;">
-            <h6 style="color: #15803d; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
-                ✅ Composants validés
-            </h6>
-            <p style="margin: 0; line-height: 1.8; color: #064e3b;">
-                <strong>Infrastructure complète opérationnelle:</strong> extraction de données, interfaces logicielles,
-                et validation 1D du solveur Richards avec erreur < 2%. </p>
-        </div>
+   <div style="
+               padding: 20px; border-radius: 12px;">
+       <h6 style="color: #15803d; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+           ✅ Composants validés
+       </h6>
+       <p style="margin: 0; line-height: 1.8; color: #064e3b;">
+           <strong>Infrastructure complète opérationnelle:</strong> extraction de données, interfaces logicielles,
+           et validation 1D du solveur Richards avec erreur < 2%. </p>
+   </div>
 
-        <div style="background: #fffbeb; 
-               padding: 20px; border-radius: 12px; border: 2px solid #facc15;">
-            <h6 style="color: #b45309; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
-                ⚠️ Point de blocage
-            </h6>
-            <p style="margin: 0; line-height: 1.8; color: #78350f;">
-                <strong>Extension 2D axisymétrique:</strong> difficultés de convergence du solveur non linéaire
-                nécessitant des ajustements numériques supplémentaires.
-            </p>
-        </div>
-    </div>
+   <div style=" 
+               padding: 20px; border-radius: 12px;">
+       <h6 style="color: #b45309; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">
+           ⚠️ Point de blocage
+       </h6>
+       <p style="margin: 0; line-height: 1.8; color: #78350f;">
+           <strong>Extension 2D axisymétrique:</strong> difficultés de convergence du solveur non linéaire
+           nécessitant des ajustements numériques supplémentaires.
+       </p>
+   </div>
+</div> -->
 
     <aside class="notes">
         Bilan de la validation numérique: les briques fondamentales sont validées. Le pipeline d'extraction fonctionne,

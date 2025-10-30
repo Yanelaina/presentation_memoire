@@ -247,17 +247,17 @@
         </div>
 
         <aside class="notes">
-            Nous avons choisi de centrer notre étude sur l'irrigation localisée, en particulier le goutte-à-goutte,
-            car c'est la technique la plus efficiente pour l'usage de l'eau en agriculture.
+            Excellence Monsieur le Président du Jury, Honorables membres du Jury, nous avons choisi de centrer notre
+            étude sur l'irrigation localisée, car c'est la technique la plus efficiente pour l'usage de l'eau en
+            agriculture.
             <br><br>
-            Contrairement aux méthodes par aspersion ou inondation, où une grande partie de l'eau se perd par
-            évaporation ou ruissellement, le goutte-à-goutte permet d'atteindre, selon KARIMOV et al., 2025,
+            Contrairement aux méthodes par aspersion ou inondation, le goutte-à-goutte permet d'atteindre, selon KARIMOV
+            et al., 2025,
             plus de 90 % d'efficacité, en apportant l'eau de manière localisée et précise, point par point autour de
             chaque
             goutteur comme illustré ci-après.
             <br><br>
-            Mais cette efficacité a un prix : elle impose une représentation fine de la dynamique de l'eau dans le sol,
-            car l'infiltration ne se fait plus de manière uniforme, mais autour de chaque goutteur.
+            Mais cette efficacité a un prix : elle impose une représentation fine de la dynamique de l'eau dans le sol.
         </aside>
     </section>
 
@@ -368,8 +368,8 @@
             Cette animation montre clairement la différence fondamentale entre les deux approches.
             <br><br>
             À gauche, le modèle bucket traite le sol comme un réservoir homogène où l'eau se répartit uniformément
-            dans chaque couche. C'est une simplification pratique mais qui ne correspond pas à la réalité de
-            l'irrigation localisée.
+            dans chaque couche.
+
             <br><br>
             À droite, le bulbe d'humectation montre que l'eau crée un gradient radial d'humidité, avec des zones
             très humides près du goutteur et des zones sèches plus éloignées.
@@ -430,17 +430,26 @@
 
         <aside class="notes">
             L'équation de Richards dérive donc de deux principes physiques fondamentaux appliqués. Le premier, la loi de
-            Darcy établit que le volume d’eau par unité de surface par unité de temps (le flux volumétrique) est
-            proportionnel au gradient du potentiel hydraulique total H via la relation
+            Darcy établit
+            que le flux d’eau dans le sol est proportionnel au gradient du potentiel hydraulique total.
+            En d’autres termes, l’eau s’écoule toujours des zones de fort potentiel vers les zones de faible potentiel,
+            selon la
+            pente de ce potentiel.
             <br><br>
-            Le second principe est la conservation de la masse, qui stipule que la variation temporelle de la teneur en
-            eau volumique θ dans un volume élémentaire est égale à la divergence négative du flux plus un terme source S
-            représentant les prélèvements racinaires ou les apports d'eau.
+            Le second principe est la conservation de la masse Question exprime que la variation de la teneur en eau
+            dans un petit volume de sol est égale à la différence entre ce qui entre, ce qui sort, et ce qui est prélevé
+            par les racines ou ajouté par l’irrigation.
+            <!-- il exprime que la variation de la teneur en eau dans un petit volume de sol est égale à la différence entre ce qui
+            entre, ce qui sort, et ce qui est prélevé par les racines ou ajouté par l’irrigation. -->
+
             <br><br>
             En combinant ces deux principes, on obtient l'équation de Richards sous sa forme mixte :
             <br><br>
-            Sous sa forme 2D axisymétriquese en coordonnées cylindriques (r, z), l'équation de Richards devient :
-            Vous pouvez ainsi remarquer les termes radiaux et verticaux qui capturent
+
+            Dans notre cas, nous l’exprimons en coordonnées cylindriques (r, z),
+            pour tenir compte de la symétrie autour du goutteur.
+            <br> <br>
+            On peut remarquer l'apparition des termes radiaux et verticaux qui capturent
             la diffusion de l'eau dans toutes les directions.
             <br><br>
         </aside>
@@ -456,7 +465,7 @@
             style="font-size: 0.6em; color: #475569; text-align: center; margin-bottom: 25px; max-width: 950px; margin-left: auto; margin-right: auto; line-height: 1.6;">
             La complexité de l'équation de Richards réside dans les <strong style="color: #ef4444;">relations
                 constitutives fortement non-linéaires</strong>
-            qui relient teneur en eau \(\theta\), potentiel de pression \(h\), et conductivité hydraulique \(K\).
+            qui relient teneur en eau , potentiel de pression, et conductivité hydraulique.
         </p>
 
         <!-- Modèle van Genuchten-Mualem -->
@@ -555,211 +564,24 @@
             d'eau le sol peut retenir en fonction de la succion appliquée. Les paramètres alpha et n caractérisent
             la structure poreuse du sol.
             <br><br>
-            Deuxièmement, la fonction de conductivité hydraulique. Et c'est ici que la non-linéarité devient
-            vraiment dramatique : la conductivité K peut varier de 6 à 10 ordres de grandeur entre un sol sec
-            et un sol saturé ! Un sol sableux saturé peut avoir K = 10^-4 m/s, mais à peine désaturé, K tombe
-            à 10^-10 m/s.
+            Deuxièmement, la fonction de conductivité hydraulique qui peut varier de manière drastique en fonction de la
+            teneur
+            en eau, induisant une complexité numérique importante.
+
+            <!-- la conductivité K peut varier de 6 à 10 ordres de grandeur entre un sol sec
+                    et un sol saturé ! Un sol sableux saturé peut avoir K = 10^-4 m/s, mais à peine désaturé, K tombe
+                    à 10^-10 m/s. -->
             <br><br>
             Ces variations extrêmes rendent l'équation de Richards très difficile à résoudre numériquement.
-            Il faut des schémas implicites sophistiqués, des pas de temps adaptatifs, et une grande attention
-            aux détails numériques pour éviter les oscillations et garantir la convergence.
-            <br><br>
-            C'est précisément cette complexité qui justifie l'utilisation de solveurs numériques robustes et
-            de méthodes d'éléments finis adaptées.
+            <!-- Il faut des schémas implicites sophistiqués, des pas de temps adaptatifs, et une grande attention
+                    aux détails numériques pour éviter les oscillations et garantir la convergence. -->
+            <!-- C'est précisément cette complexité qui justifie l'utilisation de solveurs numériques robustes et
+                    de méthodes d'éléments finis adaptées. -->
         </aside>
     </section>
 </section>
 
 
-<!-- Slide B4: Pourquoi AquaCrop (horizontal) -->
-<section data-background-color="#fbfbfb">
-    <h4 style="color: #0B3D5B; border-bottom: 2px solid #6B8E23; padding-bottom: 5px;">
-        AquaCrop
-    </h4>
-
-    <p style="font-size: 0.8em; color: #475569; max-width: 850px; margin: 20px auto 30px;">
-        Un modèle de culture robuste, paramétrable et couplable avec Richards
-    </p>
-
-    <!-- Diagramme de flux AquaCrop -->
-    <div style="max-width: 1100px; margin: 0 auto;">
-        <svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
-            <defs>
-                <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#dbeafe;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#bfdbfe;stop-opacity:1" />
-                </linearGradient>
-                <linearGradient id="processGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#dcfce7;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#bbf7d0;stop-opacity:1" />
-                </linearGradient>
-                <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#fde68a;stop-opacity:1" />
-                </linearGradient>
-                <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                    <polygon points="0 0, 8 3, 0 6" fill="#3b82f6" />
-                </marker>
-            </defs>
-
-            <!-- INPUTS -->
-            <g id="inputs">
-                <rect x="20" y="50" width="200" height="250" rx="12" fill="url(#inputGrad)" stroke="#3b82f6"
-                    stroke-width="3" />
-                <text x="120" y="35" text-anchor="middle" fill="#1e3a8a" font-size="18" font-weight="bold">
-                    📥 ENTRÉES
-                </text>
-
-                <!-- Items d'entrée -->
-                <text x="120" y="80" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    🌤️ Climat (ETo)
-                </text>
-                <text x="120" y="120" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    🌱 Paramètres culture
-                </text>
-                <text x="120" y="160" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    🌾 Paramètres sol
-                </text>
-                <text x="120" y="200" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    💧 Irrigation (θ profil)
-                </text>
-                <text x="120" y="240" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    📅 Gestion culture
-                </text>
-
-                <text x="120" y="275" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">
-                    Peu de paramètres
-                </text>
-            </g>
-
-            <!-- PROCESSES -->
-            <g id="processes">
-                <rect x="300" y="50" width="300" height="250" rx="12" fill="url(#processGrad)" stroke="#10b981"
-                    stroke-width="3" />
-                <text x="450" y="35" text-anchor="middle" fill="#047857" font-size="18" font-weight="bold">
-                    ⚙️ PROCESSUS
-                </text>
-
-                <!-- Processes clés -->
-                <circle cx="380" cy="95" r="35" fill="#d1fae5" stroke="#10b981" stroke-width="2" />
-                <text x="380" y="92" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    Croissance
-                </text>
-                <text x="380" y="105" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    canopée
-                </text>
-
-                <circle cx="520" cy="95" r="35" fill="#d1fae5" stroke="#10b981" stroke-width="2" />
-                <text x="520" y="92" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    Transpiration
-                </text>
-                <text x="520" y="105" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    (Ks,x)
-                </text>
-
-                <circle cx="380" cy="175" r="35" fill="#d1fae5" stroke="#10b981" stroke-width="2" />
-                <text x="380" y="172" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    Production
-                </text>
-                <text x="380" y="185" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    biomasse
-                </text>
-
-                <circle cx="520" cy="175" r="35" fill="#d1fae5" stroke="#10b981" stroke-width="2" />
-                <text x="520" y="172" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    Stress
-                </text>
-                <text x="520" y="185" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    hydrique
-                </text>
-
-                <circle cx="450" cy="245" r="35" fill="#d1fae5" stroke="#10b981" stroke-width="2" />
-                <text x="450" y="242" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    Allocation
-                </text>
-                <text x="450" y="255" text-anchor="middle" font-size="11" fill="#047857" font-weight="600">
-                    biomasse
-                </text>
-            </g>
-
-            <!-- OUTPUTS -->
-            <g id="outputs">
-                <rect x="680" y="50" width="200" height="250" rx="12" fill="url(#outputGrad)" stroke="#d97706"
-                    stroke-width="3" />
-                <text x="780" y="35" text-anchor="middle" fill="#92400e" font-size="18" font-weight="bold">
-                    📤 SORTIES
-                </text>
-
-                <!-- Items de sortie -->
-                <text x="780" y="95" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    🌿 Biomasse finale
-                </text>
-                <text x="780" y="135" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    🌾 Rendement (Y)
-                </text>
-                <text x="780" y="175" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    💧 Consommation eau
-                </text>
-                <text x="780" y="215" text-anchor="middle" font-size="13" fill="#0B3D5B" font-weight="600">
-                    📊 Indices (WUE, CC)
-                </text>
-
-                <text x="780" y="265" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">
-                    Productivité eau
-                </text>
-            </g>
-
-            <!-- Flèches de connexion -->
-            <line x1="220" y1="150" x2="295" y2="150" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow)" />
-            <line x1="605" y1="150" x2="675" y2="150" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow)" />
-        </svg>
-    </div>
-
-    <!-- Avantages clés -->
-    <div class="richards-advantages">
-        <div class="advantage-item">
-            <div class="icon">🎯</div>
-            <h6>Simplicité paramétrique</h6>
-            <p>~20 paramètres robustes vs >100 pour modèles mécanistes complets</p>
-        </div>
-
-        <div class="advantage-item">
-            <div class="icon">💧</div>
-            <h6>Focus sur l'eau</h6>
-            <p>Pensé pour avoir un moteur de simulation basé sur l'eau</p>
-        </div>
-
-        <div class="advantage-item">
-            <div class="icon">🌍</div>
-            <h6>Validation mondiale</h6>
-            <p>FAO - Calibré sur >1000 sites, multiples cultures et climats</p>
-        </div>
-    </div>
-
-    <aside class="notes">
-        <p><strong>Script (1 min):</strong></p>
-        <p>Pourquoi AquaCrop pour la composante culture ?</p>
-
-        <p> Puisque AquaCrop à un moteur de simulation basée sur la productivité de l'eau. </p>
-        <p>Il prend en compte les besoins en eau des cultures et optimise l'utilisation de l'eau à chaque étape.</p>
-
-        <p>De plus, il nécessite peu de données d'entrée, ce qui nous permet de l'utiliser facilement dans divers
-            contextes.</p>
-
-        <!-- <p>Regardons l'architecture : AquaCrop prend des entrées simples – climat (ETo), paramètres
-            de culture et de sol, profil d'humidité θ(z,t) fourni par Richards, et gestion culturale.
-            Il simule alors les processus clés : croissance de la canopée, transpiration avec stress
-            hydrique Ks,x, production de biomasse et allocation.</p>
-
-        <p>Les sorties incluent biomasse, rendement Y, consommation d'eau, et indices comme WUE.</p>
-
-        <p>Trois raisons majeures pour ce choix : d'abord, sa simplicité paramétrique – environ
-            20 paramètres robustes au lieu de plus de 100 pour des modèles mécanistes complets.
-            Ensuite, son couplage hydrique natif : il interface directement avec le profil θ(z,t)
-            via le coefficient de stress Ks,x. Enfin, il a été validé par la FAO sur plus de 1000
-            sites avec multiples cultures et climats. C'est un standard international.</p> -->
-    </aside>
-</section>
 
 <section>
     <!-- B5: Pourquoi un couplage bidirectionnel ? -->

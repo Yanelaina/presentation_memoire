@@ -19,7 +19,7 @@ SECTION MÉTHODOLOGIE
 
     <aside class="notes">
         Excellence Mr le Président du Jury, Honorables membres du Jury, Passons maintenant à la méthodologie où nous
-        décrirons comment nous avons concrètement construit ce modèle couplé.
+        décrirons les différentes étapes de développement de ce modèle couplé.
     </aside>
 </section>
 
@@ -84,7 +84,6 @@ SECTION MÉTHODOLOGIE
         SoilGrids, qui sont prétraitées et injectées dans notre système de couplage bidirectionnel. Le cœur du système
         est le solveur Richards 2D couplé avec AquaCrop. Les sorties nous donnent à la fois l'état hydrique complet du
         sol et les indicateurs agronomiques comme le rendement et le LAI.
-        <!-- L'architecture est modulaire, ce qui facilite les tests et la maintenance. -->
     </aside>
 </section>
 
@@ -138,90 +137,14 @@ SECTION MÉTHODOLOGIE
         </div>
 
         <aside class="notes">
-            Pour résoudre l'équation de Richards, nous utilisons un domaine axisymétrique en coordonnées (r,z). Cette
-            géométrie est parfaitement adaptée à l'irrigation goutte-à-goutte qui crée un bulbe circulaire autour du
-            goutteur. Les conditions aux limites sont déterminantes : en surface, on impose le flux d'irrigation
+            Pour résoudre l'équation de Richards, nous utilisons un domaine axisymétrique en coordonnées (r,z).
+            Les conditions aux limites sont déterminantes : en surface, on impose le flux d'irrigation
             localisé (qui peut-être de type Dirichlet ou Neumann si les échanges atmosphériques sont prises en compte).
             Sur l'axe, la condition de symétrie. Et sur les bords latéraux et le fond, on peut avoir du drainage libre
             selon la configuration.
         </aside>
     </section>
 
-
-    <!-- SLIDE M2v1: Formulation Variationnelle (Verticale) -->
-    <section data-background-color="#fbfbfb">
-        <h5 style="color: #0B3D5B; border-bottom: 2px solid #6B8E23; padding-bottom: 8px; margin-bottom: 20px;">
-            Formulation faible et discrétisation
-        </h5>
-
-        <!-- Espace fonctionnel -->
-        <div class="fragment fade-in" data-fragment-index="1"
-            style="background: #dbeafe; padding: 18px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #3b82f6;">
-            <p style="font-size: 0.65em; margin-bottom: 10px; color: #1e40af;">
-                <strong>Espace fonctionnel (Sobolev pondéré):</strong>
-            </p>
-            <div style="font-size: 0.8em; text-align: center;">
-                \[ V := H^1_r(\Omega) = \left\{ v \in L^2_r(\Omega) \,\big|\, \nabla v \in [L^2_r(\Omega)]^2 \right\} \]
-            </div>
-            <p style="font-size: 0.6em; margin-top: 8px; color: #666; font-style: italic;">
-                Espace de Sobolev pondéré par r pour géométrie axisymétrique
-            </p>
-        </div>
-
-        <div class="fragment fade-up" data-fragment-index="2">
-            <img src="assets/weak_formulation.png"
-                style="width: 100%; box-shadow: 0 6px 20px rgba(0,0,0,0.12); border-radius: 10px;"
-                alt="Domaine axisymétrique Richards">
-        </div>
-        <!-- Formulation variationnelle -->
-        <!-- <div class="fragment fade-up" data-fragment-index="2" 
-       style="background: #fef3c7; padding: 18px; border-radius: 10px; margin-bottom: 20px; border: 3px solid #f59e0b;">
-       <p style="font-size: 0.65em; margin-bottom: 10px; color: #92400e;">
-           <strong>Problème:</strong> Trouver ψ(t) ∈ V tel que ∀v ∈ V:
-       </p>
-       <div style="font-size: 0.75em; text-align: center; line-height: 2;">
-           \[
-           \int_\Omega C(\psi)\frac{\partial\psi}{\partial t} v \,r\,dr\,dz
-           + \int_\Omega K(\psi) \nabla\psi \cdot \nabla v \,r\,dr\,dz
-           + \int_\Omega K(\psi) \frac{\partial v}{\partial z} \,r\,dr\,dz
-           = \int_\Omega S v \,r\,dr\,dz + \int_{\Gamma_{\text{surf}}} q_{\text{surf}} v \,r\,d\Gamma
-           \]
-       </div>
-   </div> -->
-
-        <!-- Interprétation physique -->
-        <!-- <div class="fragment fade-up" data-fragment-index="3" 
-       style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; font-size: 0.58em;">
-       
-       <div style="background: #f0f9ff; padding: 12px; border-radius: 6px; border-left: 3px solid #3b82f6;">
-           <strong style="color: #1e40af;">⏱️ Terme capacitif:</strong><br>
-           $C(\psi)\ \frac{\partial \psi}{\partial t}$ — Accumulation d'eau
-       </div>
-
-       <div style="background: #fef3c7; padding: 12px; border-radius: 6px; border-left: 3px solid #f59e0b;">
-           <strong style="color: #92400e;">🌊 Terme diffusif:</strong><br>
-           K(ψ) ∇ψ — Diffusion capillaire
-       </div>
-
-       <div style="background: #d1fae5; padding: 12px; border-radius: 6px; border-left: 3px solid #10b981;">
-           <strong style="color: #065f46;">⬇️ Terme gravitaire:</strong><br>
-           K(ψ) ∂v/∂z — Drainage gravitaire
-       </div>
-
-       <div style="background: #fef2f2; padding: 12px; border-radius: 6px; border-left: 3px solid #ef4444;">
-           <strong style="color: #991b1b;">🌱 Terme source:</strong><br>
-           S — Extraction racinaire
-       </div>
-   </div> -->
-
-        <aside class="notes">
-            Mathématiquement, on transforme l'EDP forte en formulation faible. On cherche la solution dans un espace de
-            Sobolev pondéré par r pour tenir compte de la géométrie axisymétrique. L'équation variationnelle fait
-            apparaître quatre termes principaux : le terme capacitif qui représente l'accumulation d'eau, le terme
-            diffusif qui capture la diffusion capillaire, le terme gravitaire, et les termes sources incluant
-            l'extraction racinaire.
-        </aside>
-    </section>
 
     <!-- SLIDE M2v2: Maillage Adaptatif (Verticale avec Vidéo) -->
     <section data-background-color="#fbfbfb">
@@ -231,7 +154,7 @@ SECTION MÉTHODOLOGIE
 
         <!-- Vidéo animation -->
         <div class="fragment fade-in" data-fragment-index="1" style="text-align: center; margin-bottom: 25px;">
-            <video width="70%" controls autoplay loop muted
+            <video width="80%" controls autoplay loop muted
                 style="border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
                 <source src="assets/animations/mesh_comparison_animation.mp4" type="video/mp4">
                 Votre navigateur ne supporte pas la vidéo HTML5.
@@ -246,9 +169,9 @@ SECTION MÉTHODOLOGIE
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.52em;">
 
             <!-- Maillage uniforme -->
-            <div style="background: #fef2f2; padding: 18px; border-radius: 8px; border-left: 4px solid #ef4444;">
+            <div style="padding: 18px; border-radius: 8px;">
                 <h6 style="color: #991b1b; margin-bottom: 10px; font-size: 0.9em;">❌ Maillage uniforme</h6>
-                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.5;">
                     <li>Simple à générer</li>
                     <li>~50,000 éléments</li>
                     <li>Gradients mal capturés</li>
@@ -258,9 +181,9 @@ SECTION MÉTHODOLOGIE
             </div>
 
             <!-- Maillage adaptatif -->
-            <div style="background: #d1fae5; padding: 18px; border-radius: 8px; border-left: 4px solid #10b981;">
+            <div style="padding: 18px; border-radius: 8px;">
                 <h6 style="color: #065f46; margin-bottom: 10px; font-size: 0.9em;">✅ Maillage adaptatif</h6>
-                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.5;">
                     <li>Raffinement local près goutteur</li>
                     <li>~15,000 éléments</li>
                     <li>Gradients bien capturés</li>
@@ -272,13 +195,13 @@ SECTION MÉTHODOLOGIE
 
             <!-- Image statique complémentaire -->
             <!-- <div class="fragment fade-in" data-fragment-index="3" style="text-align: center; margin-top: 20px;">
-       <img src="assets/maillage.png" 
-           style="width: 55%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 8px;" 
-           alt="Zoom maillage adaptatif">
-       <p style="font-size: 0.5em; margin-top: 8px; color: #666; font-style: italic;">
-           <strong>Zoom:</strong> Raffinement intense dans la zone du bulbe d'humectation
-       </p>
-   </div> -->
+      <img src="assets/maillage.png" 
+          style="width: 55%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 8px;" 
+          alt="Zoom maillage adaptatif">
+      <p style="font-size: 0.5em; margin-top: 8px; color: #666; font-style: italic;">
+          <strong>Zoom:</strong> Raffinement intense dans la zone du bulbe d'humectation
+      </p>
+  </div> -->
 
             <aside class="notes">
                 Le choix du maillage est crucial. Cette animation montre la différence entre un maillage uniforme et
@@ -288,275 +211,137 @@ SECTION MÉTHODOLOGIE
             </aside>
     </section>
 
-    <!-- SLIDE M2v3: Discrétisation Spatiale (Verticale) -->
+
+    <!-- SLIDE M2v3: Discrétisation FEM + Algorithme (Verticale) -->
     <section data-background-color="#fbfbfb">
-        <h6
-            style="color: #0B3D5B; border-bottom: 2px solid #6B8E23; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.0em;">
-            Méthode des Éléments Finis — Discrétisation spatiale
-        </h6>
+        <h5 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 40px;">
+            Discrétisation FEM & Stratégie de résolution
+        </h5>
 
-        <!-- Approximation de Galerkin -->
-        <div class="fragment fade-in" data-fragment-index="1"
-            style="background: #d1fae5; padding: 10px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #10b981;">
-            <p style="font-size: 0.55em; margin-bottom: 10px; color: #065f46;">
-                <strong>Approximation de Galerkin (éléments P1):</strong>
-            </p>
-            <div style="font-size: 0.7em; text-align: center;">
-                \[ V_h \subset V, \quad \psi_h(r,z,t) = \sum_{j=1}^N \psi_j(t) \phi_j(r,z) \]
+        <!-- Layout 2 colonnes : FEM à gauche, Algorithme à droite -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.55em;">
+
+            <!-- COLONNE GAUCHE: Discrétisation FEM -->
+            <div class="fragment fade-in" data-fragment-index="1"
+                style="background: #eff6ff; padding: 18px; border-radius: 10px; border: 2px solid #3b82f6;">
+                <h6 style="color: #1e3a8a; margin: 0 0 12px 0; font-size: 1.15em; text-align: center;">
+                    🔶 Discrétisation FEM (Galerkin P1)
+                </h6>
+                <div style="font-size: 1.1em; text-align: center; line-height: 1.9; margin-bottom: 12px;">
+                    \[ \psi_h(r,z,t) = \sum_{j=1}^N \psi_j(t) \phi_j(r,z) \]
+                </div>
+                <div
+                    style="font-size: 1.15em; text-align: center; line-height: 2.2; background: white; padding: 12px; border-radius: 6px; margin-bottom: 12px;">
+                    \[
+                    \mathbf{M}(\boldsymbol{\psi}) \frac{d\boldsymbol{\psi}}{dt}
+                    + \mathbf{A}(\boldsymbol{\psi}) \boldsymbol{\psi}
+                    + \mathbf{g}(\boldsymbol{\psi})
+                    = \mathbf{f} + \mathbf{s}
+                    \]
+                </div>
+                <p style="margin: 0; font-size: 0.95em; color: #475569; text-align: center; font-style: italic;">
+                    Système EDO matriciel non-linéaire
+                </p>
+
+                <div class="fragment fade-up" data-fragment-index="1"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.78em;">
+
+                    <div style="padding: 12px; border-radius: 6px;">
+                        <strong style="color: #1e40af;">$M(\psi)$:</strong> Matrice de masse<br>
+                        <span style="font-size: 0.95em; color: #666;">Terme capacitif $C(\psi) \frac{\partial
+                            \psi}{\partial
+                            t}$</span>
+                    </div>
+
+                    <div style="padding: 12px; border-radius: 6px;">
+                        <strong style="color: #92400e;">$A(\psi)$:</strong> Matrice de rigidité<br>
+                        <span style="font-size: 0.95em; color: #666;">Terme diffusif $K(\psi) \nabla \psi$</span>
+                    </div>
+
+                    <div style="padding: 12px; border-radius: 6px;">
+                        <strong style="color: #065f46;">$g(\psi)$:</strong> Vecteur gravitaire<br>
+                        <span style="font-size: 0.95em; color: #666;">Drainage $K(\psi) \frac{\partial}{\partial
+                            z}$</span>
+                    </div>
+
+                    <div style="padding: 12px; border-radius: 6px;">
+                        <strong style="color: #991b1b;">$f, s(\psi)$:</strong> Termes sources<br>
+                        <span style="font-size: 0.95em; color: #666;">Flux de bord + extraction racinaire</span>
+                    </div>
+                </div>
             </div>
-            <p style="font-size: 0.5em; margin-top: 8px; color: #666; font-style: italic;">
-                Fonctions de base $\phi_j$ : linéaires par morceaux sur chaque élément triangulaire
-            </p>
+
+            <!-- COLONNE DROITE: Algorithme de Résolution -->
+            <div class="fragment fade-in" data-fragment-index="1">
+                <div
+                    style="background: #fef3c7; padding: 18px; border-radius: 10px; border: 2px solid #f59e0b; height: 92%;">
+                    <h6 style="color: #92400e; margin: 0 0 12px 0; font-size: 1.15em; text-align: center;">
+                        ⚡ Stratégie de résolution
+                    </h6>
+
+                    <!-- Schéma temporel -->
+                    <div style="background: white; padding: 12px; border-radius: 6px; margin-bottom: 12px;">
+                        <p style="margin: 0 0 8px 0; font-size: 1.0em; color: #991b1b; text-align: center;">
+                            <strong>Euler implicite (A-stable)</strong>
+                        </p>
+                        <div style="font-size: 1.05em; text-align: center; line-height: 1.9;">
+                            \[
+                            \mathbf{R}(\boldsymbol{\psi}^{n+1}) = \frac{\mathbf{M}}{\Delta t}(\boldsymbol{\psi}^{n+1} -
+                            \boldsymbol{\psi}^n) + \mathbf{A}\boldsymbol{\psi}^{n+1} + \mathbf{g} = \mathbf{0}
+                            \]
+                        </div>
+                    </div>
+
+                    <!-- Linéarisation hybride -->
+                    <div style="background: #fff7ed; padding: 22px; border-radius: 6px;">
+                        <p
+                            style="margin: 0 0 10px 0; font-size: 1.05em; color: #78350f; font-weight: 600; text-align: center;">
+                            Hybride Picard-Newton
+                        </p>
+                        <ol style="margin: 0; padding-left: 20px; line-height: 1.8; font-size: 1.0em; color: #451a03;">
+                            <li><strong>Phase Picard</strong> : 2-5 itérations initiales (robustesse)</li>
+                            <li><strong>Phase Newton</strong> : Jacobien complet → convergence quadratique</li>
+                            <li><strong>Δt adaptatif</strong> : Ajustement dynamique selon convergence</li>
+                        </ol>
+                    </div>
+
+                    <!-- Icônes résumé -->
+                    <!-- <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px; font-size: 0.95em; text-align: center;">
+                   <div style="background: #dbeafe; padding: 8px; border-radius: 4px;">
+                       <div style="font-size: 1.5em;">🔄</div>
+                       <div style="color: #1e40af; font-weight: 600;">Picard</div>
+                   </div>
+                   <div style="background: #d1fae5; padding: 8px; border-radius: 4px;">
+                       <div style="font-size: 1.5em;">⚡</div>
+                       <div style="color: #065f46; font-weight: 600;">Newton</div>
+                   </div>
+                   <div style="background: #fef3c7; padding: 8px; border-radius: 4px;">
+                       <div style="font-size: 1.5em;">⏱️</div>
+                       <div style="color: #92400e; font-weight: 600;">Δt adapt.</div>
+                   </div>
+               </div> -->
+                </div>
+            </div>
         </div>
-
-        <!-- Système matriciel -->
-        <div class="fragment fade-up" data-fragment-index="2"
-            style="background: #fef3c7; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 3px solid #f59e0b;">
-            <p style="font-size: 0.6em; margin-bottom: 12px; color: #92400e; text-align: center;">
-                <strong>Forme compacte du système matriciel:</strong>
-            </p>
-            <div style="font-size: 0.75em; text-align: center; line-height: 2.2;">
-                \[
-                \mathbf{M}(\boldsymbol{\psi}) \frac{d\boldsymbol{\psi}}{dt}
-                + \mathbf{A}(\boldsymbol{\psi}) \boldsymbol{\psi}
-                + \mathbf{g}(\boldsymbol{\psi})
-                = \mathbf{f} + \mathbf{s}(\boldsymbol{\psi})
-                \]
-            </div>
-            <div class="fragment fade-up" data-fragment-index="2"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.58em;">
-
-                <div style="padding: 12px; border-radius: 6px;">
-                    <strong style="color: #1e40af;">$M(\psi)$:</strong> Matrice de masse<br>
-                    <span style="font-size: 0.95em; color: #666;">Terme capacitif $C(\psi) \frac{\partial \psi}{\partial
-                        t}$</span>
-                </div>
-
-                <div style="padding: 12px; border-radius: 6px;">
-                    <strong style="color: #92400e;">$A(\psi)$:</strong> Matrice de rigidité<br>
-                    <span style="font-size: 0.95em; color: #666;">Terme diffusif $K(\psi) \nabla \psi$</span>
-                </div>
-
-                <div style="padding: 12px; border-radius: 6px;">
-                    <strong style="color: #065f46;">$g(\psi)$:</strong> Vecteur gravitaire<br>
-                    <span style="font-size: 0.95em; color: #666;">Drainage $K(\psi) \frac{\partial}{\partial z}$</span>
-                </div>
-
-                <div style="padding: 12px; border-radius: 6px;">
-                    <strong style="color: #991b1b;">$f, s(\psi)$:</strong> Termes sources<br>
-                    <span style="font-size: 0.95em; color: #666;">Flux de bord + extraction racinaire</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Matrices et vecteurs -->
-
 
         <aside class="notes">
-            On discrétise l'espace avec des éléments finis linéaires. La solution est approximée par une combinaison de
-            fonctions de base nodales. Cela transforme notre EDP en un système d'EDO matriciel. On retrouve la matrice
+            <!-- Discrétisation FEM Galerkin P1 transformant l'EDP en système matriciel, stratégie hybride Picard-Newton avec pas de temps adaptatif. -->
+
+            On discrétise l'espace avec des éléments finis linéaires de Galerkin. Cela transforme la forme
+            variationnelle de notre EDP en un système d'EDO matriciel. On retrouve la matrice
             de masse M qui représente l'accumulation, la matrice de rigidité A pour la diffusion, et les vecteurs pour
             la gravité et les sources.
+
+            Pour la résolution temporelle, on utilise un schéma d'Euler implicite, qui est A-stable. La non-linéarité
+            est gérée via une approche hybride : on commence par quelques itérations de Picard pour assurer la
+            robustesse,
+            puis on bascule vers Newton pour une convergence rapide. Le pas de temps est ajusté dynamiquement en
+            fonction
+            de la convergence.
         </aside>
     </section>
 
-    <!-- SLIDE M2v4: Algorithme de Résolution (Verticale avec Code) -->
-    <section data-background-color="#fbfbfb">
-        <h6
-            style="color: #0B3D5B; border-bottom: 2px solid #6B8E23; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.0em;">
-            Algorithme de résolution numérique
-        </h6>
 
-        <!-- Schéma temporel -->
-        <div class="fragment fade-in" data-fragment-index="1"
-            style="background: #fef2f2; padding: 5px; border-radius: 10px; margin-bottom: 20px; border: 3px solid #ef4444; max-width: 850px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 0.58em; margin-bottom: 10px; color: #991b1b;">
-                <strong>Schéma temporel — Euler implicite (A-stable):</strong>
-            </p>
-            <div style="font-size: 0.55em; text-align: center; line-height: 2;">
-                \[
-                \mathbf{R}(\boldsymbol{\psi}^{n+1}) = \mathbf{M}(\boldsymbol{\psi}^{n+1})
-                \frac{\boldsymbol{\psi}^{n+1} - \boldsymbol{\psi}^n}{\Delta t}
-                + \mathbf{A}(\boldsymbol{\psi}^{n+1})\boldsymbol{\psi}^{n+1}
-                + \mathbf{g}(\boldsymbol{\psi}^{n+1}) - \mathbf{f} - \mathbf{s}(\boldsymbol{\psi}^{n+1}) = \mathbf{0}
-                \]
-            </div>
-        </div>
-
-        <!-- Stratégie de linéarisation -->
-        <!-- <div class="fragment fade-up" data-fragment-index="2" 
-       style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.6em; margin-bottom: 20px;">
-       
-       <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
-           <h6 style="color: #1e40af; margin-bottom: 8px; font-size: 1.05em;">🔄 Méthode de Picard</h6>
-           <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
-               <li>2–5 itérations initiales</li>
-               <li>Simple et robuste</li>
-               <li>Convergence linéaire</li>
-           </ul>
-       </div>
-
-       <div style="background: #d1fae5; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
-           <h6 style="color: #065f46; margin-bottom: 8px; font-size: 1.05em;">⚡ Newton-Raphson</h6>
-           <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
-               <li>Jacobien complet</li>
-               <li>Convergence quadratique</li>
-               <li>Précision finale stricte</li>
-           </ul>
-       </div>
-   </div> -->
-
-        <p class="fragment fade-left" data-fragment-index="2"
-            style="color: #0B3D5B; padding-bottom: 2px; margin-bottom: 0px; font-size: 0.7em;">
-            Stratégie de linéarisation
-        </p>
-
-        <!-- Pseudo-code -->
-        <div class="fragment fade-up" data-fragment-index="2">
-            <pre
-                style="background: #f8f9fa; border-left: 4px solid #3b82f6; padding: 15px; border-radius: 8px; font-size: 0.35em; line-height: 1.5;"><code class="python" data-trim data-line-numbers="1-3,11-22">
-# Algorithme hybride Picard-Newton
-for n in range(N_timesteps):
-   ψ_k = ψ_n  # Initialisation au pas précédent
-
-   # Phase 1: Picard (2-5 itérations pour dégrossir)
-   for k in range(m_Picard):
-       Assemble M(ψ_k), A(ψ_k), g(ψ_k), s(ψ_k)
-       Solve: [M(ψ_k)/Δt + A(ψ_k)] ψ_{k+1} = RHS(ψ_k, ψ_n)
-       ψ_k = ψ_{k+1}
-
-   # Phase 2: Newton-Raphson (convergence stricte)
-   while ||R(ψ_k)|| > tol:
-       Compute Jacobian: J(ψ_k) = ∂R/∂ψ
-       Solve: J(ψ_k) δψ = -R(ψ_k)
-       ψ_{k+1} = ψ_k + λ δψ  # damping λ ∈ [0.5, 1] si oscillations
-       ψ_k = ψ_{k+1}
-
-   ψ_{n+1} = ψ_k  # Solution convergée pour ce pas de temps
-
-   # Adaptation pas de temps
-   if convergence rapide: Δt ← min(1.5·Δt, Δt_max)
-   if convergence lente: Δt ← max(0.5·Δt, Δt_min)
-       </code></pre>
-        </div>
-
-        <aside class="notes">
-            Pour résoudre le système non-linéaire à chaque pas de temps, on utilise une stratégie hybride. D'abord
-            quelques itérations de Picard pour dégrossir, puis on bascule sur Newton-Raphson avec le Jacobien complet
-            pour converger rapidement. Cette approche combine robustesse et efficacité. On utilise aussi un pas de temps
-            adaptatif qui s'ajuste selon la vitesse de convergence.
-        </aside>
-    </section>
-
-</section>
-
-<!-- SLIDE M3: Wrapper AquaCrop-OSPy -->
-<section data-background-color="#fbfbfb">
-    <h6 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 5px;">
-        Interface avec AquaCrop via OSPy
-    </h6>
-
-    <!-- Diagramme de flux -->
-    <div class="fragment fade-in" data-fragment-index="1" style="margin-bottom: 25px;">
-        <svg viewBox="0 0 900 180" style="width: 90%; margin: 0 auto; display: block;">
-            <!-- Bloc Configuration -->
-            <rect x="20" y="30" width="240" height="120" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="3" />
-            <text x="140" y="60" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e40af">📋
-                Configuration</text>
-            <text x="140" y="85" text-anchor="middle" font-size="13" fill="#333">Paramètres culture</text>
-            <text x="140" y="105" text-anchor="middle" font-size="13" fill="#333">Propriétés sol</text>
-            <text x="140" y="125" text-anchor="middle" font-size="13" fill="#333">Données météo</text>
-
-            <!-- Flèche 1 -->
-            <path d="M 260 90 L 320 90" stroke="#6B8E23" stroke-width="3" fill="none" marker-end="url(#arrowhead1)" />
-
-            <!-- Bloc OSPy Engine -->
-            <rect x="320" y="30" width="240" height="120" rx="12" fill="#d1fae5" stroke="#10b981" stroke-width="3" />
-            <text x="440" y="60" text-anchor="middle" font-size="18" font-weight="bold" fill="#065f46">⚙️ OSPy
-                Engine</text>
-            <text x="440" y="85" text-anchor="middle" font-size="13" fill="#333">Exécution AquaCrop</text>
-            <text x="440" y="105" text-anchor="middle" font-size="13" fill="#333">Simulation batch</text>
-            <text x="440" y="125" text-anchor="middle" font-size="13" fill="#333">Mode Python natif</text>
-
-            <!-- Flèche 2 -->
-            <path d="M 560 90 L 620 90" stroke="#6B8E23" stroke-width="3" fill="none" marker-end="url(#arrowhead2)" />
-
-            <!-- Bloc Récupération -->
-            <rect x="620" y="30" width="240" height="120" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" />
-            <text x="740" y="60" text-anchor="middle" font-size="18" font-weight="bold" fill="#92400e">📤
-                Récupération</text>
-            <text x="740" y="85" text-anchor="middle" font-size="13" fill="#333">Biomasse, LAI</text>
-            <text x="740" y="105" text-anchor="middle" font-size="13" fill="#333">Rendement</text>
-            <text x="740" y="125" text-anchor="middle" font-size="13" fill="#333">Transpiration T<tspan
-                    baseline-shift="sub" font-size="10">r</tspan></text>
-
-            <!-- Définitions des flèches -->
-            <defs>
-                <marker id="arrowhead1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                    <polygon points="0 0, 10 3, 0 6" fill="#6B8E23" />
-                </marker>
-                <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                    <polygon points="0 0, 10 3, 0 6" fill="#6B8E23" />
-                </marker>
-            </defs>
-        </svg>
-    </div>
-
-    <!-- Code Python simplifié -->
-    <div class="fragment fade-up" data-fragment-index="1">
-        <pre
-            style="background: #f8f9fa; border-left: 4px solid #10b981; padding: 15px; border-radius: 8px; font-size: 0.5em; line-height: 1.4;"><code class="python" data-trim data-line-numbers>
-from aquacrop import AquaCropModel, Soil, Crop, IrrigationManagement
-
-# Configuration du modèle
-model = AquaCropModel(
-sim_start_time='2020/04/01',
-sim_end_time='2020/08/31',
-weather_df=meteo_data,          # DataFrame météo journalier
-soil=Soil('SandyLoam'),          # Type de sol
-crop=Crop('Maize', planting_date='04/05'),
-irrigation_management=IrrigationManagement(SMT=[50,100])  # Seuils irrigation
-)
-
-# Exécution de la simulation
-model.run_model()
-
-# Récupération des résultats
-results = model.get_simulation_results()
-LAI = results['Canopy Cover'].values           # Indice foliaire
-Biomass = results['Dry above ground biomass'].values  # Biomasse aérienne
-Yield = results['Dry yield'].values            # Rendement
-Tr = results['Tr'].values                      # Transpiration journalière
-   </code></pre>
-    </div>
-
-    <!-- Avantages -->
-    <!-- <div class="fragment fade-up" data-fragment-index="3" 
-    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; font-size: 0.6em; margin-top: 20px;">
-   
-   <div style="background: #d1fae5; padding: 12px; border-radius: 8px; text-align: center; border-left: 3px solid #10b981;">
-       <strong style="color: #065f46;">✅ Interface Python native</strong><br>
-       <span style="font-size: 0.9em; color: #666;">Intégration transparente</span>
-   </div>
-
-   <div style="background: #dbeafe; padding: 12px; border-radius: 8px; text-align: center; border-left: 3px solid #3b82f6;">
-       <strong style="color: #1e40af;">✅ Exécution batch rapide</strong><br>
-       <span style="font-size: 0.9em; color: #666;">Automatisation complète</span>
-   </div>
-
-   <div style="background: #fef3c7; padding: 12px; border-radius: 8px; text-align: center; border-left: 3px solid #f59e0b;">
-       <strong style="color: #92400e;">✅ Accès complet aux variables</strong><br>
-       <span style="font-size: 0.9em; color: #666;">Toutes les sorties disponibles</span>
-   </div>
-</div> -->
-
-    <aside class="notes">
-        Pour interfacer AquaCrop avec notre pipeline Python, on utilise AquaCrop-OSPy, un wrapper Python Open source
-        développé par l'équipe de l'Imperial College London. Il nous permet de configurer tous les paramètres de culture
-        et de sol, d'exécuter AquaCrop en mode batch, et de récupérer toutes les sorties journalières : biomasse, LAI,
-        transpiration, etc.
-        <!-- C'est l'outil idéal pour automatiser et intégrer AquaCrop dans notre chaîne de couplage. -->
-    </aside>
 </section>
 
 <!-- SLIDE M4: Interface de Couplage Bidirectionnel -->
@@ -625,10 +410,24 @@ Tr = results['Tr'].values                      # Transpiration journalière
         </div>
 
         <aside class="notes">
-            Le couplage entre Richards et AquaCrop pose un vrai défi d'échelles. À gauche, le couplage faible : AquaCrop
-            impose une demande en transpiration, Richards répond, mais il n'y a pas de dialogue. À droite, le couplage
-            fort : on itère jusqu'à convergence pour assurer la cohérence physique complète. C'est plus coûteux mais
-            beaucoup plus robuste et physiquement cohérent.
+
+            Nous avons distingué au cours de notre développement deux manières de faire dialoguer AquaCrop et Richards.
+            <br> <br>
+            En haut, le couplage faible : AquaCrop impose la transpiration, et Richards simule la réponse du sol sans
+            rétroaction à l'intérieur du pas de simulation.
+            C’est simple, mais physiquement limité.
+            <br> <br>
+            En bas, le couplage fort : les deux modèles échangent de manière itérative, jusqu’à ce que la transpiration
+            demandée et
+            celle calculée convergent.
+            <br> <br>
+            Cette approche garantit la cohérence et la conservation de la masse, au prix d’un coût de calcul un peu plus
+            élevé .
+            <br><br>
+            <!-- Le couplage entre Richards et AquaCrop pose un vrai défi d'échelles. À gauche, le couplage faible : AquaCrop
+       impose une demande en transpiration, Richards répond, mais il n'y a pas de dialogue. À droite, le couplage
+       fort : on itère jusqu'à convergence pour assurer la cohérence physique complète. C'est plus coûteux mais
+       beaucoup plus robuste et physiquement cohérent. -->
         </aside>
     </section>
 
@@ -670,7 +469,7 @@ Tr = results['Tr'].values                      # Transpiration journalière
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.52em; margin-bottom: 15px;">
 
             <!-- 1. Irrigation -->
-            <div class="fragment fade-in" data-fragment-index="2"
+            <div class="fragment fade-in" data-fragment-index="3"
                 style="background: #dbeafe; padding: 12px; border-radius: 8px; border-left: 4px solid #3b82f6;">
                 <h6 style="color: #1e40af; margin-bottom: 8px; font-size: 1.1em;">💧 1. Irrigation : Global → Local</h6>
                 <div style="font-size: 1.15em; text-align: center; margin: 8px 0; line-height: 1.8;">
@@ -683,7 +482,7 @@ Tr = results['Tr'].values                      # Transpiration journalière
             </div>
 
             <!-- 2. Transpiration potentielle -->
-            <div class="fragment fade-in" data-fragment-index="2"
+            <div class="fragment fade-in" data-fragment-index="4"
                 style="background: #d1fae5; padding: 12px; border-radius: 8px; border-left: 4px solid #10b981;">
                 <h6 style="color: #065f46; margin-bottom: 8px; font-size: 1.1em;">🌱 2. T<sub>pot</sub> : Demande →
                     Densité puits</h6>
@@ -697,7 +496,7 @@ Tr = results['Tr'].values                      # Transpiration journalière
             </div>
 
             <!-- 3. Upscaling teneur en eau -->
-            <div class="fragment fade-in" data-fragment-index="2"
+            <div class="fragment fade-in" data-fragment-index="5"
                 style="background: #fef3c7; padding: 12px; border-radius: 8px; border-left: 4px solid #f59e0b;">
                 <h6 style="color: #92400e; margin-bottom: 8px; font-size: 1.1em;">⬆️ 3. θ effectif : 2D → 1D par couche
                 </h6>
@@ -711,7 +510,7 @@ Tr = results['Tr'].values                      # Transpiration journalière
             </div>
 
             <!-- 4. Transpiration réelle -->
-            <div class="fragment fade-in" data-fragment-index="2"
+            <div class="fragment fade-in" data-fragment-index="6"
                 style="background: #fef2f2; padding: 12px; border-radius: 8px; border-left: 4px solid #ef4444;">
                 <h6 style="color: #991b1b; margin-bottom: 8px; font-size: 1.1em;">🔄 4. T<sub>réel</sub> : Intégration
                     locale</h6>
@@ -746,18 +545,21 @@ Tr = results['Tr'].values                      # Transpiration journalière
    </div> -->
 
         <aside class="notes">
-            Pour réconcilier les échelles, on utilise quatre transformations mathématiques fondamentales. Premièrement,
-            l'irrigation journalière en millimètres est convertie en flux volumique au goutteur. Deuxièmement, la
-            transpiration potentielle journalière devient une densité de puits 3D pondérée par la distribution
-            racinaire. Troisièmement, le champ continu 2D de teneur en eau est moyenné par couche pour AquaCrop.
-            Quatrièmement, l'extraction locale limitée par le stress hydrique est intégrée pour obtenir la transpiration
-            réelle. Toutes ces transformations garantissent la conservation de la masse.
 
-            Excellence M. le Président du Jury, Honorables Membres du Jury, qu'il s'agisse d'un couplage bidirectionnel
-            faible ou fort, le principal défi qu'on peut directement observer est l'Incompatibilité des échelles
-            spatiales et temporelles entre les modèles.
             <br> <br>
             Pour réconcilier ces échelles, nous avons développé quatre opérateurs de transformation mathématiques :
+            <br> <br>
+            Premièrement,
+            l'irrigation journalière en millimètres est convertie en flux volumique au goutteur.
+            <br> <br>
+            Deuxièmement, la
+            transpiration potentielle journalière devient une densité de puits 3D pondérée par la distribution
+            racinaire.
+            <br> <br>
+            Troisièmement, le champ continu 2D de teneur en eau est moyenné par couche pour AquaCrop.
+            <br> <br>
+            Quatrièmement, l'extraction locale limitée par le stress hydrique est intégrée pour obtenir la transpiration
+            réelle. Toutes ces transformations permettent de garantir la conservation de la masse.
             <br> <br>
         </aside>
     </section>
@@ -867,61 +669,7 @@ Tr = results['Tr'].values                      # Transpiration journalière
     </div>
 
     <aside class="notes">
-        Pour alimenter notre modèle, on a développé un pipeline d'extraction automatisé. On part des données brutes
-        ERA5-Land pour le climat et SoilGrids pour les propriétés du sol. L'étape cruciale est le prétraitement où on
-        applique les fonctions de pédotransfert, notamment van Genuchten et Rosetta, pour transformer les données de
-        texture en paramètres hydrauliques utilisables par Richards. On génère aussi tous les paramètres nécessaires
-        pour AquaCrop. Le tout est complètement automatisé et reproductible pour n'importe quelle zone du globe.
+        Pipeline automatisé : ERA5-Land pour climat, SoilGrids pour sol, fonctions pédotransfert (van Genuchten,
+        Rosetta) pour paramètres hydrauliques. Reproductible mondialement.
     </aside>
 </section>
-
-<!-- SLIDE M5: Extraction Automatisée des Données -->
-<!-- <section data-background-color="#fbfbfb"> -->
-<!-- <h4 style="color: #0B3D5B; border-bottom: 3px solid #6B8E23; padding-bottom: 10px; margin-bottom: 20px;">
-   Pipeline d'extraction automatisée — ERA5-Land & SoilGrids
-</h4> -->
-
-<!-- Architecture du pipeline -->
-<!-- <div class="fragment fade-in" data-fragment-index="1" style="margin-bottom: 25px;">
-   <svg viewBox="0 0 900 140" style="width: 90%; margin: 0 auto; display: block;"> -->
-<!-- Bloc Acquisition -->
-<!-- <rect x="20" y="20" width="240" height="100" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="3" />
-       <text x="140" y="50" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e40af">📡
-           Acquisition</text>
-       <text x="140" y="72" text-anchor="middle" font-size="12" fill="#333">API CDS (ERA5-Land)</text>
-       <text x="140" y="90" text-anchor="middle" font-size="12" fill="#333">API ISRIC (SoilGrids)</text>
-       <text x="140" y="108" text-anchor="middle" font-size="12" fill="#333">Géolocalisation auto</text>
-
-       <path d="M 260 70 L 310 70" stroke="#6B8E23" stroke-width="3" fill="none" marker-end="url(#arrow-pipe1)" /> -->
-
-<!-- Bloc Prétraitement -->
-<!-- <rect x="310" y="20" width="240" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" />
-       <text x="430" y="50" text-anchor="middle" font-size="17" font-weight="bold" fill="#92400e">🔧
-           Prétraitement</text>
-       <text x="430" y="72" text-anchor="middle" font-size="12" fill="#333">Interpolation spatiale</text>
-       <text x="430" y="90" text-anchor="middle" font-size="12" fill="#333">Interpolation temporelle</text>
-       <text x="430" y="108" text-anchor="middle" font-size="12" fill="#333">Harmonisation unités</text>
-
-       <path d="M 550 70 L 600 70" stroke="#6B8E23" stroke-width="3" fill="none" marker-end="url(#arrow-pipe2)" /> -->
-
-<!-- Bloc Transformation -->
-<!-- <rect x="600" y="20" width="240" height="100" rx="10" fill="#d1fae5" stroke="#10b981" stroke-width="3" />
-       <text x="720" y="50" text-anchor="middle" font-size="17" font-weight="bold" fill="#065f46">⚙️
-           Transformation</text>
-       <text x="720" y="72" text-anchor="middle" font-size="12" fill="#333">Paramètres Richards</text>
-       <text x="720" y="90" text-anchor="middle" font-size="12" fill="#333">Paramètres AquaCrop</text>
-       <text x="720" y="108" text-anchor="middle" font-size="12" fill="#333">Format pipeline</text>
-
-       <defs>
-           <marker id="arrow-pipe1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-               <polygon points="0 0, 10 3, 0 6" fill="#6B8E23" />
-           </marker>
-           <marker id="arrow-pipe2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-               <polygon points="0 0, 10 3, 0 6" fill="#6B8E23" />
-           </marker>
-       </defs>
-   </svg>
-</div> -->
-
-
-<!-- </section> -->
